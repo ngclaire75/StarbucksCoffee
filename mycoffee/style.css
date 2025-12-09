@@ -1,0 +1,776 @@
+* {  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: SoDo Sans, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+    background: white;
+}
+
+/* Starbucks Logo */
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
+/* Navigation Links (Menu, Rewards, Gift Cards) */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    font-size: 13.20px;  
+    margin-left: 40px;
+}
+
+.nav-links li {
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+/* Right side of navigation bar */
+.nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Find a store */
+.find-store {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    font-size: 13.5px; 
+    cursor: pointer;
+}
+
+.find-store img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Button - Sign In and Join Now */
+.btn-outline {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1.8px solid black;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px; 
+}
+
+.btn-black {
+    padding: 9px 16px;
+    border-radius: 20px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* Green bar */
+.green-bar {
+    background: #1e3932;
+    color: white;
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Button - Start an order */
+.start-order-btn {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1.8px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 3px;
+}
+
+/* Button - Order a seasonal treat */
+.btn-outline-white {
+    padding: 8px 30px;
+    border-radius: 20px;
+    border: 1.8px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+/* Bring on the Merry Section */
+.main-section {
+    display: flex;
+    width: 100%;
+}
+
+.left-image {
+    width: 50%;
+}
+
+.left-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.right-text {
+    width: 50%;
+    background: #8c0b20;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px;
+}
+
+.right-text h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.right-text p {
+    font-size: 20px;
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+/* Roller Rabbit Section */
+.roller-section {
+    display: flex;
+    height: 70vh;
+}
+
+.roller-left {
+    background: #a0002a;
+    color: white;
+    width: 50%;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;     
+    text-align: center;  
+    gap: 25px;           
+}
+
+.roller-left h1 {
+    font-size: 48px;
+}
+
+.roller-left .tight-title {
+    line-height: 0.9;
+    max-width: 550px;
+}
+
+.roller-left p {
+    font-size: 20px;
+    line-height: 1.2;   
+    max-width: 500px;    
+}
+
+/* Button - Learn More */
+.roller-btn {
+    width: 150px;
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: none;
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+/* Right Image Sticky Effect */
+.roller-right {
+    width: 50%;
+    height: 100%;        /* SAME as left */
+    position: relative;  /* REMOVE sticky */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Spacer for scroll length */
+.spacer {
+    height: 2.5vh;
+}
+
+/* Holiday Joy Section*/
+.holiday-green {
+    background: #006241;
+}
+
+/* A little bite section */
+.good-left {
+    background-color: #1e3932; /* Starbucks dark green */
+    color: white;
+    padding: 80px 60px;
+}
+
+.good-left h1,
+.good-left p {
+    color: white;
+}
+
+/* Your free cup of cheer section (smaller than others) */
+.cheer-section {
+    height: 55vh;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* Left side styling */
+.cheer-left {
+    background: #006242;  /* Starbucks red tone */
+    color: white;
+    width: 45%;           /* smaller text area so image shows more */
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+/* Right image side bigger */
+.cheer-right {
+    width: 55%;
+}
+
+/* Image full display */
+.cheer-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* SHOW FULL IMAGE */
+    display: block;
+}
+
+.notice-section {
+    min-height: 60vh;
+    padding: 40px 0;
+    background: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* Limit text width so each line is shorter */
+.notice-section p {
+    max-width: 760px;   /* controls how long each line is */
+    font-size: 17px;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.notice-section .small-text {
+    max-width: 760px;
+    font-size: 17px;
+    color: #000000;
+}
+
+/* Footer Link */
+.footer-links {
+    background: #ffffff;
+    padding: 25px 8%;   /* was 50px → smaller now */
+
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;           /* smaller gap */
+    flex-wrap: wrap;
+
+    /* shadow separator at top */
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.08);
+}
+
+.footer-column {
+    min-width: 180px;   /* slightly smaller */
+}
+
+.footer-column h3 {
+    font-size: 16px;     /* was 18px → slightly smaller */
+    margin-bottom: 10px; /* was 20px → smaller */
+    color: #000;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column li {
+    font-size: 14px;     /* smaller */
+    color: #666;
+    margin-bottom: 6px;  /* was 14px → much tighter */
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.footer-column li:hover {
+    color: #000;
+}
+
+/* Bottom Footer */
+.bottom-footer {
+    background: #ffffff;
+    padding: 32px 40px;
+    border-top: 1px solid #d4d4d4;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.social-icon {
+    display: block;
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.social-icon img {
+    width: 40px;
+    height: 40px;
+    display: block;
+    object-fit: contain;
+    transition: opacity 0.3s;
+}
+
+.social-icon img:hover {
+    opacity: 0.7;
+}
+
+/* Individual icon sizing */
+.social-icon.spotify img {
+    width: 40px;
+    height: 32px;
+}
+
+.social-icon.facebook img {
+    width: 40px;
+    height: 32px;
+}
+
+.social-icon.pinterest img {
+    width: 40px;
+    height: 32px;
+}
+
+.social-icon.instagram img {
+    width: 40px;
+    height: 32px;
+}
+
+.social-icon.youtube img {
+    width: 40px;
+    height: 32px;
+}
+
+.social-icon.twitter img {
+    width: 40px;
+    height: 32px;
+}
+
+.footer-legal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.footer-legal-links a {
+    color: #00000099;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+}
+
+.footer-legal-links a:hover {
+    color: #000;
+}
+
+.copyright {
+    color: #00000099;
+    font-size: 9.5px;
+    margin: 0;
+}
+
+
+
+
+
+
+
+/* Add shadow to navbar */
+.navbar {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+}
+
+/* Page Title Section */
+.page-title-section {
+    padding: 48px 20px 32px;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+    font-size: 50px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 auto;
+    letter-spacing: -1px;
+    max-width: 1440px;
+    text-align: left;
+    padding: 0 39px;
+}
+
+/* Image Container - Aligned with title text */
+.full-width-image {
+    max-width: 1440px;
+    margin: 0 auto 48px;
+    padding: 0 60.95px;
+}
+
+.full-width-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+}
+
+/* Content Section - Left Aligned */
+.content-section {
+    padding: 48px 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.content-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.content-section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.5px;
+    text-align: left;
+}
+
+.content-section h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+    text-align: left;
+}
+
+.content-section p {
+    font-size: 18px;
+    line-height: 1.65;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0 0 16px 0;
+    text-align: left;
+}
+
+.content-section p:last-of-type {
+    margin-bottom: 2px;
+}
+
+/* Learn More Button Styling - GREEN */
+.learn-more-link {
+    display: inline-block;
+    padding: 8px 18px;
+    color: #000000;
+    background-color: transparent;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 4px;
+    cursor: pointer;
+    border: 1px solid #000000;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.learn-more-link:hover {
+    background-color: rgba(0, 117, 74, 0.1);
+    border-color: #00754a;
+}
+
+/* Green Button Variant */
+.btn-green {
+    background-color: #00754a;
+    color: #ffffff;
+    border: 1px solid #00754a;
+}
+
+.btn-green:hover {
+    background-color: #005a3a;
+    border-color: #005a3a;
+}
+
+/* Two Column Layout for Image + Text Sections */
+.two-column-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.two-column-section.reverse {
+    direction: rtl;
+}
+
+.two-column-section.reverse > * {
+    direction: ltr;
+}
+
+.column-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0;
+}
+
+.column-text h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.5px;
+}
+
+.column-text h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+}
+
+.column-text p {
+    font-size: 18px;
+    line-height: 1.65;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0 0 16px 0;
+}
+
+/* Subsections (People, Planet) */
+.subsection {
+    padding: 24px 20px;
+}
+
+/* Learn More Section */
+.learn-more-section {
+    padding-top: 56px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Links Grid Section */
+.links-grid-section {
+    padding: 0 20px 64px;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.links-grid {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 64px;
+}
+
+.link-card {
+    text-align: left;
+}
+
+.link-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+}
+
+.link-card p {
+    font-size: 18px;
+    line-height: 1.65;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0 0 12px 0;
+}
+
+/* Update footer links to include clickable styling */
+.footer-column ul li a {
+    color: rgba(0, 0, 0, 0.87);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #00704a;
+}
+
+.footer-column ul li {
+    cursor: pointer;
+}
+
+/* Logo link styling */
+.logo a {
+    display: inline-block;
+}
+
+.logo a img {
+    display: block;
+}
+
+/* Remove line only for specific sections */
+.no-shadow {
+    border-bottom: none;
+}
+
+.break-after::after {
+    content: "\A";       /* New line */
+    white-space: pre;
+}
+
+/* Make only highlighted sections full width */
+.two-column-section.highlight {
+    width: 100%;
+    height: 380px;          /* SLIMMER section height */
+    max-width: none;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Make image cover the ENTIRE section */
+.two-column-section.highlight .column-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.two-column-section.highlight .column-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* THIS makes it cover the whole area */
+    display: block;
+}
+
+/* Place text on top of image */
+.two-column-section.highlight .column-text {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    max-width: 600px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    z-index: 2;
+}
+
+/* Dark overlay on top of image for readability */
+.two-column-section.highlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.30);   /* adjust darkness here */
+    z-index: 1;
+}
+
+/* Make all text white on highlighted sections */
+.two-column-section.highlight .column-text,
+.two-column-section.highlight .column-text h1,
+.two-column-section.highlight .column-text h2,
+.two-column-section.highlight .column-text h3,
+.two-column-section.highlight .column-text p,
+.two-column-section.highlight .column-text a {
+    color: #ffffff !important;
+}
+
+/* Ensure text stays ABOVE overlay */
+.two-column-section.highlight .column-text {
+    z-index: 2;
+}
+
+/* Optional: better contrast for buttons */
+.two-column-section.highlight .btn {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.two-column-section.highlight .btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Shadow effect specifically for People & Planet titles */
+.two-column-section.highlight .column-text h1,
+.two-column-section.highlight .column-text h2 {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* Shadow for body text in People & Planet sections */
+.two-column-section.highlight .column-text p,
+.two-column-section.highlight .column-text a {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.10);
+}
+
+/* Dark green background for text in highlighted sections */
+.two-column-section.highlight .column-text {
+    background: #1e3932; /* Starbucks dark green */
+    padding: 40px 50px;
+    border-radius: 6px;
+}

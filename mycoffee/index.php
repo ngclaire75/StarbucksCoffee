@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coffee Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<header class="navbar">
+    
+    <!-- Logo -->
+    <div class="logo">
+        <img src="images/starbucks_logo.png" alt="Starbucks Logo">
+    </div>
+
+    <ul class="nav-links">
+        <li>MENU</li>
+        <li>REWARDS</li>
+        <li>GIFT CARDS</li>
+    </ul>
+
+    <div class="nav-right">
+
+        <!-- Find a store -->
+        <div class="find-store">
+            <img src="images/location.jpg" alt="Location Icon">
+            <span>Find a store</span>
+        </div>
+
+        <button class="btn-outline">Sign in</button>
+        <button class="btn-black">Join now</button>
+
+    </div>
+</header>
+
+<!-- Green Strip -->
+<section class="green-bar">
+    <h2>It's a great day for coffee</h2>
+    <button class="start-order-btn">Start an order</button>
+</section>
+
+<!-- Extra Space for Scrolling Effect -->
+<section class="spacer"></section>
+
+<!-- Main Content -->
+<section class="main-section">
+
+    <!-- Left Image -->
+    <div class="left-image">
+        <img src="images/coffee.jpg" alt="Coffee">
+    </div>
+
+    <!-- Right Text -->
+    <div class="right-text">
+        <h1>Bring on the merry</h1>
+
+        <p>
+            Festive flavors of spiced gingerbread, rich caramel
+            and sweet peppermint are here to make every moment
+            merrier.
+        </p>
+
+        <button class="btn-outline-white">
+            Order a seasonal treat
+        </button>
+    </div>
+
+</section>
+
+<!-- Extra Space for Scrolling Effect -->
+<section class="spacer"></section>
+
+<!-- Scroll Effect Section -->
+<section class="roller-section">
+
+    <div class="roller-left">
+        <h1 class="tight-title">Our Roller Rabbit collection is here</h1>
+
+        <p>
+            Grab the whimsical, limited-edition drinkware
+            and Starbucks Card at your local coffeehouse.
+            While supplies last.
+        </p>
+
+        <button class="roller-btn">Learn more</button>
+    </div>
+
+    <div class="roller-right">
+        <img src="images/roller.png" alt="Roller Rabbit Collection">
+    </div>
+
+</section>
+
+<!-- Extra Space for Scrolling Effect -->
+<section class="spacer"></section>
+
+<!-- Send Holiday Joy Section -->
+<section class="main-section">
+
+    <div class="left-image">
+        <img src="images/gingerbread.png" alt="Send holiday joy">
+    </div>
+
+    <div class="right-text holiday-green">
+        <h1>Send holiday joy</h1>
+        <p>
+            Share the gift of coffee, festive treats and more with a Starbucks Card.
+            Perfect for anyone on your list.
+        </p>
+        <button class="btn-outline-white">Send an eGift</button>
+    </div>
+
+</section>
+
+<!-- Extra Space -->
+<section class="spacer"></section>
+
+<!-- A Little Bite, A Lot of Good -->
+<section class="roller-section good-section">
+
+    <div class="roller-left good-left">
+        <h1 class="tight-title">A little bite, a lot of good</h1>
+
+        <p>
+            For every purchase of Crispy Grilled Cheese on Sourdough at participating
+            locations, we'll donate the value of two school meals to support programs
+            that feed kids. Together we’ll build a brighter future.
+        </p>
+
+        <button class="roller-btn">Order now</button>
+    </div>
+
+    <div class="roller-right">
+        <img src="images/cheese.png" alt="Crispy Grilled Cheese">
+    </div>
+
+</section>
+
+<!-- Extra Space -->
+<section class="spacer"></section>
+
+<!-- Your Free Cup of Cheer -->
+<section class="roller-section cheer-section">
+
+    <!-- LEFT: Text -->
+    <div class="roller-left cheer-left">
+        <h1 class="tight-title">Your free cup of cheer</h1>
+
+        <p>
+            Celebrate the season with a free handcrafted drink with purchase.
+            It’s our gift to you during your first week as a Starbucks® Rewards member.
+        </p>
+
+        <button class="roller-btn">Join now</button>
+    </div>
+
+    <!-- RIGHT: Image -->
+    <div class="roller-right cheer-right">
+        <img src="images/cheer.png" alt="Free cup of cheer">
+    </div>
+
+</section>
+
+<!-- Extra Space -->
+<section class="spacer"></section>
+
+<!-- Donation & Rewards Notice Section -->
+<section class="notice-section">
+    <p>
+        For every Crispy Grilled Cheese on Sourdough purchased between
+        December 2, 2025, and January 5, 2026, in participating stores in the
+        US and Canada, Starbucks will donate $0.50 to World Food Program USA
+        (www.wfpusa.org/starbucks). This donation will be used to support WFP
+        school meal programs globally, and in the U.S. and Canada through
+        No Kid Hungry (www.nokidhungry.org), to provide up to 12 million meals
+        with a minimum donation of $500,000 and a maximum donation of $3M globally
+        ($1.75M U.S. and Canada). WFP does not endorse any product or service.
+    </p>
+
+    <p class="small-text">
+        Valid for new Starbucks Rewards members for 7 days from sign up. Coupon
+        will be available in the offers tab of your Starbucks app following sign up
+        and may take up to 48 hours to arrive. Good at participating U.S. stores
+        for a handcrafted menu-sized beverage ($8 max value) with qualifying
+        purchase. Qualifying purchase excludes alcohol, Starbucks Card and
+        Starbucks Cards reloads. Limit one. Cannot be combined with other offers
+        or discounts. Excludes delivery services. Sign up by 1/5/2026.
+    </p>
+
+</section>
+
+<!-- Footer Links Section -->
+<section class="footer-links">
+
+    <div class="footer-column">
+        <h3>About Us</h3>
+        <ul>
+            <li><a href="our-company.php">Our Company</a></li>
+            <li>Our Coffee</li>
+            <li>About Starbucks</li>
+            <li>Starbucks Archive</li>
+            <li>Investor Relations</li>
+            <li>Customer Service</li>
+            <li>Contact Us</li>
+        </ul>
+    </div>
+
+    <div class="footer-column">
+        <h3>Careers</h3>
+        <ul>
+            <li>Culture and Values</li>
+            <li>Belonging at Starbucks</li>
+            <li>College Achievement Plan</li>
+            <li>Alumni Community</li>
+            <li>U.S. Careers</li>
+            <li>International Careers</li>
+        </ul>
+    </div>
+
+    <div class="footer-column">
+        <h3>Social Impact</h3>
+        <ul>
+            <li>Communities</li>
+            <li>Starbucks Foundation</li>
+            <li>Sustainability</li>
+            <li>Environmental and Social Impact Reporting</li>
+        </ul>
+    </div>
+
+    <div class="footer-column">
+        <h3>For Business Partners</h3>
+        <ul>
+            <li>Landlord Support Center</li>
+            <li>Suppliers</li>
+            <li>Corporate Gift Card Sales</li>
+            <li>Office and Foodservice Coffee</li>
+        </ul>
+    </div>
+
+    <div class="footer-column">
+        <h3>Order and Pick Up</h3>
+        <ul>
+            <li>Order on the App</li>
+            <li>Order on the Web</li>
+            <li>Delivery</li>
+            <li>Order and Pick Up Options</li>
+            <li>Explore and Find Coffee for Home</li>
+        </ul>
+    </div>
+
+</section>
+
+<!-- Social Media and Bottom Footer -->
+<footer class="bottom-footer">
+    <div class="social-icons">
+        <a href="#" class="social-icon spotify" aria-label="Spotify">
+            <img src="images/spotify.png" alt="Spotify">
+        </a>
+        <a href="#" class="social-icon facebook" aria-label="Facebook">
+            <img src="images/facebook.png" alt="Facebook">
+        </a>
+        <a href="#" class="social-icon pinterest" aria-label="Pinterest">
+            <img src="images/pinterest.png" alt="Pinterest">
+        </a>
+        <a href="#" class="social-icon instagram" aria-label="Instagram">
+            <img src="images/instagram.png" alt="Instagram">
+        </a>
+        <a href="#" class="social-icon youtube" aria-label="YouTube">
+            <img src="images/youtube.png" alt="YouTube">
+        </a>
+        <a href="#" class="social-icon twitter" aria-label="Twitter">
+            <img src="images/twitter.png" alt="Twitter">
+        </a>
+    </div>
+
+    <div class="footer-legal-links">
+        <a href="#">Privacy Notice</a>
+        <a href="#">Consumer Health Privacy Notice</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Do Not Sell or Share My Personal Information</a>
+        <a href="#">CA Supply Chain Act</a>
+        <a href="#">Accessibility</a>
+        <a href="#">Cookie Preferences</a>
+    </div>
+
+    <p class="copyright">© 2025 Claire's Starbucks Coffee Project. Christmas Edition.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

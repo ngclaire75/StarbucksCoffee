@@ -1,0 +1,232 @@
+/* =============================== 
+   TOP GREEN BAR — FIXED
+================================ */
+.top-green-bar{
+    width:100%;
+    height:70px; /* slightly taller */
+    background:#006241;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.bar-content{
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+/* LOGO — left side */
+.logo-small{
+    flex-shrink: 0;
+}
+
+.logo-small img{
+    width:50px; /* bigger logo */
+    height:auto;
+    background:transparent;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.logo-small img:hover{
+    transform: scale(1.05);
+}
+
+/* NAV LINKS — center */
+.green-nav-links{
+    display:flex;
+    gap:32px;
+    align-items:center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.green-nav-links a{
+    text-decoration:none;
+    color:#ffffff;
+    font-weight:500;
+    font-size:15px;
+    letter-spacing:0.5px;
+    white-space: nowrap;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 25px;
+}
+
+.green-nav-links a:hover{
+    opacity:1;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.8);
+}
+
+/* DROPDOWN ARROW — bigger outline-only */
+.green-nav-links a::after{
+    content:"";
+    display:inline-block;
+    margin-left: 6px;
+    width: 8px;
+    height: 8px;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(-45deg);
+    transition:0.3s ease;
+}
+
+.green-nav-links a:hover::after{
+    transform: rotate(-45deg) translateY(2px);
+}
+
+/* ICONS — right side */
+.right-icons{
+    display:flex;
+    gap:24px;
+    align-items:center;
+    margin-left: auto;
+}
+
+.right-icons img{
+    width:17.5px;        /* smaller icons */
+    height:17.5px;       /* match width for square aspect */
+    object-fit: contain; /* ensures image scales proportionally */
+    display: block;       /* removes baseline offset issues */
+    background:transparent;
+    filter:none; 
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.right-icons img:hover{
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* ===============================
+   OUR COFFEE STORY - STARBUCKS STYLE
+================================ */
+.our-coffee-story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    max-width: 1100px;       /* narrower than before */
+    margin: 0 auto;
+    gap: 0;
+    background-color: #fff;   /* make all sections white */
+}
+
+/* TOP LEFT - TITLE SECTION */
+.coffee-title {
+    background-color: #fff;   /* removed beige */
+    padding: 50px 50px;       /* reduced padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.coffee-title .small-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.coffee-title h1 {
+    font-size: 70px;          /* slightly bigger */
+    font-weight: 600;
+    color: #a30834;           /* dark red */
+    line-height: 1;         /* stretched vertically */
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -1px;     /* letters closer together */
+}
+
+/* TOP RIGHT - COFFEE BAGS IMAGE */
+.coffee-image-top {
+    grid-column: 2;
+    grid-row: 1;
+    overflow: hidden;
+    height: auto;
+    min-height: 350px;       /* slightly smaller */
+}
+
+.coffee-image-top img {
+    width: 95%;              /* narrower image */
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* BOTTOM LEFT - CUP AND BAG IMAGE */
+.coffee-image-top,
+.coffee-image-bottom {
+    width: 100%;              /* full width of column */
+    margin: 0;                /* remove gap */
+    padding: 0;
+}
+
+.coffee-image-top img,
+.coffee-image-bottom img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* BOTTOM RIGHT - DESCRIPTION TEXT */
+.coffee-text {
+    background-color: #fff;  /* ensure white background */
+    padding: 50px 50px;      /* smaller padding */
+    display: flex;
+    align-items: center;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.coffee-text p {
+    font-size: 15px;          /* slightly smaller text */
+    line-height: 1.6;
+    color: #3d3d3d;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* ===============================
+   KEEPING YOUR CUP FULL BANNER
+================================ */
+.keep-cup-full {
+    background-image: url('images/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 450px;            /* slightly shorter */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.keep-overlay {
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+}
+
+.keep-overlay h1 {
+    font-size: 42px;          /* slightly smaller */
+    font-weight: 400;
+    line-height: 1.3;
+}
+
