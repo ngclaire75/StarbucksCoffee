@@ -434,343 +434,100 @@ body {
 
 
 
-
-
-
-/* Add shadow to navbar */
+/* NAVBAR SHADOW LINE */
 .navbar {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 32px;
+    background: #ffffff;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     position: relative;
     z-index: 10;
 }
 
-/* Page Title Section */
+
+/* TITLE */
 .page-title-section {
-    padding: 48px 20px 32px;
-    background-color: #ffffff;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.page-title {
-    font-size: 50px;
-    font-weight: 700;
-    color: #000000;
+    max-width: 720px;
     margin: 0 auto;
-    letter-spacing: -1px;
-    max-width: 1440px;
+    padding: 37px 16px 2px; /* closer to image, but not cramped */
     text-align: left;
-    padding: 0 39px;
 }
 
-/* Image Container - Aligned with title text */
-.full-width-image {
-    max-width: 1440px;
-    margin: 0 auto 48px;
-    padding: 0 60.95px;
+.page-title-section h1 {
+    font-size: 40px;   /* bigger, stronger presence */
+    font-weight: 700;
+    line-height: 1.15; /* tighter headline feel */
+    margin: 0;
 }
 
-.full-width-image img {
+/* IMAGES */
+.image-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 20px 16px; /* slightly more breathing room above */
+}
+
+.image-section img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 0;
 }
 
-/* Content Section - Left Aligned */
+/* CONTENT */
 .content-section {
-    padding: 48px 20px;
-    background-color: #ffffff;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.content-wrapper {
-    max-width: 1440px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 16px 20px 20px; /* slightly more space */
+    text-align: left;
 }
 
+/* H2 headers */
 .content-section h2 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #000000;
-    margin: 0 0 12px 0;
-    letter-spacing: -0.5px;
-    text-align: left;
+    font-size: 32px;       /* emphasis maintained */
+    font-weight: 900;      /* extra bold */
+    margin-bottom: 8px;    /* slightly more gap */
 }
 
+/* H3 headers */
 .content-section h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #000000;
-    margin: 0 0 8px 0;
-    letter-spacing: -0.3px;
-    text-align: left;
+    font-size: 22px;
+    font-weight: 900;      /* extra bold */
+    margin-bottom: 6px;    /* slightly more gap to paragraph */
 }
 
+/* Paragraphs */
 .content-section p {
-    font-size: 18px;
-    line-height: 1.65;
-    color: rgba(0, 0, 0, 0.87);
-    margin: 0 0 16px 0;
-    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;      /* slightly looser line spacing */
+    margin-bottom: 10px;   /* more readable spacing */
 }
 
-.content-section p:last-of-type {
-    margin-bottom: 2px;
-}
-
-/* Learn More Button Styling - GREEN */
-.learn-more-link {
+/* Buttons */
+.btn {
     display: inline-block;
-    padding: 8px 18px;
-    color: #000000;
-    background-color: transparent;
-    font-size: 15px;
+    margin-top: 4px;       /* slightly more space from paragraph */
+    padding: 6px 16px;
+    border: 1px solid #00754a;
+    border-radius: 50px;
+    color: #00754a;
+    font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    margin-top: 4px;
-    cursor: pointer;
-    border: 1px solid #000000;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease;  /* smooth transition */
 }
 
-.learn-more-link:hover {
-    background-color: rgba(0, 117, 74, 0.1);
-    border-color: #00754a;
+/* Hover effect */
+.btn:hover {
+    background-color: #00754a;  /* fill button with green */
+    color: #ffffff;              /* text becomes white */
+    /* removed transform and box-shadow for clean hover */
 }
 
-/* Green Button Variant */
-.btn-green {
-    background-color: #00754a;
-    color: #ffffff;
-    border: 1px solid #00754a;
-}
 
-.btn-green:hover {
-    background-color: #005a3a;
-    border-color: #005a3a;
-}
-
-/* Two Column Layout for Image + Text Sections */
-.two-column-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 48px 40px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.two-column-section.reverse {
-    direction: rtl;
-}
-
-.two-column-section.reverse > * {
-    direction: ltr;
-}
-
-.column-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 0;
-}
-
-.column-text h2 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #000000;
-    margin: 0 0 12px 0;
-    letter-spacing: -0.5px;
-}
-
-.column-text h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #000000;
-    margin: 0 0 8px 0;
-    letter-spacing: -0.3px;
-}
-
-.column-text p {
-    font-size: 18px;
-    line-height: 1.65;
-    color: rgba(0, 0, 0, 0.87);
-    margin: 0 0 16px 0;
-}
-
-/* Subsections (People, Planet) */
-.subsection {
-    padding: 24px 20px;
-}
-
-/* Learn More Section */
-.learn-more-section {
-    padding-top: 56px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-/* Links Grid Section */
-.links-grid-section {
-    padding: 0 20px 64px;
-    background-color: #ffffff;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.links-grid {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px 64px;
-}
-
-.link-card {
-    text-align: left;
-}
-
-.link-card h3 {
-    font-size: 24px;
-    font-weight: 700;
-    color: #000000;
-    margin: 0 0 8px 0;
-    letter-spacing: -0.3px;
-}
-
-.link-card p {
-    font-size: 18px;
-    line-height: 1.65;
-    color: rgba(0, 0, 0, 0.87);
-    margin: 0 0 12px 0;
-}
-
-/* Update footer links to include clickable styling */
-.footer-column ul li a {
-    color: rgba(0, 0, 0, 0.87);
-    text-decoration: none;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.footer-column ul li a:hover {
-    color: #00704a;
-}
-
-.footer-column ul li {
-    cursor: pointer;
-}
-
-/* Logo link styling */
-.logo a {
-    display: inline-block;
-}
-
-.logo a img {
-    display: block;
-}
-
-/* Remove line only for specific sections */
-.no-shadow {
-    border-bottom: none;
-}
-
-.break-after::after {
-    content: "\A";       /* New line */
-    white-space: pre;
-}
-
-/* Make only highlighted sections full width */
-.two-column-section.highlight {
-    width: 100%;
-    height: 380px;          /* SLIMMER section height */
-    max-width: none;
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Make image cover the ENTIRE section */
-.two-column-section.highlight .column-image {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.two-column-section.highlight .column-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;       /* THIS makes it cover the whole area */
-    display: block;
-}
-
-/* Place text on top of image */
-.two-column-section.highlight .column-text {
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    transform: translateY(-50%);
-    max-width: 600px;
-    padding: 0;
-    margin: 0;
-    background: transparent;
-    z-index: 2;
-}
-
-/* Dark overlay on top of image for readability */
-.two-column-section.highlight::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.30);   /* adjust darkness here */
-    z-index: 1;
-}
-
-/* Make all text white on highlighted sections */
-.two-column-section.highlight .column-text,
-.two-column-section.highlight .column-text h1,
-.two-column-section.highlight .column-text h2,
-.two-column-section.highlight .column-text h3,
-.two-column-section.highlight .column-text p,
-.two-column-section.highlight .column-text a {
-    color: #ffffff !important;
-}
-
-/* Ensure text stays ABOVE overlay */
-.two-column-section.highlight .column-text {
-    z-index: 2;
-}
-
-/* Optional: better contrast for buttons */
-.two-column-section.highlight .btn {
-    border-color: #ffffff;
-    color: #ffffff;
-}
-
-.two-column-section.highlight .btn:hover {
-    background: #ffffff;
-    color: #000000;
-}
-
-/* Shadow effect specifically for People & Planet titles */
-.two-column-section.highlight .column-text h1,
-.two-column-section.highlight .column-text h2 {
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-}
-
-/* Shadow for body text in People & Planet sections */
-.two-column-section.highlight .column-text p,
-.two-column-section.highlight .column-text a {
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.10);
-}
-
-/* Dark green background for text in highlighted sections */
-.two-column-section.highlight .column-text {
-    background: #1e3932; /* Starbucks dark green */
-    padding: 40px 50px;
-    border-radius: 6px;
+/* EXTRA SPACE BELOW CORPORATE GOVERNANCE */
+.content-section.corporate-governance {
+    margin-bottom: 50px; /* adds blank space before footer */
 }

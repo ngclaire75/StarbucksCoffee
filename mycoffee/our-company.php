@@ -36,174 +36,169 @@
     </div>
 </header>
 
-<!-- Page Title -->
-<section class="page-title-section no-shadow">
-    <h1 class="page-title">Our Company</h1>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Company</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<!-- Company Image - Full Width -->
-<section class="full-width-image">
-    <img src="images/starbucks-store.png" alt="Starbucks Store">
-</section>
+    <!-- PAGE TITLE -->
+    <section class="page-title-section">
+        <h1>Our Company</h1>
+    </section>
 
-<!-- Heritage Section -->
-<section class="content-section heritage-section">
-    <div class="content-wrapper">
+    <!-- HERO IMAGE -->
+    <section class="image-section">
+        <img src="images/starbucks-store.png" alt="Starbucks storefront">
+    </section>
+
+    <!-- OUR HERITAGE -->
+    <section class="content-section">
         <h2>Our Heritage</h2>
-        <p>
-            Our story begins in 1971 along the cobblestone streets of Seattle's 
-            historic Pike Place Market. It was here where Starbucks opened its 
-            first store, offering fresh-roasted coffee beans, tea and spices from 
-            around the world for our customers to take home. Our name was inspired 
-            by the classic tale, "Moby-Dick," evoking the seafaring tradition of 
-            the early coffee traders.
-        </p>
-        <p>
-            Ten years later, a young New Yorker named Howard Schultz would walk 
-            through these doors and become captivated with Starbucks coffee from 
-            his first sip. After joining the company in 1982, a different cobblestone 
-            road would lead him to another discovery. It was on a trip to Milan in 
-            1983 that Howard first experienced Italy's coffeehouses, and he returned 
-            to Seattle inspired to bring the warmth and artistry of its coffee culture 
-            to Starbucks. By 1987, we swapped our brown aprons for green ones and 
-            embarked on our next chapter as a coffeehouse.
-        </p>
-        <p>
-            Starbucks would soon expand to Chicago and Vancouver, Canada and then on 
-            to California, Washington, D.C. and New York. By 1996, we would cross the 
-            Pacific to open our first store in Japan, followed by Europe in 1998 and 
-            China in 1999. Over the next two decades, we would grow to welcome millions 
-            of customers each week and become a part of the fabric of tens of thousands 
-            of neighborhoods all around the world. In everything we do, we are always 
-            dedicated to Our Mission: With every cup, with every conversation, with 
-            every community - we nurture the limitless possibilities of human connection.
-        </p>
-    </div>
-</section>
 
-<!-- Coffee & Craft Section - Two Column with Image -->
-<section class="two-column-section">
-    <div class="column-image">
-        <img src="images/coffee-craft.png" alt="Coffee and Craft">
-    </div>
-    <div class="column-text">
+        <p>
+            Our story begins in 1971 along the cobblestone streets of Seattle’s historic Pike Place Market.
+            It was here where Starbucks opened its first store, offering fresh-roasted coffee beans, tea
+            and spices from around the world for our customers to take home. Our name was inspired by
+            the classic tale, “Moby-Dick,” evoking the seafaring tradition of the early coffee traders.
+        </p>
+
+        <p>
+            Ten years later, a young New Yorker named Howard Schultz would walk through these doors and
+            become captivated with Starbucks coffee from his first sip. After joining the company in
+            1982, a different cobblestone road would lead him to another discovery. It was on a trip to
+            Milan in 1983 that Howard first experienced Italy’s coffeehouses, and he returned to Seattle
+            inspired to bring the warmth and artistry of its coffee culture to Starbucks.
+        </p>
+
+        <p>
+            Starbucks would soon expand to Chicago and Vancouver, Canada and then on to California,
+            Washington, D.C. and New York. By 1996, we would cross the Pacific to open our first store in
+            Japan, followed by Europe in 1998 and China in 1999.
+        </p>
+    </section>
+
+    <!-- COFFEE & CRAFT IMAGE -->
+    <section class="image-section">
+        <img src="images/coffee-craft.png" alt="Coffee & Craft">
+    </section>
+
+    <!-- COFFEE & CRAFT -->
+    <section class="content-section">
         <h2>Coffee & Craft</h2>
+
         <p>
-            It takes many hands to craft the perfect cup of coffee – from the farmers 
-            who tend to the red-ripe coffee cherries, to the master roasters who coax 
-            the best from every bean, and to the barista who serves it with care. We 
-            are committed to the highest standards of quality and service, embracing 
-            our heritage while innovating to create new experiences to savor.
+            It takes many hands to craft the perfect cup of coffee – from the farmers who tend to the
+            red-ripe coffee cherries, to the master roasters who coax the best from every bean, and to
+            the barista who serves it with care.
         </p>
-        <a href="coffeecraftlearnmore.php" class="learn-more-link btn-green">Learn more</a>
-    </div>
+
+        <a href="coffeecraftlearnmore.php" class="btn">Learn more</a>
+    </section>
+
+    <!-- OUR PARTNERS IMAGE -->
+<section class="image-section">
+    <img src="images/partners.png" alt="Our Partners">
 </section>
 
-<!-- Our Partners Section - Two Column with Image (Reversed) -->
-<section class="two-column-section reverse">
-    <div class="column-image">
-        <img src="images/partners.png" alt="Our Partners">
-    </div>
-    <div class="column-text">
-        <h2>Our Partners</h2>
-        <p>
-            We like to say that we are not in the coffee business serving people, but 
-            in the people business serving coffee. Our employees – who we call partners 
-            – are at the heart of the Starbucks experience. We are committed to making 
-            our partners proud and investing in their health, well-being and success 
-            and to creating a culture of belonging where everyone is welcome.
-        </p>
-        <a href="#" class="learn-more-link btn-green">Explore Careers</a>
-    </div>
+<!-- OUR PARTNERS -->
+<section class="content-section">
+    <h2>Our Partners</h2>
+
+    <p>
+        We like to say that we are not in the coffee business serving people, but in the people business
+        serving coffee. Our employees – who we call partners – are at the heart of the Starbucks experience.
+    </p>
+
+    <p>
+        We are committed to making our partners proud and investing in their health, well-being and
+        success and to creating a culture of belonging where everyone is welcome.
+    </p>
+
+    <a href="#" class="btn">Explore Careers</a>
 </section>
 
-<!-- Doing Good Section -->
-<section class="content-section doing-good-section">
-    <div class="content-wrapper">
+
+    <!-- DOING GOOD IMAGE -->
+    <section class="image-section">
+        <img src="images/land.png" alt="Doing Good">
+    </section>
+
+    <!-- DOING GOOD -->
+    <section class="content-section">
         <h2>We Believe in the Pursuit of Doing Good</h2>
-            <p class="belief-text">
-                As it has been from the beginning, our purpose goes far beyond 
-                <span class="break-after">profit.</span>
-                We believe Starbucks can, and should, have a positive impact on the communities we serve.
-            </p>
-    </div>
-</section>
 
-<!-- People Section - Two Column with Image -->
-<section class="two-column-section highlight">
-    <div class="column-image">
-        <img src="images/people.png" alt="People">
-    </div>
-    <div class="column-text">
+        <p>
+            As it has been from the beginning, our purpose goes far beyond profit. We believe Starbucks
+            can, and should, have a positive impact on the communities we serve.
+        </p>
+    </section>
+
+    <!-- PEOPLE -->
+    <section class="content-section">
         <h3>People</h3>
-        <p>
-            Our aspiration is to be people positive – investing in humanity and the 
-            well-being of everyone we connect with, from our partners to coffee farmers 
-            to the customers in our stores and beyond.
-        </p>
-        <a href="#" class="learn-more-link btn-green">Learn more</a>
-    </div>
-</section>
 
-<!-- Planet Section - Two Column with Image (Reversed) -->
-<section class="two-column-section reverse highlight">
-    <div class="column-image">
-        <img src="images/planet.png" alt="Planet">
-    </div>
-    <div class="column-text">
+        <p>
+            Our aspiration is to be people positive – investing in humanity and the well-being of
+            everyone we connect with, from our partners to coffee farmers to the customers in our
+            stores and beyond.
+        </p>
+
+        <a href="#" class="btn">Learn more</a>
+    </section>
+
+    <!-- PLANET -->
+    <section class="content-section">
         <h3>Planet</h3>
+
         <p>
-            We are striving to become resource positive – giving back more than we take 
-            from the planet. We are working to store more carbon than we emit, replenish 
-            more freshwater than we use, and eliminate waste. We know we can't do it alone. 
-            It takes all of us.
+            We are striving to become resource positive – giving back more than we take from the
+            planet. We are working to store more carbon than we emit, replenish more freshwater than
+            we use, and eliminate waste.
         </p>
-        <a href="#" class="learn-more-link btn-green">Learn more</a>
-    </div>
-</section>
 
-<!-- Learn More About Us Section -->
-<section class="content-section learn-more-section no-shadow">
-    <div class="content-wrapper">
+        <a href="#" class="btn">Learn more</a>
+    </section>
+
+    <!-- LEARN MORE ABOUT US -->
+    <section class="content-section">
         <h2>Learn More About Us</h2>
-    </div>
-</section>
+    </section>
 
-<!-- Grid Section for Links -->
-<section class="links-grid-section">
-    <div class="links-grid">
-        <div class="link-card">
-            <h3>Stories & News</h3>
-            <p>
-                Behind every cup of coffee is a story. Enjoy some of our favorites 
-                along with all the latest news from the storytellers at Starbucks Stories.
-            </p>
-            <a href="#" class="learn-more-link btn-green">Check out Starbucks Stories</a>
-        </div>
+    <!-- LINKS -->
+    <section class="content-section">
+        <h3>Stories & News</h3>
+        <p>Behind every cup of coffee is a story.</p>
+        <a href="#" class="btn">Check out Starbucks Stories</a>
+    </section>
 
-        <div class="link-card">
-            <h3>Company Profile</h3>
-            <p>Here's a closer look at our company.</p>
-            <a href="#" class="learn-more-link btn-green">Learn more</a>
-        </div>
+    <section class="content-section">
+        <h3>Company Profile</h3>
+        <p>Here’s a closer look at our company.</p>
+        <a href="#" class="btn">Learn more</a>
+    </section>
 
-        <div class="link-card">
-            <h3>Company Timeline</h3>
-            <p>Read a brief history of Starbucks, from 1971 through today.</p>
-            <a href="#" class="learn-more-link btn-green">Learn more</a>
-        </div>
+    <section class="content-section">
+        <h3>Company Timeline</h3>
+        <p>Read a brief history of Starbucks.</p>
+        <a href="#" class="btn">Learn more</a>
+    </section>
 
-        <div class="link-card">
-            <h3>Ethics & Compliance</h3>
-            <a href="#" class="learn-more-link btn-green">Learn more</a>
-        </div>
+    <section class="content-section">
+        <h3>Ethics & Compliance</h3>
+        <a href="#" class="btn">Learn more</a>
+    </section>
 
-        <div class="link-card">
-            <h3>Corporate Governance</h3>
-            <a href="#" class="learn-more-link btn-green">Learn more</a>
-        </div>
-    </div>
-</section>
+   <section class="content-section corporate-governance">
+        <h3>Corporate Governance</h3>
+        <a href="#" class="btn">Learn more</a>
+    </section>
+
+</body>
+</html>
 
 <!-- Footer Links Section -->
 <section class="footer-links">
