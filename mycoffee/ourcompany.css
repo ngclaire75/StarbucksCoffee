@@ -1,0 +1,407 @@
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+* {  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: SoDo Sans, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+    background: white;
+}
+
+/* Starbucks Logo */
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
+/* Navigation Links (Menu, Rewards, Gift Cards) */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    font-size: 13.20px;  
+    margin-left: 40px;
+}
+
+.nav-links li {
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+/* Right side of navigation bar */
+.nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Find a store */
+.find-store {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+    font-size: 13.5px; 
+    cursor: pointer;
+}
+
+.find-store img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Button - Sign In and Join Now */
+.btn-outline {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1.8px solid black;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px; 
+}
+
+.btn-black {
+    padding: 9px 16px;
+    border-radius: 20px;
+    border: none;
+    background: black;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* Navigation Bar Shadow Divider */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 32px;
+    background: #ffffff;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 10;
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+
+/* Title */
+.page-title-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 37px 16px 2px; 
+    text-align: left;
+}
+
+.page-title-section h1 {
+    font-size: 40px;  
+    font-weight: 700;
+    line-height: 1.15; 
+    margin: 0;
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* Images */
+.image-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 20px 16px; 
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* Content */
+.content-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px 20px 20px; 
+    text-align: left;
+}
+
+/* H2 headers */
+.content-section h2 {
+    font-size: 32px;       
+    font-weight: 900;     
+    margin-bottom: 19px;    
+}
+
+
+.learn-more {
+    margin-bottom: -28px; /* smaller spacing */
+}
+
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* H3 headers */
+.content-section h3 {
+    font-size: 22px;
+    font-weight: 900;      
+    margin-bottom: 8px;   
+}
+
+/* Paragraphs */
+.content-section p {
+    font-size: 16px;
+    line-height: 1.5;      
+    margin-bottom: 10px; 
+}
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    margin-top: 5px;      
+    padding: 6px 17px;
+    border: 1px solid #00754a;
+    border-radius: 50px;
+    color: #00754a;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease; 
+}
+
+/* Hover effect */
+.btn:hover {
+    background-color: #00754a;
+    color: #ffffff; 
+}
+
+
+/* White Spacing Divider */
+.content-section.corporate-governance {
+    margin-bottom: 50px; /* adds blank space before footer */
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+
+/* About Us Footer Link */
+.footer-links {
+    background: #ffffff;
+    padding: 25px 17% 20px 3%;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;          
+    flex-wrap: wrap;
+
+    /* Shadow separator at top */
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.08);
+}
+
+.footer-column {
+    min-width: 180px;  
+}
+
+.footer-column h3 {
+    font-size: 16px;     
+    margin-bottom: 15px; 
+    color: #000;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column li {
+    font-size: 14px;     
+    color: #666;
+    margin-bottom: 14px; 
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.footer-column li:hover {
+    color: #000;
+}
+
+/* Footer links */
+.footer-column a {
+    color: #666;             
+    text-decoration: none;    
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+/* Visited links */
+.footer-column a:visited {
+    color: #666;
+}
+
+/* Hover effect */
+.footer-column a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* Social Media Bottom Footer */
+.bottom-footer {
+    background: #ffffff;
+    padding: 32px 40px;
+    border-top: 1px solid #d4d4d4;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.social-icon {
+    display: block;
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.social-icon img {
+    width: 40px;
+    height: 40px;
+    display: block;
+    object-fit: contain;
+    transition: opacity 0.3s;
+}
+
+.social-icon img:hover {
+    opacity: 0.7;
+}
+
+/* Individual icon sizing */
+.social-icon.spotify img {
+    width: 40px;
+    height: 32px;
+}
+
+.social-icon.facebook img {
+    width: 40px;
+    height: 32px;
+}
+
+.social-icon.pinterest img {
+    width: 40px;
+    height: 32px;
+}
+
+.social-icon.instagram img {
+    width: 40px;
+    height: 32px;
+}
+
+.social-icon.youtube img {
+    width: 40px;
+    height: 32px;
+}
+
+.social-icon.twitter img {
+    width: 40px;
+    height: 32px;
+}
+
+.footer-legal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.footer-legal-links a {
+    color: #00000099;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+}
+
+.footer-legal-links a:hover {
+    color: #000;
+}
+
+.copyright {
+    color: #00000099;
+    font-size: 9.5px;
+    margin: 0;
+}
+
+/*----------------------------------------------------------------------------------*/

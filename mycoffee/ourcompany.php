@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Our Company - Starbucks</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ourcompany.css">
 </head>
 <body>
 
@@ -11,7 +11,7 @@
     
     <!-- Logo -->
     <div class="logo">
-        <a href="index.php">
+        <a href="home.php">
             <img src="images/starbucks_logo.png" alt="Starbucks Logo">
         </a>
     </div>
@@ -41,7 +41,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Our Company</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
 
@@ -96,7 +96,7 @@
             the barista who serves it with care.
         </p>
 
-        <a href="coffeecraftlearnmore.php" class="btn">Learn more</a>
+        <a href="ourcoffee.php" class="btn">Learn more</a>
     </section>
 
     <!-- OUR PARTNERS IMAGE -->
@@ -164,7 +164,7 @@
     </section>
 
     <!-- LEARN MORE ABOUT US -->
-    <section class="content-section">
+    <section class="content-section learn-more">
         <h2>Learn More About Us</h2>
     </section>
 
@@ -206,7 +206,7 @@
     <div class="footer-column">
         <h3>About Us</h3>
         <ul>
-            <li><a href="our-company.php">Our Company</a></li>
+            <li><a href="ourcompany.php">Our Company</a></li>
             <li>Our Coffee</li>
             <li>About Starbucks</li>
             <li>Starbucks Archive</li>
@@ -294,9 +294,9 @@
         <a href="#">Cookie Preferences</a>
     </div>
 
-    <p class="copyright">© 2025 Claire's Starbucks Coffee Project. Christmas Edition.</p>
+    <p class="copyright">© 2026 Claire's Starbucks Coffee Website.</p>
 </footer>
 
-<script src="/mycoffee/script.js"></script>
+<script src="ourcoffeefunction.js"></script>
 </body>
 </html>

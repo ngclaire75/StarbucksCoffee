@@ -1,7 +1,4 @@
-// ============================
-// BY THE NUMBERS SLIDER LOGIC
-// ============================
-
+// Numbers Slider
 (function () {
     const track = document.querySelector('.numbers-track');
     const slides = Array.from(document.querySelectorAll('.numbers-slide'));
@@ -11,11 +8,8 @@
 
     if (!track || slides.length === 0) return;
 
-    let currentIndex = 0; // slide 0 = first slide
+    let currentIndex = 0; 
 
-    // ---------------------------
-    // UPDATE SLIDER POSITION
-    // ---------------------------
 function goToSlide(index) {
     currentIndex = index;
 
@@ -32,10 +26,6 @@ function goToSlide(index) {
     });
 }
 
-
-    // ---------------------------
-    // BUTTON CONTROLS
-    // ---------------------------
     next.addEventListener('click', () => {
         let newIndex = currentIndex + 1;
         if (newIndex >= slides.length) newIndex = 0;
@@ -48,9 +38,6 @@ function goToSlide(index) {
         goToSlide(newIndex);
     });
 
-    // ---------------------------
-    // DOT CLICK CONTROLS
-    // ---------------------------
     dots.forEach((dot, i) => {
         dot.addEventListener('click', () => {
             goToSlide(i);
@@ -59,6 +46,9 @@ function goToSlide(index) {
 
 })();
 
+
+
+// Video Pause and Play Toggle
 document.addEventListener('DOMContentLoaded', function() {
     const pairingsCard = document.querySelector('.pairings-card');
     const pauseIcon = pairingsCard.querySelector('.pause-icon');
@@ -70,14 +60,13 @@ document.addEventListener('DOMContentLoaded', function() {
         isPaused = !isPaused;
         if (isPaused) {
             video.pause();
-            pauseIcon.textContent = '▶'; // Play icon
+            pauseIcon.textContent = '▶'; 
         } else {
             video.play();
-            pauseIcon.textContent = '||'; // Pause icon
+            pauseIcon.textContent = '||'; 
         }
     });
 
-    // Hover effect for pause icon
     pauseIcon.style.transition = 'transform 0.2s ease, background-color 0.2s ease';
     pauseIcon.addEventListener('mouseenter', () => {
         pauseIcon.style.transform = 'scale(1.1)';
@@ -88,6 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
         pauseIcon.style.backgroundColor = 'transparent';
     });
 });
+
+
+
+
+// It's a Great Day Hero Parallax Effect
 // Get the hero section and all images
 const heroSection = document.querySelector('.hero-section');
 const heroImages = document.querySelectorAll('.hero-img');
@@ -142,3 +136,73 @@ heroSection.addEventListener('mouseleave', () => {
 // Wrap button text in span for animation
 const learnMoreBtn = document.querySelector('.learn-more-btn');
 learnMoreBtn.innerHTML = `<span>${learnMoreBtn.textContent}</span>`;
+
+/// Dropdown Menu Functionality
+const navLinks = document.querySelectorAll('.nav-link.has-arrow');
+const coffeeDropdown = document.getElementById('coffeeDropdown');
+const peopleDropdown = document.getElementById('peopleDropdown');
+const newsDropdown = document.getElementById('newsDropdown'); 
+const overlay = document.getElementById('dropdownOverlay');
+
+let currentActiveLink = null;
+let currentDropdown = null;
+
+navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const dropdownType = this.getAttribute('data-dropdown');
+
+        // If clicking the same link that's already active, close it
+        if (this.classList.contains('active')) {
+            closeDropdown();
+        } else {
+            // Close any open dropdown first
+            closeDropdown();
+
+            // Activate link + overlay
+            this.classList.add('active');
+            overlay.classList.add('active');
+
+            // Open correct dropdown
+            if (dropdownType === 'coffee') {
+                coffeeDropdown.classList.add('active');
+                currentDropdown = coffeeDropdown;
+            } 
+            else if (dropdownType === 'people') {
+                peopleDropdown.classList.add('active');
+                currentDropdown = peopleDropdown;
+            }
+            else if (dropdownType === 'news') { 
+                newsDropdown.classList.add('active');
+                currentDropdown = newsDropdown;
+            }
+
+            currentActiveLink = this;
+        }
+    });
+});
+
+// Close dropdown when clicking overlay
+overlay.addEventListener('click', function() {
+    closeDropdown();
+});
+
+function closeDropdown() {
+    navLinks.forEach(l => l.classList.remove('active'));
+
+    if (coffeeDropdown) coffeeDropdown.classList.remove('active');
+    if (peopleDropdown) peopleDropdown.classList.remove('active');
+    if (newsDropdown) newsDropdown.classList.remove('active'); 
+
+    overlay.classList.remove('active');
+    currentActiveLink = null;
+    currentDropdown = null;
+}
+
+// Close on ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeDropdown();
+    }
+});

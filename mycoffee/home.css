@@ -1,3 +1,5 @@
+/*----------------------------------------------------------------------------------*/
+
 * {  
     margin: 0;
     padding: 0;
@@ -9,6 +11,12 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
 
 /* Navigation Bar */
 .navbar {
@@ -84,6 +92,12 @@ body {
     font-size: 12px;
 }
 
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
 /* Green bar */
 .green-bar {
     background: #1e3932;
@@ -98,14 +112,21 @@ body {
 /* Button - Start an order */
 .start-order-btn {
     padding: 8px 12px;
-    border-radius: 20px;
+    border-radius: 26px;
     border: 1.8px solid white;
     background: transparent;
     color: white;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 19px;
     margin-left: 3px;
 }
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
 
 /* Button - Order a seasonal treat */
 .btn-outline-white {
@@ -157,6 +178,14 @@ body {
     margin-bottom: 30px;
 }
 
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
 /* Roller Rabbit Section */
 .roller-section {
     display: flex;
@@ -206,8 +235,8 @@ body {
 /* Right Image Sticky Effect */
 .roller-right {
     width: 50%;
-    height: 100%;        /* SAME as left */
-    position: relative;  /* REMOVE sticky */
+    height: 100%;       
+    position: relative; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -224,14 +253,28 @@ body {
     height: 2.5vh;
 }
 
-/* Holiday Joy Section*/
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+/* Send Holiday Joy Section*/
 .holiday-green {
     background: #006241;
 }
 
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
 /* A little bite section */
 .good-left {
-    background-color: #1e3932; /* Starbucks dark green */
+    background-color: #1e3932; 
     color: white;
     padding: 80px 60px;
 }
@@ -241,7 +284,15 @@ body {
     color: white;
 }
 
-/* Your free cup of cheer section (smaller than others) */
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* Your free cup of cheer section */
 .cheer-section {
     height: 55vh;
     display: flex;
@@ -250,9 +301,9 @@ body {
 
 /* Left side styling */
 .cheer-left {
-    background: #006242;  /* Starbucks red tone */
+    background: #006242;
     color: white;
-    width: 45%;           /* smaller text area so image shows more */
+    width: 45%;          
     padding: 50px;
     display: flex;
     flex-direction: column;
@@ -262,7 +313,7 @@ body {
     gap: 20px;
 }
 
-/* Right image side bigger */
+/* Right image side */
 .cheer-right {
     width: 55%;
 }
@@ -271,10 +322,19 @@ body {
 .cheer-right img {
     width: 100%;
     height: 100%;
-    object-fit: cover;  /* SHOW FULL IMAGE */
+    object-fit: cover;  
     display: block;
 }
 
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* White Text Notice Section */
 .notice-section {
     min-height: 60vh;
     padding: 40px 0;
@@ -288,9 +348,9 @@ body {
     text-align: center;
 }
 
-/* Limit text width so each line is shorter */
+/* Notice Section Text Control */
 .notice-section p {
-    max-width: 760px;   /* controls how long each line is */
+    max-width: 760px;  
     font-size: 17px;
     line-height: 1.6;
     color: #000000;
@@ -303,27 +363,36 @@ body {
     color: #000000;
 }
 
-/* Footer Link */
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+
+/* About Us Footer Link */
 .footer-links {
     background: #ffffff;
-    padding: 25px 8%;   /* was 50px → smaller now */
+    padding: 25px 17% 20px 3%;
 
     display: flex;
     justify-content: space-between;
-    gap: 30px;           /* smaller gap */
+    gap: 30px;          
     flex-wrap: wrap;
 
-    /* shadow separator at top */
+    /* Shadow separator at top */
     box-shadow: 0 -3px 10px rgba(0,0,0,0.08);
 }
 
 .footer-column {
-    min-width: 180px;   /* slightly smaller */
+    min-width: 180px;  
 }
 
 .footer-column h3 {
-    font-size: 16px;     /* was 18px → slightly smaller */
-    margin-bottom: 10px; /* was 20px → smaller */
+    font-size: 16px;     
+    margin-bottom: 15px; 
     color: #000;
 }
 
@@ -332,9 +401,9 @@ body {
 }
 
 .footer-column li {
-    font-size: 14px;     /* smaller */
+    font-size: 14px;     
     color: #666;
-    margin-bottom: 6px;  /* was 14px → much tighter */
+    margin-bottom: 14px; 
     cursor: pointer;
     transition: 0.2s;
 }
@@ -343,7 +412,35 @@ body {
     color: #000;
 }
 
-/* Bottom Footer */
+/* Footer links */
+.footer-column a {
+    color: #666;             
+    text-decoration: none;    
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+/* Visited links */
+.footer-column a:visited {
+    color: #666;
+}
+
+/* Hover effect */
+.footer-column a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* Social Media Bottom Footer */
 .bottom-footer {
     background: #ffffff;
     padding: 32px 40px;
@@ -431,10 +528,7 @@ body {
     margin: 0;
 }
 
-
-
-
-/* NAVBAR SHADOW LINE */
+/* Navigation Bar Shadow Divider */
 .navbar {
     display: flex;
     align-items: center;
@@ -448,86 +542,6 @@ body {
 }
 
 
-/* TITLE */
-.page-title-section {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 37px 16px 2px; /* closer to image, but not cramped */
-    text-align: left;
-}
-
-.page-title-section h1 {
-    font-size: 40px;   /* bigger, stronger presence */
-    font-weight: 700;
-    line-height: 1.15; /* tighter headline feel */
-    margin: 0;
-}
-
-/* IMAGES */
-.image-section {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 20px 20px 16px; /* slightly more breathing room above */
-}
-
-.image-section img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* CONTENT */
-.content-section {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 16px 20px 20px; /* slightly more space */
-    text-align: left;
-}
-
-/* H2 headers */
-.content-section h2 {
-    font-size: 32px;       /* emphasis maintained */
-    font-weight: 900;      /* extra bold */
-    margin-bottom: 8px;    /* slightly more gap */
-}
-
-/* H3 headers */
-.content-section h3 {
-    font-size: 22px;
-    font-weight: 900;      /* extra bold */
-    margin-bottom: 6px;    /* slightly more gap to paragraph */
-}
-
-/* Paragraphs */
-.content-section p {
-    font-size: 16px;
-    line-height: 1.5;      /* slightly looser line spacing */
-    margin-bottom: 10px;   /* more readable spacing */
-}
-
-/* Buttons */
-.btn {
-    display: inline-block;
-    margin-top: 4px;       /* slightly more space from paragraph */
-    padding: 6px 16px;
-    border: 1px solid #00754a;
-    border-radius: 50px;
-    color: #00754a;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;  /* smooth transition */
-}
-
-/* Hover effect */
-.btn:hover {
-    background-color: #00754a;  /* fill button with green */
-    color: #ffffff;              /* text becomes white */
-    /* removed transform and box-shadow for clean hover */
-}
 
 
-/* EXTRA SPACE BELOW CORPORATE GOVERNANCE */
-.content-section.corporate-governance {
-    margin-bottom: 50px; /* adds blank space before footer */
-}
+/*----------------------------------------------------------------------------------*/
