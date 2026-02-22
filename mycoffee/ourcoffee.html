@@ -1,6 +1,3 @@
-<?php
-// ourcoffee.php
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +7,7 @@
 </head>
 <body>
 
-<!-- GREEN NAV BAR -->
+<!-- Green Navigation Bar -->
 <header class="top-green-bar">
     <div class="bar-content">
         <div class="logo-small">
@@ -21,13 +18,160 @@
   <a href="#" class="nav-link has-arrow" data-dropdown="coffee">Coffee & Craft</a>
   <a href="#" class="nav-link has-arrow" data-dropdown="people">People & Impact</a>
   <a href="#" class="nav-link has-arrow" data-dropdown="news">News</a>
-  <a href="#" class="nav-link">Stories</a>
+  <a href="stories.html" class="nav-link">Stories</a>
 </nav>
-        <div class="right-icons">
-            <img src="images/searches.png" alt="Search Icon">
-            <img src="images/globals.png" alt="Globe Icon">
+
+<div class="right-icons">
+   <div class="nav-icon" id="searchBtn">
+        <img src="images/searchicon.png" alt="Search Icon">
+    </div>
+<div class="nav-icon" id="globeBtn">
+    <img src="images/globalicon.png" alt="Globe Icon">
+    </div>
+</div>
+
+
+
+
+
+<!-- ================= SEARCH OVERLAY ================= -->
+<div class="search-overlay" id="searchOverlay">
+
+    <!-- Blur backdrop — click to close -->
+    <div class="search-bg" id="searchBg"></div>
+
+    <!-- Slide-in panel -->
+    <div class="search-panel" id="searchPanel" role="dialog" aria-label="Search">
+
+        <button class="search-close" id="searchClose" aria-label="Close search">
+            <span>&#x2715;</span>
+        </button>
+
+        <div class="search-input-row">
+            <input type="text" id="searchInput" placeholder="Search"
+                aria-label="Search" autocomplete="off"
+                autocorrect="off" autocapitalize="off"
+                spellcheck="false" name="search-no-autofill" />
+            <button id="searchSubmit" aria-label="Submit search">
+                <svg viewBox="0 0 24 24" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+            </button>
         </div>
+
+        <div class="search-results-wrapper">
+            <div class="search-results" id="searchResults"></div>
+
+            <div class="view-all-wrap" id="viewAllWrap">
+                <button class="view-all-btn">
+                    <span>View all results</span>
+                </button>
+            </div>
         </div>
+
+        <div class="search-no-results" id="searchNoResults">
+            No results found
+        </div>
+
+        <div class="search-loading" id="searchLoading">
+            Loading...
+        </div>
+
+        <div class="search-did-wrap" id="searchDidWrap">
+            <div class="search-circle-card">
+                <img src="images/lightbulb.png"
+                     alt="lightbulb"
+                     class="bulb-img" />
+                <p class="search-did-label">Did you know</p>
+                <p class="search-did-text">
+                    <span class="line">Starbucks Caffè Verona coffee has also</span><br>
+                    <span class="line">gone by two other names over the</span><br>
+                    <span class="line">years: Jake's Blend, and 80/20 Blend.</span>
+                    <span class="arrow"> ›</span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ================= GLOBE OVERLAY ================= -->
+<div class="globe-overlay" id="globeOverlay"></div>
+
+
+<!-- ================= GLOBE PANEL ================= -->
+<div class="globe-panel" id="globePanel">
+
+    <button class="globe-close" id="globeClose"
+        aria-label="Close region selector">
+        <span>&#x2715;</span>
+    </button>
+
+    <!-- Canada -->
+    <div class="globe-region">
+        <p class="globe-region-title">
+            <span class="title-text">Canada</span>
+        </p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link">
+                <span class="link-text">English</span>
+            </a>
+            <a href="#" class="globe-lang-link">
+                <span class="link-text">Français</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- USA -->
+    <div class="globe-region">
+        <p class="globe-region-title">
+            <span class="title-text">USA</span>
+        </p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link">
+                <span class="link-text">English</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- EMEA -->
+    <div class="globe-region">
+        <p class="globe-region-title"><span class="title-text">EMEA</span></p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link"><span class="link-text">English</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+        </div>
+    </div>
+
+    <!-- Latin America -->
+    <div class="globe-region">
+                <p class="globe-region-title"><span class="title-text">Latin America</span></p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link"><span class="link-text">English</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+            <a href="#" class="globe-lang-link"><span class="link-text">Español</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+            <a href="#" class="globe-lang-link"><span class="link-text">Português</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+        </div>
+    </div>
+
+    <!-- Asia -->
+    <div class="globe-region">
+        <p class="globe-region-title"><span class="title-text">Asia</span></p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link"><span class="link-text">English</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+        </div>
+    </div>
+
+    <!-- Japan -->
+    <div class="globe-region">
+        <p class="globe-region-title"><span class="title-text">Japan</span></p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link"><span class="link-text">日本語</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+        </div>
+    </div>
+
+</div>
 
         <!-- DROPDOWN MENU -->
         <div class="dropdown-menu" id="coffeeDropdown">
@@ -61,7 +205,7 @@
             </div>
         </div>
 
-        <!-- PEOPLE & IMPACT DROPDOWN -->
+        <!-- People & Impact Dropdown -->
         <div class="dropdown-menu" id="peopleDropdown">
             <div class="dropdown-content">
                 <div class="empty-grid-left"></div>
@@ -111,7 +255,7 @@
             </div>
         </div>
 
-        <!-- NEWS DROPDOWN -->
+        <!-- News Dropdown -->
         <div class="dropdown-menu" id="newsDropdown">
     <div class="dropdown-content news-layout">
 
@@ -140,12 +284,12 @@
 
     </header>
 
-    <!-- BLUR OVERLAY -->
+    <!-- Blur Overlay -->
     <div class="dropdown-overlay" id="dropdownOverlay"></div>
     </div>
 </header>
 
-<!-- OUR COFFEE STORY -->
+<!-- Our Coffee Story -->
 <section class="our-coffee-story">
 
     <div class="coffee-title">
@@ -154,11 +298,11 @@
     </div>
 
     <div class="coffee-image-top">
-        <img src="images/products.png" alt="Starbucks Coffee Bags">
+        <img src="images/greenv.png" alt="Starbucks Coffee Bags">
     </div>
 
     <div class="coffee-image-bottom">
-        <img src="images/mug.png" alt="Starbucks Cup and Coffee Bag">
+        <img src="images/greenv2.png" alt="Starbucks Cup and Coffee Bag">
     </div>
 
     <div class="coffee-text">
@@ -179,9 +323,9 @@
         
         <div class="cup-text">
             <h1>
-                Keeping your cup full:<br>
-                How Starbucks is working to<br>
-                save the future of coffee
+                Keeping your cup <br>full:
+                How <br>Starbucks is <br>working to
+                save <br>the future of <br>coffee
             </h1>
 
             <a href="#" class="cup-btn">
@@ -319,7 +463,7 @@
     </div>
 </section>
 
-<!-- GLOBAL COFFEE CREATORS SECTION -->
+<!-- Global Coffee Stories Section -->
 <section class="global-creators-section">
 
     <div class="global-creators-content">
@@ -337,9 +481,9 @@
                 craft and connection on social media.
             </p>
 
-            <a href="#" class="cup-btn">
-                <span class="circle">→</span>
-                <span>Learn More</span>
+            <a href="#" class="cup-btn-global">
+             <span class="circle">→</span>
+            <span>Learn More</span>
             </a>
         </div>
 
@@ -349,7 +493,7 @@
 
 </section>
 
-<!-- COFFEE STORIES SECTION -->
+<!-- Coffee Stories Cards Section -->
 <section class="coffee-stories-section">
 
     <div class="coffee-stories-grid">
@@ -371,17 +515,17 @@
             <div class="story-card-inner">
                 <img src="images/flour.png" alt="Guatemala Casi Cielo">
                 <div class="story-caption-different">
-                   <span> Starbucks Guatemala <br> Casi Cielo Coffee <br> Whole Bean 100% Arabic </span>
+                   <span> Starbucks Guatemala Casi Cielo Coffee </span>
                 </div>
             </div>
         </div>
 
-        <!-- LARGE CARD -->
+        <!-- CARD 3 -->
         <div class="story-card">
             <div class="story-card-inner">
                 <img src="images/ethiopia.png" alt="Ethiopia Coffee">
                 <div class="story-caption">
-                   <span> Starbucks celebrates Ethiopia’s coffee legacy with new single-origin coffee </span>
+                   <span> Starbucks celebrates Ethiopia’s coffee legacy <br> with new single-origin coffee </span>
                 </div>
             </div>
         </div>
@@ -390,7 +534,7 @@
 
 </section>
 
-<!-- 6 STARBUCKS COFFEE PAIRINGS SECTION -->
+<!-- 6 Starbucks Coffee Pairing Section -->
 <section class="pairings-section">
 
     <div class="pairings-bg">
@@ -435,7 +579,7 @@
 
 </section>
 
-<!--  ITS A GREAT DAY FOR COFFEE SECTION  -->
+<!--  Its a Great Day for Coffee Section  -->
 <section class="hero-section">
     <div class="hero-images">
         <img src="images/grass.png" alt="Coffee Farm" class="hero-img top-left">
@@ -457,7 +601,7 @@
 </section>
 <br> <br>
 
-<!-- STARBUCKS COFFEE ROAST SECTION -->
+<!-- Starbucks Coffee Roast Section -->
 <section class="coffee-roast-section">
     <div class="coffee-roast-wrapper">
 
@@ -565,7 +709,7 @@
 
 </section>
 
-<!-- FOOTER SECTION -->
+<!-- Footer Section -->
 <footer class="footer-section">
 
     <!-- Top Dark Green Section -->
@@ -592,11 +736,14 @@
                 <h3>Stay In Touch</h3>
                 <p>Subscribe to all the latest Starbucks stories and news delivered right to your inbox.</p>
                 
-                <form class="footer-form">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="">
-                    <button type="submit" class="footer-signup-btn">Sign Up</button>
-                </form>
+<form id="footerForm" class="footer-form">
+  <label for="email">Email Address</label>
+  <input type="email" id="email" name="email" placeholder="">
+  <button type="submit" class="footer-signup-btn">Sign Up</button>
+</form>
+
+<div id="message"></div>
+
 
                 <div class="footer-social-icons">
                     <a href="#" class="social-icon"><img src="images/social-media.png" alt="Instagram"></a>

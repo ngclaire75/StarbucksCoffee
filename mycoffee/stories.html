@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stories - Starbucks</title>
+    <link rel="stylesheet" href="ourcoffee.css">
+    <link rel="stylesheet" href="stories.css">
+</head>
+<body>
+
+<!-- Green Navigation Bar -->
+<header class="top-green-bar">
+    <div class="bar-content">
+        <div class="logo-small">
+            <img src="images/starbuckslogov2.png" alt="Starbucks">
+        </div>
+
+        <nav class="green-nav-links">
+          <a href="#" class="nav-link has-arrow" data-dropdown="coffee">Coffee & Craft</a>
+          <a href="#" class="nav-link has-arrow" data-dropdown="people">People & Impact</a>
+          <a href="#" class="nav-link has-arrow" data-dropdown="news">News</a>
+          <a href="stories.html" class="nav-link">Stories</a>
+        </nav>
+
+<div class="right-icons">
+   <div class="nav-icon" id="searchBtn">
+        <img src="images/searchicon.png" alt="Search Icon">
+    </div>
+<div class="nav-icon" id="globeBtn">
+    <img src="images/globalicon.png" alt="Globe Icon">
+    </div>
+</div>
+
+
+
+<!-- ================= SEARCH OVERLAY ================= -->
+<div class="search-overlay" id="searchOverlay">
+
+    <!-- Blur backdrop — click to close -->
+    <div class="search-bg" id="searchBg"></div>
+
+    <!-- Slide-in panel -->
+    <div class="search-panel" id="searchPanel" role="dialog" aria-label="Search">
+
+        <button class="search-close" id="searchClose" aria-label="Close search">
+            <span>&#x2715;</span>
+        </button>
+
+        <div class="search-input-row">
+            <input type="text" id="searchInput" placeholder="Search"
+                aria-label="Search" autocomplete="off"
+                autocorrect="off" autocapitalize="off"
+                spellcheck="false" name="search-no-autofill" />
+            <button id="searchSubmit" aria-label="Submit search">
+                <svg viewBox="0 0 24 24" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="search-results-wrapper">
+            <div class="search-results" id="searchResults"></div>
+
+            <div class="view-all-wrap" id="viewAllWrap">
+                <button class="view-all-btn">
+                    <span>View all results</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="search-no-results" id="searchNoResults">
+            No results found
+        </div>
+
+        <div class="search-loading" id="searchLoading">
+            Loading...
+        </div>
+
+        <div class="search-did-wrap" id="searchDidWrap">
+            <div class="search-circle-card">
+                <img src="images/lightbulb.png"
+                     alt="lightbulb"
+                     class="bulb-img" />
+                <p class="search-did-label">Did you know</p>
+                <p class="search-did-text">
+                    <span class="line">Starbucks Caffè Verona coffee has also</span><br>
+                    <span class="line">gone by two other names over the</span><br>
+                    <span class="line">years: Jake's Blend, and 80/20 Blend.</span>
+                    <span class="arrow"> ›</span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ================= GLOBE OVERLAY ================= -->
+<div class="globe-overlay" id="globeOverlay"></div>
+
+
+<!-- ================= GLOBE PANEL ================= -->
+<div class="globe-panel" id="globePanel">
+
+    <button class="globe-close" id="globeClose"
+        aria-label="Close region selector">
+        <span>&#x2715;</span>
+    </button>
+
+    <!-- Canada -->
+    <div class="globe-region">
+        <p class="globe-region-title">
+            <span class="title-text">Canada</span>
+        </p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link">
+                <span class="link-text">English</span>
+            </a>
+            <a href="#" class="globe-lang-link">
+                <span class="link-text">Français</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- USA -->
+    <div class="globe-region">
+        <p class="globe-region-title">
+            <span class="title-text">USA</span>
+        </p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link">
+                <span class="link-text">English</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- EMEA -->
+    <div class="globe-region">
+        <p class="globe-region-title"><span class="title-text">EMEA</span></p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link"><span class="link-text">English</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+        </div>
+    </div>
+
+    <!-- Latin America -->
+    <div class="globe-region">
+                <p class="globe-region-title"><span class="title-text">Latin America</span></p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link"><span class="link-text">English</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+            <a href="#" class="globe-lang-link"><span class="link-text">Español</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+            <a href="#" class="globe-lang-link"><span class="link-text">Português</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+        </div>
+    </div>
+
+    <!-- Asia -->
+    <div class="globe-region">
+        <p class="globe-region-title"><span class="title-text">Asia</span></p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link"><span class="link-text">English</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+        </div>
+    </div>
+
+    <!-- Japan -->
+    <div class="globe-region">
+        <p class="globe-region-title"><span class="title-text">Japan</span></p>
+        <div class="globe-lang-group">
+            <a href="#" class="globe-lang-link"><span class="link-text">日本語</span> <span class="ext-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span></a>
+        </div>
+    </div>
+
+</div>
+
+    <!-- DROPDOWN MENU -->
+    <div class="dropdown-menu" id="coffeeDropdown">
+        <div class="dropdown-content">
+            <div class="empty-grid-left"></div>
+            <div class="dropdown-item">
+                <div class="dropdown-icon">
+                    <img src="images/black.png" alt="Coffee">
+                </div>
+                <div class="dropdown-label">Coffee</div>
+            </div>
+            <div class="dropdown-item">
+                <div class="dropdown-icon">
+                    <img src="images/coffeehouse.png" alt="Coffeehouse">
+                </div>
+                <div class="dropdown-label">Coffeehouse Experience</div>
+            </div>
+            <div class="dropdown-item">
+                <div class="dropdown-icon">
+                    <img src="images/wintermerch.png" alt="Cups">
+                </div>
+                <div class="dropdown-label">Cups & Merch</div>
+            </div>
+            <div class="empty-grid-right"></div>
+            <div class="dropdown-item">
+                <div class="dropdown-icon">
+                    <img src="images/roastery.png" alt="Drinks">
+                </div>
+                <div class="dropdown-label">Drinks & Food</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- People & Impact Dropdown -->
+    <div class="dropdown-menu" id="peopleDropdown">
+        <div class="dropdown-content">
+            <div class="empty-grid-left"></div>
+            <div class="dropdown-item">
+                <div class="dropdown-icon">
+                    <img src="images/esg.png" alt="Annual Report">
+                </div>
+                <div class="dropdown-label">Annual Impact Report (ESG)</div>
+            </div>
+            <div class="dropdown-item">
+                <div class="dropdown-icon">
+                    <img src="images/belong.png" alt="Belonging">
+                </div>
+                <div class="dropdown-label">Belonging at Starbucks</div>
+            </div>
+            <div class="dropdown-item">
+                <div class="dropdown-icon">
+                    <img src="images/communities.png" alt="Communities">
+                </div>
+                <div class="dropdown-label">Communities</div>
+            </div>
+            <div class="empty-grid-right"></div>
+            <div class="dropdown-item">
+                <div class="dropdown-icon">
+                    <img src="images/farmers.png" alt="Farmers">
+                </div>
+                <div class="dropdown-label">Farmers</div>
+            </div>
+            <div class="dropdown-item">
+                <div class="dropdown-icon">
+                    <img src="images/employees.png" alt="Partners">
+                </div>
+                <div class="dropdown-label">Partners (Employees)</div>
+            </div>
+            <div class="dropdown-item">
+                <div class="dropdown-icon">
+                    <img src="images/tsf.png" alt="Foundation">
+                </div>
+                <div class="dropdown-label">The Starbucks Foundation</div>
+            </div>
+            <div class="dropdown-item">
+                <div class="dropdown-icon">
+                    <img src="images/sustainability.png" alt="Sustainability">
+                </div>
+                <div class="dropdown-label">Sustainability</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- News Dropdown -->
+    <div class="dropdown-menu" id="newsDropdown">
+        <div class="dropdown-content news-layout">
+            <div class="news-item"><span>Contact Us</span></div>
+            <div class="news-item"><span>Media Library</span></div>
+            <div class="news-item"><span>News Blog</span></div>
+            <div class="news-item"><span>Press Releases</span></div>
+            <div class="news-item"><span>Starbucks for the Record</span></div>
+        </div>
+    </div>
+
+</header>
+
+    <!-- Blur Overlay -->
+    <div class="dropdown-overlay" id="dropdownOverlay"></div>
+
+    
+<!-- Hero Section -->
+<section class="stories-hero">
+    <div class="hero-inner">
+
+        <div class="hero-title">
+            <div class="hero-small">Starbucks Stories</div>
+
+            <div class="hero-big">
+                <span class="word-nurturing">NURTURING</span><br>
+                <span class="word-human">THE HUMAN SPIRIT</span>
+            </div>
+        </div>
+
+        <img src="images/nurture1.png" class="hero-img-top" alt="Story Top Image">
+        <img src="images/nurture2.png" class="hero-img-left" alt="Story Left Image">
+
+    </div>
+</section>
+
+
+<!-- Description Section -->
+<section class="stories-desc">
+    <div class="desc-inner">
+        <p>
+            At Starbucks, we believe in the power of human connection – the power of a cup
+            of coffee to bring people together, spark conversation and inspire positive
+            change. From local initiatives to global impact, learn about the people behind the
+            brand, working to uplift their communities.
+        </p>
+    </div>
+</section>
+
+
+<!-- Feature Story Section -->
+<section class="feature-story">
+    <div class="feature-wrapper">
+
+        <!-- Left Large Image -->
+        <div class="feature-image-large">
+            <img src="images/carlos.png" alt="Coffee Farmer">
+        </div>
+
+        <!-- Green Text Card -->
+        <div class="feature-card">
+            <span class="quote-mark">“</span>
+            <h2>
+                Keeping your cup full: How Starbucks is working to save the future of coffee
+            </h2>
+
+            <a href="#" class="feature-link">
+              <span class="circle-arrow">
+              <span class="arrow-char">→</span>
+            </span>
+                <span class="learn-more-text">Learn more</span>
+            </a>
+        </div>
+
+        <!-- Right Small Image -->
+        <div class="feature-image-small">
+            <img src="images/berries.png" alt="Coffee Beans">
+        </div>
+
+    </div>
+</section>
+
+<!-- Graduates' Story Section -->
+<section class="story-feature-alt">
+    <div class="story-feature-inner">
+
+        <!-- Text Box -->
+        <div class="story-text-card">
+            <span class="story-quote">“</span>
+
+            <div class="story-text-content">
+                <p>
+                    More than 18,000 partners have graduated from Arizona State University
+                    through the Starbucks College Achievement Plan. Every graduate has a
+                    unique story.
+                </p>
+            </div>
+
+            <a href="#" class="story-link">
+                <span class="story-arrow-circle">
+                    <span class="story-arrow">→</span>
+                </span>
+                <span class="story-link-text">See the photo essay</span>
+            </a>
+        </div>
+
+        <!-- Small Image -->
+        <div class="story-image-small">
+            <img src="images/graduatesmall.png" alt="">
+        </div>
+
+        <!-- Large Image -->
+        <div class="story-image-large">
+            <img src="images/graduatelarge.png" alt="">
+        </div>
+
+    </div>
+</section>
+
+
+<section class="quote-feature-section">
+  <div class="quote-feature-wrapper">
+
+    <!-- Large background image -->
+    <div class="quote-image-large">
+      <img src="images/horse-dark.jpg" alt="">
+      <span class="image-overlay"></span>
+      <span class="image-border"></span>
+    </div>
+
+    <!-- Small image behind card -->
+    <div class="quote-image-small">
+      <img src="images/horse-light.jpg" alt="">
+    </div>
+
+    <!-- Green text card -->
+    <div class="quote-card">
+      <span class="quote-mark-2">“</span>
+
+      <p class="quote-text">
+        It was a life-saving moment. When I sat on the back of that horse,
+        that horse didn’t care that my legs didn’t work.
+      </p>
+
+      <span class="quote-author">Rebecca Hart, barista</span>
+
+<a href="#" class="quote-link">
+  <span class="circle-arrow-2">
+    <span class="arrow-char-2">→</span>
+  </span>
+  <span class="quote-link-text">Rebecca’s story</span>
+</a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Decorative Border -->
+<img src="images/border.png" class="section-border" alt="">
+
+<!-- The Power of Connection Section -->
+<section class="hero-section">
+
+    <div class="hero-images">
+        <img src="images/biddymason.jpg" class="hero-img top-left" alt="">
+        <img src="images/gcw.jpg" class="hero-img bottom-left" alt="">
+        <img src="images/costrarica.jpg" class="hero-img top-right" alt="">
+        <img src="images/wattson.jpg" class="hero-img bottom-right" alt="">
+    </div>
+
+    <!-- Center Content -->
+    <div class="hero-content">
+        <div class="hero-vertical-line-top"></div>
+
+        <h1>THE POWER OF<br>CONNECTION</h1>
+
+        <p>
+            At Starbucks, we believe in the power of human connection —
+            the power of a cup of coffee and how it can bring people together.
+        </p>
+
+        <div class="hero-vertical-line-bottom"></div>
+    </div>
+
+</section>
+
+<!-- Hingakawa Section -->
+<section class="hingakawa-section">
+
+    <div class="hingakawa-container">
+
+        <!-- Left Image -->
+        <div class="hingakawa-image-wrapper">
+            <div class="image-frame"></div>
+            <img src="images/hingakawa.jpg" alt="Hingakawa Coffee Co-op">
+        </div>
+
+        <!-- Right Content -->
+        <div class="hingakawa-content">
+            <h2>Hingakawa</h2>
+
+            <p>
+                This is the Hingakawa coffee co-op, more than 550 women strong,
+                located in the mountainous region of the Gakenke district.
+                Each year, the women bring the coffee they’ve grown to the
+                co-op to be sorted, dried and then sold. As a group, they
+                make business decisions, negotiate for the best prices and
+                support each other. Here, at Hingakawa, they know that they
+                are strongest together.
+            </p>
+
+        <a href="#" class="read-stories">
+            <span class="arrow-circle-3">
+            <span class="arrow-char-3">→</span>
+            </span>
+        <span class="text-underline">Read the stories</span>
+        </a>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="forgiveness-section">
+    <div class="forgiveness-container">
+        
+        <div class="forgiveness-text">
+            <h2>Forgiveness is a <br>choice</h2>
+            <p>
+                Once on the opposite sides of war, these women experienced heartbreak in very
+                different ways. Finding common ground through their shared livelihood of coffee,
+                <br>they are no longer each other’s enemy, <br>they are each other’s strength.
+            </p>
+        </div>
+
+<div class="forgiveness-video">
+    <iframe 
+        width="560" 
+        height="315"
+        src="https://www.youtube.com/embed/HfSSN7aHXAg?si=1kixanOiPT8493I8" 
+        title="HINGAKAWA : An Original Starbucks Productions Documentary"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+</div>
+
+</section>
+
+
+
+<!-- Footer Section -->
+<footer class="footer-section">
+
+    <!-- Top Dark Green Section -->
+    <div class="footer-top">
+        <div class="footer-logo-text">
+            THE STARBUCKS<br>
+            COFFEE COMPANY
+        </div>
+        <a href="#" class="footer-values-link">
+            <span class="arrow-circle">→</span>
+            <span class="footer-link-text">Our Values & Commitment</span>
+        </a>
+    </div>
+
+    <!-- Bottom White Section  -->
+     <div class="footer-wrapper">
+    <div class="footer-bottom">
+
+        <!-- Footer Main Content -->
+        <div class="footer-main">
+            
+            <!-- Left Column - Stay In Touch -->
+            <div class="footer-column footer-stay-in-touch">
+                <h3>Stay In Touch</h3>
+                <p>Subscribe to all the latest Starbucks stories and news delivered right to your inbox.</p>
+                
+                <form class="footer-form">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="">
+                    <button type="submit" class="footer-signup-btn">Sign Up</button>
+                </form>
+
+                <div class="footer-social-icons">
+                    <a href="#" class="social-icon"><img src="images/social-media.png" alt="Instagram"></a>
+                    <a href="#" class="social-icon"><img src="images/threads.png" alt="Spotify"></a>
+                    <a href="#" class="social-icon"><img src="images/tik-tok.png" alt="TikTok"></a>
+                    <a href="#" class="social-icon"><img src="images/youtube-symbol.png" alt="YouTube"></a>
+                </div>
+            </div>
+
+            <!-- Right Column - Press Center -->
+            <div class="footer-column footer-press-center">
+                <h3>Press Center</h3>
+                <p>All the latest company news and leadership perspectives.</p>
+                
+                <ul class="footer-links">
+                    <li><a href="#">Press Releases</a></li>
+                    <li><a href="#">Company News</a></li>
+                    <li><a href="#">Starbucks For The Record</a></li>
+                    <li><a href="#">Leadership <span class="external-icon">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </span></a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Divider -->
+        <div class="footer-divider">
+            <hr>
+            <img src="images/Starbucks-Logo.png" alt="Starbucks Logo" class="footer-divider-logo">
+            <hr>
+        </div>
+
+        <!-- Bottom Links -->
+        <div class="footer-bottom-links">
+            <a href="#">Starbucks.com <span class="external-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </span></a>
+            <a href="#">Career Center <span class="external-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </span></a>
+            <a href="#">Reserve <span class="external-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </span></a>
+            <a href="#">At Home <span class="external-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </span></a>
+        </div>
+
+        <!-- Footer Regions -->
+        <div class="footer-regions">
+            <div class="region-group">
+                <h4>Canada</h4>
+                <a href="#">English <span class="external-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </span></a>
+                <a href="#">Français <span class="external-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </span></a>
+            </div>
+            <div class="region-group">
+                <h4>USA</h4>
+                <a href="#">English</a>
+            </div>
+            <div class="region-group">
+                <h4>EMEA</h4>
+                <a href="#">English <span class="external-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </span></a>
+            </div>
+            <div class="region-group">
+                <h4>Latin America</h4>
+                <a href="#">English <span class="external-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </span></a>
+                <a href="#">Español <span class="external-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </span></a>
+                <a href="#">Português <span class="external-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </span></a>
+            </div>
+            <div class="region-group">
+                <h4>Asia</h4>
+                <a href="#">English <span class="external-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </span></a>
+            </div>
+            <div class="region-group">
+                <h4>Japan</h4>
+                <a href="#">日本語 <span class="external-icon">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                </span></a>
+            </div>
+        </div>
+        <hr class="footer-regions-line">
+
+        <!-- Footer Legal -->
+        <div class="footer-legal">
+            <a href="#">Starbucks.com <span class="external-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </span></a>
+            <a href="#">Accessibility <span class="external-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </span></a>
+            <a href="#">Privacy Notice <span class="external-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </span></a>
+            <a href="#">Do Not Share My Personal Information <span class="external-icon">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+            </span></a>
+            <a href="#">Cookie Preferences</a>
+            <span class="copyright">© Claire's Starbucks Coffee Website.</span>
+        </div>
+
+    </div>
+</footer>
+
+
+<script src="ourcoffeefunction.js"></script>
+
+</body>
+</html>
