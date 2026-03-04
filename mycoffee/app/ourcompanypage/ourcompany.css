@@ -1,0 +1,169 @@
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+* {  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: SoDo Sans, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+img {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none;     /* Old Edge */
+  -webkit-user-drag: none;   /* Prevent drag on Safari/Chrome */
+  user-drag: none;           /* Standard (limited support) */
+}
+
+/*----------------------------------------------------------------------------------*/
+
+/* Divider line under the navbar */
+.navbar-divider {
+    width: 100%;
+    height: 0.8px;                 /* Thickness of the line */
+    background-color: #000000;      /* Color of the divider */
+    opacity: 0.15;                  /* Base opacity of the line */
+    margin-top: 0;                  /* Space from navbar */
+
+    /* Shadow */
+    --shadow-color: rgba(0, 0, 0, 0.15); /* Slightly transparent shadow */
+    --shadow-offset-y: 1px;              
+    --shadow-blur: 2px;                
+    box-shadow: 0 var(--shadow-offset-y) var(--shadow-blur) var(--shadow-color);
+}
+
+/*----------------------------------------------------------------------------------*/
+
+
+/* Title */
+.page-title-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 37px 16px 2px; 
+    text-align: left;
+}
+
+.page-title-section h1 {
+    font-size: 40px;  
+    font-weight: 700;
+    line-height: 1.15; 
+    margin: 0;
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* Images */
+.image-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px 20px 16px; 
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* Content */
+.content-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px 20px 20px; 
+    text-align: left;
+}
+
+/* H2 headers */
+.content-section h2 {
+    font-size: 32px;       
+    font-weight: 900;     
+    margin-bottom: 19px;    
+}
+
+
+.learn-more {
+    margin-bottom: -28px; /* smaller spacing */
+}
+
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* H3 headers */
+.content-section h3 {
+    font-size: 22px;
+    font-weight: 900;      
+    margin-bottom: 8px;   
+}
+
+/* Paragraphs */
+.content-section p {
+    font-size: 16px;
+    line-height: 1.5;      
+    margin-bottom: 10px; 
+}
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    margin-top: 5px;      
+    padding: 6px 17px;
+    border: 1px solid #00754a;
+    border-radius: 50px;
+    color: #00754a;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease; 
+}
+
+/* Hover effect */
+.btn:hover {
+    background-color: #00754a;
+    color: #ffffff; 
+}
+
+
+/* White Spacing Divider */
+.content-section.corporate-governance {
+    margin-bottom: 50px; /* adds blank space before footer */
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/

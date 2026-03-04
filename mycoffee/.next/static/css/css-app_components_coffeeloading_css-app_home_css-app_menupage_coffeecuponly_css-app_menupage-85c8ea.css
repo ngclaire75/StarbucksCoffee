@@ -1,0 +1,1707 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/menupage/menutabs.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+/* Wrapper for the tab row */
+.menu-tabs-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #f9f9f9;
+}
+
+/* Buttons container */
+.menu-tabs {
+  display: flex;
+  gap: 24px; /* space between buttons */
+  padding: 16px 0;
+  margin-left: 137px;
+  margin-bottom: -7px;
+}
+
+/* Individual tab buttons */
+.menu-tab {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 11px;
+  position: relative;
+  padding: 4px 0;
+  letter-spacing: 0.5px;
+  color: #000000de;
+  transition: color 0.2s ease;
+  margin-top: -7px;
+}
+
+/* Underline for active tab only */
+.menu-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; /* adjust distance from text */
+  left: 0;
+  width: 0%; /* default hidden */
+  height: 0.6px; /* thickness of underline */
+  background-color: #000000de; /* underline color */
+}
+
+/* Show underline only on active tab */
+.menu-tab.active::after {
+  width: 100%;
+}
+
+/* Divider line under the tab row */
+.menu-tabs-divider {
+  width: 100%;
+  height: 0.8px;                 /* Thickness of the line */
+  background-color: #000000;      /* Color of the divider */
+  opacity: 0.15;                  /* Subtle transparency */
+  margin-top: 0;                  /* Optional spacing from tabs */
+
+  /* Shadow for subtle depth */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-offset-y: 1px;
+  --shadow-blur: 2px;
+  box-shadow: 0 var(--shadow-offset-y) var(--shadow-blur) var(--shadow-color);
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/menupage/pageslistmenu.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+/* About Us Footer Link */
+.menu-footer-links {
+    background: #ffffff;
+    padding: 25px 5% 20px 5%;
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    box-shadow: 0 -2px 2px rgba(0,0,0,0.09);
+}
+
+.menu-footer-column {
+    min-width: 180px;
+}
+
+.menu-footer-column h3 {
+
+        margin-top: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: 500;
+    margin-left: -27px;
+}
+
+.menu-footer-column ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.menu-footer-column li {
+    margin-left: -27px;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 17px; /* ← bigger gap than original (was 17px) */
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.menu-footer-column li:hover {
+    color: #000;
+}
+
+.menu-footer-column a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.menu-footer-column a:visited {
+    color: #666;
+}
+
+.menu-footer-column a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+/* Social Media Bottom Footer */
+.menu-bottom-footer {
+    margin-top: 20px;
+    background: #ffffff;
+    padding: 32px 40px;
+    border-top: 1px solid #d4d4d4;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.menu-social-icons {
+    margin-left: -7px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-bottom: 26px;
+}
+
+.menu-social-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* Grey circle layer */
+.menu-social-icon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+
+    transform: scale(0);
+    transition: transform 0.25s ease;
+    z-index: 0;
+}
+
+/* Zoom in effect */
+.menu-social-icon:hover::before {
+    transform: scale(1);
+}
+
+/* Keep icon above circle */
+.menu-social-icon img {
+    position: relative;
+    z-index: 1;
+
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.menu-social-icon.spotify img,
+.menu-social-icon.facebook img,
+.menu-social-icon.pinterest img,
+.menu-social-icon.instagram img,
+.menu-social-icon.youtube img,
+.menu-social-icon.twitter img {
+    width: 40px;
+    height: 32px;
+        background: none;
+}
+
+.menu-footer-legal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.menu-footer-legal-links a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+    display: inline-block;
+    width: -moz-fit-content;
+    width: fit-content;
+    position: relative;
+}
+
+.menu-footer-legal-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.5px;
+    width: 100%;
+    height: 0.5px;
+    background-color: #000;
+    opacity: 0;
+}
+
+.menu-footer-legal-links a:hover::after {
+    opacity: 1;
+}
+
+.menu-copyright {
+    color: #00000099;
+    font-size: 9.5px;
+    margin: 0;
+}
+
+
+/*----------------------------------------------------------------------------------*/
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/menupage/itemavailability.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.item-availability-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #1e3932;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 0;
+  padding-right: 400px;
+  z-index: 200;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.item-availability-spacer {
+  flex: 1 1;
+}
+
+.item-availability-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.item-availability-label {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.item-availability-store-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-availability-store-text {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+}
+
+.item-availability-chevron {
+  margin-left: 60px;
+  margin-top: -10px;
+  transition: transform 0.2s ease;
+  width: 16px;
+  height: 6px;
+}
+
+.item-availability-underline {
+  height: 1.2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 87%;
+  margin-top: 6px;
+}
+
+/* Bag icon — adjust these values freely without affecting anything else */
+.item-availability-bag {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  /* Position offset from its natural spot */
+  position: relative;
+  top: -3px;     /* move up (negative) or down (positive) */
+  right: -140px;   /* move right (negative) or left (positive) */
+}
+
+.item-availability-bag img {
+  /* Control size here */
+  width: 32px;
+  height: 32px;
+}
+
+/* ── Store-required popup overlay ── */
+.store-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: overlay-in 0.25s ease forwards;
+}
+
+.store-popup-overlay.closing {
+  animation: overlay-out 0.25s ease forwards;
+}
+
+.store-popup-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 325px;
+  height: 125px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  animation: modal-in 0.25s ease forwards;
+}
+
+.store-popup-overlay.closing .store-popup-modal {
+  animation: modal-out 0.25s ease forwards;
+}
+
+/* Overlay fade */
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes overlay-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Modal zoom in — large/close → normal */
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Modal zoom out — shrinks inward */
+@keyframes modal-out {
+  from {
+    opacity: 0;
+    transform: scale(1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+.store-popup-message {
+  font-size: 13.5px;
+  color: #1e1e1e;
+  margin: 0 0 26px 0;
+  line-height: 1.5;
+}
+
+.store-popup-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.store-popup-cancel {
+  background: none;
+  border: none;
+  color: #00704a;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 22px;
+  margin-left: 82px;
+  border-radius: 50px;
+  transition: background-color 0.2s ease;
+}
+
+.store-popup-cancel:hover {
+  background-color: #e1f0e9;
+}
+
+.store-popup-select {
+  background-color: #00704a;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.store-popup-select:hover {
+  opacity: 0.9;
+}
+
+.bar-visible {
+  animation: bar-slide-in 0.1s ease forwards;
+}
+
+.bar-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes bar-slide-in {
+  from {
+    opacity: 1;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/previous/toploadingbar.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+.top-loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 40%; /* shorter bar */
+  background: #00754a;
+  box-shadow: #00754a85 0px 1px 2px;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+/* Enter: slide from left off-screen to starting position smoothly */
+.top-loading-bar.enter {
+  animation: loadbar-enter 1s linear forwards;
+}
+
+/* Exit: slide completely off-screen while shrinking */
+.top-loading-bar.exit {
+  animation: loadbar-exit 0.4s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes loadbar-enter {
+  from { transform: translateX(-100%) } /* start off-screen */
+  to { transform: translateX(0%) }     /* end at normal starting position */
+}
+
+@keyframes loadbar-exit {
+  from { transform: translateX(0%) scaleX(1); }
+  to { transform: translateX(250%) scaleX(0); }
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/components/coffeeloading.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+.coffee-loading-container {
+  position: relative; /* make container a reference for absolute positioning */
+  height: 100vh;      /* full screen */
+  width: 100%;
+  background-color: #fff; /* optional */
+}
+
+#skeleton-loadingCoffeeCup {
+  position: absolute;  /* allows percentage positioning */
+  top: var(--top, 50%);   /* default vertically centered */
+  left: var(--left, 50%); /* default horizontally centered */
+  transform: translate(-50%, -50%); /* center the cup exactly */
+  height: 85px;
+  width: 73px;
+  opacity: 0.7;
+    margin-top: -190px;
+}
+
+#skeleton-loadingCoffeeSteam {
+  opacity: 0.4;
+  stroke-dasharray: 25;
+  animation: dash 2.4s infinite linear;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 25;
+  }
+  to {
+    stroke-dashoffset: -25;
+  }
+}
+
+/* Navbar skeleton */
+.skeleton-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 16px;
+}
+
+.skeleton-logo {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: contain;
+  background: transparent;
+    margin-left: 8px;
+    margin-top: -2.5px;
+}
+
+.skeleton-nav-pills {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 8px;
+}
+
+.skeleton-pill {
+  height: 20px;
+  border-radius: 6px;
+  background: #e0e0e0;
+  animation: shimmer 1.6s infinite ease-in-out;
+}
+
+.skeleton-pill:nth-child(1) { width: 68px; animation-delay: 0s; }
+.skeleton-pill:nth-child(2) { width: 68px; animation-delay: 0.15s; }
+.skeleton-pill:nth-child(3) { width: 68px; animation-delay: 0.3s; }
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/menupage/coffeecuponly.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************/
+.cup-only-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+#cup-only-svg {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 85px;
+  width: 73px;
+  opacity: 0.7;
+}
+
+#cup-only-steam {
+  opacity: 0.4;
+  stroke-dasharray: 25;
+  animation: cupOnlyDash 2.4s infinite linear;
+}
+
+@keyframes cupOnlyDash {
+  from {
+    stroke-dashoffset: 25;
+  }
+  to {
+    stroke-dashoffset: -25;
+  }
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/previous/previous.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+/* ─── Navbar Wrapper ─────────────────────────────────────────────────────── */
+.previous-navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+
+.previous-whitenav-collapse {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* ─── Spacer ─────────────────────────────────────────────────────────────── */
+.previous-spacer {
+  transition: height 0.3s ease;
+}
+
+/* ─── Page Container ─────────────────────────────────────────────────────── */
+.previous-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 24px;
+  padding-top: 70px;
+  min-height: calc(100vh - 200px);
+}
+
+/* ─── Page Title ─────────────────────────────────────────────────────────── */
+.previous-title {
+  font-size: 21.5px;
+  font-weight: 700;
+  color: #000000de;
+  margin-bottom: -12px;
+  padding-left: 352px;
+}
+
+/* ─── Empty State ────────────────────────────────────────────────────────── */
+.previous-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 16px;
+  padding-bottom: 64px;
+}
+
+/* ─── GIF Illustration ───────────────────────────────────────────────────── */
+.previous-gif-wrapper {
+  margin-left: -490px;
+  margin-bottom: -5px;
+}
+
+.previous-gif {
+  width: 230px;
+  height: 230px;
+  object-fit: contain;
+}
+
+/* ─── Empty State Heading ────────────────────────────────────────────────── */
+.previous-empty-heading {
+  font-size: 25px;
+  font-weight: 700;
+  color: #000000de;
+  margin-bottom: 12px;
+  margin-left: -430px;
+}
+
+/* ─── Empty State Subtext ────────────────────────────────────────────────── */
+.previous-empty-subtext {
+  font-size: 16.5px;
+  color: #565656;
+  text-align: left;
+  max-width: 300px;
+  margin-bottom: 20px;
+  line-height: 1.3;
+  margin-left: -410px;
+}
+
+/* ─── Button Row ─────────────────────────────────────────────────────────── */
+.previous-btn-row {
+  margin-left: -570px;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 80px;
+}
+
+/* ─── Shared Button Base ─────────────────────────────────────────────────── */
+.previous-btn {
+  padding: 16px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ─── Sign In Button (outlined) ──────────────────────────────────────────── */
+.previous-btn-signin {
+   padding: 6px 17px;
+    border-radius: 50px;
+    border: 1px solid #000;
+    background: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 20px;
+
+    transition: background 0.3s ease, color 0.3s ease; 
+}
+
+.previous-btn-signin:hover {
+    background: #f0f0f0;
+}
+
+/* ─── Join Now Button (filled) ───────────────────────────────────────────── */
+.previous-btn-join {
+    padding: 6px 17px;
+    border-radius: 50px;
+    border: none;
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.previous-btn-join:hover {
+  background-color: #333;
+}
+
+/* ─── Footer Sentinel ────────────────────────────────────────────────────── */
+.previous-footer-sentinel {
+  height: 90px;
+}
+
+.previous-gif-delayed {
+  animation: gifRevealDown 3s ease forwards;
+  animation-delay: 0.6s;
+  -webkit-clip-path: inset(0 0 100% 0);
+          clip-path: inset(0 0 100% 0);
+}
+
+@keyframes gifRevealDown {
+  from {
+    -webkit-clip-path: inset(0 0 100% 0);
+            clip-path: inset(0 0 100% 0);
+  }
+  to {
+    -webkit-clip-path: inset(0 0 0% 0);
+            clip-path: inset(0 0 0% 0);
+  }
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/menupage/menu.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+/* Wrapper — position handled via inline style in JSX (fixed + translateY) */
+.menu-navbar-wrapper {
+  background: #ffffff;
+  width: 100%;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  position: relative;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 28px 0;
+
+  --underline-height: 6px;
+  --underline-offset: -8.5px;
+}
+
+/* Active underline */
+.nav-links li.active::after {
+  content: "";
+  position: absolute;
+  bottom: var(--underline-offset);
+  left: 0;
+  height: var(--underline-height);
+  width: 100%;
+  background-color: #00754a;
+  transition: none;
+}
+
+/* Remove hover effect */
+.nav-links li::after {
+  content: none;
+}
+
+/* Divider line under the navbar */
+.navbar-divider {
+  width: 100%;
+  height: 0.8px;
+  background-color: #000000;
+  opacity: 0.15;
+  margin-top: 0;
+
+  --shadow-color: rgb(0, 0, 0);
+  --shadow-offset-y: 1px;
+  --shadow-blur: 2px;
+  box-shadow: 0 var(--shadow-offset-y) var(--shadow-blur) var(--shadow-color);
+}
+
+
+/*----------------------------------------------------------------------------------*/
+
+/* MAIN LAYOUT */
+.menu-container {
+  margin-top: 28px;
+  display: flex;
+  padding: 12px 129px;
+  gap: 80px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.menu-sidebar {
+  width: 220px;
+}
+
+.menu-sidebar h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.sidebar-item {
+  font-size: 14px;
+  color: #555;
+  margin: 14px 0;
+  cursor: pointer;
+}
+
+/* RIGHT CONTENT */
+.menu-content {
+  flex: 1 1;
+  margin-top: 18px;
+  margin-left: -24px;
+}
+
+.menu-title {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 36px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.section-divider {
+  height: 0.5px;
+  background-color: #ddd;
+  margin-bottom: 24px;
+  width: 800px;
+}
+
+/* TRENDING ITEM */
+.trending-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.trending-image-wrapper {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color: #1e3932;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.trending-image {
+  margin-top: 30px;
+  width: 118%;
+  height: 118%;
+  object-fit: contain;
+}
+
+.trending-label {
+  font-size: 16px;
+}
+
+/* DRINKS SECTION */
+.drinks-heading {
+  margin-top: 56px;
+}
+
+.drinks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 350px);
+  grid-row-gap: 26px;
+  row-gap: 26px;
+  grid-column-gap: 61px;
+  column-gap: 61px;
+}
+
+/* FOOD SECTION */
+.food-heading {
+  margin-top: 56px;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 350px);
+  grid-row-gap: 26px;
+  row-gap: 26px;
+  grid-column-gap: 61px;
+  column-gap: 61px;
+}
+
+/* AT HOME COFFEE SECTION */
+.athome-heading {
+  margin-top: 56px;
+}
+
+.athome-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 350px);
+  grid-row-gap: 26px;
+  row-gap: 26px;
+  grid-column-gap: 61px;
+  column-gap: 61px;
+  padding-bottom: 60px;
+}
+
+.athome-image-wrapper {
+  width: 110px;
+  height: 110px;
+}
+
+.athome-image {
+  margin-top: 30px;
+  width: 118%;
+  height: 118%;
+  object-fit: contain;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./app/home.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
+/*----------------------------------------------------------------------------------*/
+
+* {  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: SoDo Sans, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+img {
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none;     /* Old Edge */
+  -webkit-user-drag: none;   /* Prevent drag on Safari/Chrome */
+  user-drag: none;           /* Standard (limited support) */
+}
+
+/*----------------------------------------------------------------------------------*/
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 0 40px;     
+    height: 85px;             
+    background: #ffffff;
+}
+
+/* Starbucks Logo */
+.logo img {
+    width: 56.8px;
+    height: auto;
+    display: block;
+    margin-right: -8px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 17px;
+    margin-left: 32px;
+    font-size: 12px;
+}
+
+.nav-links li {
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    cursor: pointer;
+    line-height: 1;
+    list-style: none;
+
+    transition: color 0.3s ease;
+}
+
+.nav-links li:hover {
+    color: #00754A;
+}
+
+
+/* Right side of navigation bar */
+.nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Find a store */
+.find-store {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Image inside find-store */
+.find-store img {
+    width: 32px;
+    height: 35px;
+    transition: filter 0.3s ease, transform 0.3s ease;
+    filter: brightness(0) saturate(100%) invert(0%);
+}
+
+
+.find-store:hover img {
+    filter: brightness(0) saturate(100%) invert(29%) sepia(45%) saturate(480%) hue-rotate(115deg) brightness(100%) contrast(90%);
+}
+
+/* Make the text inside inherit the color */
+.find-store span, 
+.find-store p, 
+.find-store a {
+    transition: color 0.3s ease;
+    color: inherit; /* ensures color can change on hover */
+}
+
+/* Hover effect */
+.find-store:hover span,
+.find-store:hover p,
+.find-store:hover a,
+.find-store:hover {
+    color: #00754A;
+}
+
+/* Buttons */
+.btn-outline {
+   padding: 6px 17px;
+    border-radius: 50px;
+    border: 1px solid #000;
+    background: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 20px;
+
+    transition: background 0.3s ease, color 0.3s ease;  
+}
+
+.btn-outline:hover {
+    background: #f0f0f0;
+}
+
+/* Black button */
+.btn-black {
+    padding: 6px 17px;
+    border-radius: 50px;
+    border: none;
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-black:hover {
+    background: #333;
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+/* Green Strip */
+.green-bar {
+    --text-size: 22px;      
+    --button-size: 21px;     
+    --vertical-offset: 0px;   
+    --horizontal-offset: 0px; 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    background: #32462f;
+    padding: 23px 40px;
+
+    transform: translate(
+        var(--horizontal-offset),
+        var(--vertical-offset)
+    );
+}
+
+.green-bar h2 {
+    font-size: var(--text-size);
+    font-weight: 600;
+    margin: 0;
+    margin-top: 10px;
+    transform: scaleX(1.03);
+    color: #fff;
+}
+
+.start-order-btn { 
+    margin-top: 10px;
+    font-size: var(--button-size);
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    cursor: pointer;
+
+    transition: background 0.3s ease, color 0.3s ease; 
+}
+
+/* Hover effect */
+.start-order-btn:hover {
+    background: #00754A; 
+    color: #fff; 
+}
+
+
+/*----------------------------------------------------------------------------------*/
+
+/* Button - Order a seasonal treat */
+.btn-outline-white {
+    padding: 7px 19px;
+    border-radius: 20px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 13px;
+
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect */
+.btn-outline-white:hover {
+    background: #004e30; 
+    color: #fff; 
+}
+
+/* Dubai Chocolate Section */
+.main-section {
+    display: flex;
+    width: 100%;
+}
+
+.left-image {
+    width: 50%;
+}
+
+.left-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.right-text {
+    width: 50%;
+    background: #006342;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px;
+}
+
+.right-text h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.right-text p {
+    font-size: 21px;
+    max-width: 500px;
+    margin-bottom: 30px;
+    line-height: 32px;
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+/* Roller Rabbit Section */
+.roller-section {
+    display: flex;
+    height: 55vh;
+}
+
+.roller-left {
+    background: #006342;
+    color: white;
+    width: 50%;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;     
+    text-align: center;  
+    gap: 25px;           
+}
+
+.roller-left h1 {
+    font-size: 28px;
+}
+
+.roller-left .tight-title {
+    line-height: 0.9;
+    max-width: 550px;
+}
+
+.roller-left p {
+    font-size: 21px;
+    line-height: 1.5;   
+    max-width: 520px;    
+}
+
+/* Button - Learn More */
+.roller-btn {
+    width: 170px;
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 1); 
+    border: 1px solid white;
+    color: #00754a;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: background 0.3s ease, color 0.3s ease; 
+}
+
+.roller-btn:hover {
+    background: rgba(255, 255, 255, 0.9); 
+}
+
+
+/* Right Image Sticky Effect */
+.roller-right {
+    width: 50%;
+    height: 100%;       
+    position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roller-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Spacer for scroll length */
+.spacer {
+    height: 2.5vh;
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+/* Send Holiday Joy Section*/
+.holiday-green {
+    background: #006241;
+}
+
+/*----------------------------------------------------------------------------------*/
+
+
+/* Free Drink Section */
+.free-drink-section {
+    display: flex;
+    height: 55vh;
+}
+
+/* Text side */
+.free-drink-text {
+    width: 50%;
+    background-color: #d1d1aa;
+    padding: 80px 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 25px;
+}
+
+.free-drink-text h1 {
+    font-size: 28px;
+    line-height: 0.9;
+    max-width: 550px;
+    color: #32462f;
+}
+
+.free-drink-text p {
+    font-size: 21px;
+    line-height: 1.5;
+    max-width: 520px;
+    color: #32462f;
+}
+
+/* Button */
+.free-drink-btn {
+    padding: 7px 19px;
+    border-radius: 30px;
+    background: #00754a;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+
+    transition: background 0.3s ease; 
+}
+
+.free-drink-btn:hover {
+    background: #007e52;
+}
+
+
+/* Image side */
+.free-drink-image {
+    width: 50%;
+}
+
+.free-drink-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+/* Free Cup of Cheer Section */
+.free-cheer-section {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 35vh;
+}
+
+/* Text side */
+.free-cheer-text {
+    width: 54%;
+    background: #f5f1eb;
+    padding: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+
+    color: #006242;
+}
+
+.free-cheer-text h1 {
+    font-size: 22px;
+    line-height: 1.15;
+}
+
+.free-cheer-text p {
+    font-size: 16px;
+    line-height: 1.4;
+    max-width: 420px;
+}
+
+/* Button */
+.free-cheer-btn {
+    padding: 7px 19px;
+    border-radius: 20px;
+    border: 1px solid #006242;
+    background: transparent;
+    color: #006242;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 13px;
+
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+.free-cheer-btn:hover {
+    background: rgba(0, 98, 66, 0.1); 
+    color: #006242;
+}
+
+
+/* Image side */
+.free-cheer-image {
+    width: 55%;
+}
+
+.free-cheer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+/* White Text Notice Section */
+.notice-section {
+    min-height: 25vh;
+    padding: 40px 0;
+    background: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+/* Notice Section Text Control */
+.notice-section p {
+    max-width: 660px;  
+    font-size: 16px;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
+.notice-section .small-text {
+    max-width: 640px;
+    font-size: 16px;
+    color: #000000;
+
+    position: relative;
+    top: 35px; 
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+/* About Us Footer Link */
+.home-footer-links {
+    background: #ffffff;
+    padding: 25px 5% 20px 5%;  
+    display: flex;
+    gap: 50px;               
+    flex-wrap: wrap;
+
+    /* Shadow separator at top */
+    box-shadow: 0 -2px 2px rgba(0,0,0,0.09);
+}
+
+.home-footer-column {
+    min-width: 180px; 
+}
+
+.home-footer-column h3 {
+    font-size: 16px;     
+    margin-bottom: 20px; 
+    color: #000;
+    font-weight: 500;
+    margin-left: -27px;      
+}
+
+.home-footer-column ul {
+    list-style: none;
+    padding-left: 0;       
+}
+
+.home-footer-column li {
+    margin-left: -27px;       
+    font-size: 14px;     
+    color: #666;
+    margin-bottom: 17px; 
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.home-footer-column li:hover {
+    color: #000;
+}
+
+/* Footer links */
+.home-footer-column a {
+    color: #666;             
+    text-decoration: none;    
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+/* Visited links */
+.home-footer-column a:visited {
+    color: #666;
+}
+
+/* Hover effect */
+.home-footer-column a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+
+
+/*----------------------------------------------------------------------------------*/
+
+
+/* Social Media Bottom Footer */
+.bottom-footer {
+    background: #ffffff;
+    padding: 32px 40px;
+    border-top: 1px solid #d4d4d4;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.home-social-icons {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: -7px;
+    margin-bottom: 25px;
+}
+
+.home-social-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* Grey circle layer */
+.home-social-icon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+
+    transform: scale(0);            /* start hidden */
+    transition: transform 0.25s ease;
+    z-index: 0;
+}
+
+/* Zoom in effect */
+.home-social-icon:hover::before {
+    transform: scale(1);
+}
+
+/* Keep icon above circle */
+.home-social-icon img {
+    position: relative;
+    z-index: 1;
+
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+/* Individual icon sizing */
+.home-social-icon.spotify img,
+.home-social-icon.facebook img,
+.home-social-icon.pinterest img,
+.home-social-icon.instagram img,
+.home-social-icon.youtube img,
+.home-social-icon.twitter img {
+    width: 40px;
+    height: 32px;
+}
+
+.footer-legal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.footer-legal-links a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+
+    display: inline-block;   
+    width: -moz-fit-content;   
+    width: fit-content;      
+    position: relative;
+}
+
+.footer-legal-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.5px;
+    width: 100%;
+    height: 0.5px;
+    background-color: #000;
+    opacity: 0;
+}
+
+.footer-legal-links a:hover::after {
+    opacity: 1;
+}
+
+.home-copyright {
+    color: #00000099;
+    font-size: 9.5px;
+    margin: 0;
+}
+
+/* Navigation Bar Shadow Divider */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 32px;
+    background: #ffffff;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 10;
+}
+
+
+
+
+/*----------------------------------------------------------------------------------*/

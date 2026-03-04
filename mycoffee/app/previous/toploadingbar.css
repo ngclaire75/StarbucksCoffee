@@ -1,0 +1,31 @@
+.top-loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 40%; /* shorter bar */
+  background: #00754a;
+  box-shadow: #00754a85 0px 1px 2px;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+/* Enter: slide from left off-screen to starting position smoothly */
+.top-loading-bar.enter {
+  animation: loadbar-enter 1s linear forwards;
+}
+
+/* Exit: slide completely off-screen while shrinking */
+.top-loading-bar.exit {
+  animation: loadbar-exit 0.4s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes loadbar-enter {
+  from { transform: translateX(-100%) } /* start off-screen */
+  to { transform: translateX(0%) }     /* end at normal starting position */
+}
+
+@keyframes loadbar-exit {
+  from { transform: translateX(0%) scaleX(1); }
+  to { transform: translateX(250%) scaleX(0); }
+}

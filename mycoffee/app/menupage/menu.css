@@ -1,0 +1,192 @@
+/* Wrapper — position handled via inline style in JSX (fixed + translateY) */
+.menu-navbar-wrapper {
+  background: #ffffff;
+  width: 100%;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  position: relative;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 28px 0;
+
+  --underline-height: 6px;
+  --underline-offset: -8.5px;
+}
+
+/* Active underline */
+.nav-links li.active::after {
+  content: "";
+  position: absolute;
+  bottom: var(--underline-offset);
+  left: 0;
+  height: var(--underline-height);
+  width: 100%;
+  background-color: #00754a;
+  transition: none;
+}
+
+/* Remove hover effect */
+.nav-links li::after {
+  content: none;
+}
+
+/* Divider line under the navbar */
+.navbar-divider {
+  width: 100%;
+  height: 0.8px;
+  background-color: #000000;
+  opacity: 0.15;
+  margin-top: 0;
+
+  --shadow-color: rgb(0, 0, 0);
+  --shadow-offset-y: 1px;
+  --shadow-blur: 2px;
+  box-shadow: 0 var(--shadow-offset-y) var(--shadow-blur) var(--shadow-color);
+}
+
+
+/*----------------------------------------------------------------------------------*/
+
+/* MAIN LAYOUT */
+.menu-container {
+  margin-top: 28px;
+  display: flex;
+  padding: 12px 129px;
+  gap: 80px;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.menu-sidebar {
+  width: 220px;
+}
+
+.menu-sidebar h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.sidebar-item {
+  font-size: 14px;
+  color: #555;
+  margin: 14px 0;
+  cursor: pointer;
+}
+
+/* RIGHT CONTENT */
+.menu-content {
+  flex: 1;
+  margin-top: 18px;
+  margin-left: -24px;
+}
+
+.menu-title {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 36px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.section-divider {
+  height: 0.5px;
+  background-color: #ddd;
+  margin-bottom: 24px;
+  width: 800px;
+}
+
+/* TRENDING ITEM */
+.trending-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.trending-image-wrapper {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color: #1e3932;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.trending-image {
+  margin-top: 30px;
+  width: 118%;
+  height: 118%;
+  object-fit: contain;
+}
+
+.trending-label {
+  font-size: 16px;
+}
+
+/* DRINKS SECTION */
+.drinks-heading {
+  margin-top: 56px;
+}
+
+.drinks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 350px);
+  row-gap: 26px;
+  column-gap: 61px;
+}
+
+/* FOOD SECTION */
+.food-heading {
+  margin-top: 56px;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 350px);
+  row-gap: 26px;
+  column-gap: 61px;
+}
+
+/* AT HOME COFFEE SECTION */
+.athome-heading {
+  margin-top: 56px;
+}
+
+.athome-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 350px);
+  row-gap: 26px;
+  column-gap: 61px;
+  padding-bottom: 60px;
+}
+
+.athome-image-wrapper {
+  width: 110px;
+  height: 110px;
+}
+
+.athome-image {
+  margin-top: 30px;
+  width: 118%;
+  height: 118%;
+  object-fit: contain;
+}

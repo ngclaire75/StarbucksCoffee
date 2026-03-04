@@ -1,0 +1,46 @@
+{
+  "pages": {
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-app_components_coffeeloading_css-app_favourites_favourites_css-app_home_css-app_menupage_-ab38a9.css",
+      "static/chunks/app/page.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/layout.js"
+    ],
+    "/menupage/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-app_components_coffeeloading_css-app_favourites_favourites_css-app_home_css-app_menupage_-ab38a9.css",
+      "static/chunks/app/menupage/page.js"
+    ],
+    "/menupage/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-app_components_coffeeloading_css-app_favourites_favourites_css-app_home_css-app_menupage_-ab38a9.css",
+      "static/chunks/app/menupage/layout.js"
+    ],
+    "/previous/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-app_components_coffeeloading_css-app_favourites_favourites_css-app_home_css-app_menupage_-ab38a9.css",
+      "static/chunks/app/previous/page.js"
+    ],
+    "/favourites/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-app_components_coffeeloading_css-app_favourites_favourites_css-app_home_css-app_menupage_-ab38a9.css",
+      "static/chunks/app/favourites/page.js"
+    ],
+    "/featured/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/css-app_featured_featured_css.css",
+      "static/css/css-app_components_coffeeloading_css-app_favourites_favourites_css-app_home_css-app_menupage_-ab38a9.css",
+      "static/chunks/app/featured/page.js"
+    ]
+  }
+}

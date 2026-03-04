@@ -1,0 +1,82 @@
+/* Hero Section */
+.featured-hero {
+  background: transparent; /* light beige/grey */
+  padding: 80px 20px;
+  text-align: center;
+    margin-top: -67px;
+}
+
+.featured-hero-title {
+  font-size: 59px;
+  font-weight: 700;
+  color: #006241; /* Starbucks green */
+  letter-spacing: 1.8px;
+}
+
+/* Section wrapper */
+.featured-drinks-section {
+    margin-top: -40px;
+  width: 100%;
+margin-bottom: 20px;
+}
+
+/* Two column layout */
+.featured-drinks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two equal columns */
+  gap: 24px; /* <-- increases gap between the two grids */
+  align-items: stretch; /* <-- makes both cards the same height */
+}
+
+/* Each card stretches to match the tallest card */
+.featured-drink-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* ensures all cards take full column height */
+}
+
+/* Image */
+.featured-drink-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Green content area */
+.featured-drink-content {
+  background-color: #006242;
+  color: white;
+  text-align: center;
+  padding: 60px 40px;
+  height: 240px;
+}
+
+.featured-drink-content h2 {
+    margin-top: -51px;
+  font-size: 26.5px;
+  margin-bottom: 20px;
+    font-weight: 700px;
+}
+
+.featured-drink-content p {
+  font-size: 21.5px;
+  line-height: 1.5;
+  max-width: 620px;
+  margin: 0 auto 24px auto;
+}
+
+/* Button */
+.featured-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 700px;
+}
+
+.featured-btn:hover {
+  background: rgba(0, 0, 0, 0.182);
+}
