@@ -1,7 +1,7 @@
-## Starbucks Coffee Website
+# Starbucks Coffee Website
 A fully responsive Starbucks clone built with Next.js and React, recreating the look and feel of the official Starbucks website with multiple pages, components, and navigation.
 
-## Tech Stack
+# Tech Stack
 
 Framework: Next.js (App Router)
 UI: React (JSX components)
@@ -9,7 +9,7 @@ Styling: CSS Modules (home.css)
 Language: JavaScript / TypeScript (next-env.d.ts)
 Database: Supabase
 
-## Getting Started
+# Getting Started
 Prerequisites
 
 Node.js (v18 or later recommended)
