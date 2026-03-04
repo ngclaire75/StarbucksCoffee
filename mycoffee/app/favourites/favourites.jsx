@@ -12,16 +12,19 @@ import { usePathname } from 'next/navigation';
 import './favourites.css';
 import '../menupage/menu.css';
 
+// Module-level variable — persists across tab switches in the same JS session,
+// resets to false on true first load (fresh page / hard refresh).
+let hasVisitedFavouritesPage = false;
+
 export default function FavouritesPage() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [loading, setLoading] = useState(() => {
-  if (typeof window === 'undefined') return true;
-  const hasLoaded = sessionStorage.getItem('favouritesPageLoaded');
-  return !hasLoaded;
-});
-  const [revealProgress, setRevealProgress] = useState(0);
+
+  const [loading, setLoading] = useState(!hasVisitedFavouritesPage);
+  const [isReturning] = useState(hasVisitedFavouritesPage);
+
+  const [revealProgress, setRevealProgress] = useState(isReturning ? 100 : 0);
   const [navTranslate, setNavTranslate] = useState(0);
   const [navHeight, setNavHeight] = useState(0);
   const [whiteNavHeight, setWhiteNavHeight] = useState(0);
@@ -32,47 +35,37 @@ export default function FavouritesPage() {
 
   const BAR_DURATION = 1800;
 
-useEffect(() => {
-  setMounted(true);
+  useEffect(() => {
+    setMounted(true);
 
-  const hasLoaded = sessionStorage.getItem('favouritesPageLoaded');
+    // Returning visit — skip every animation and delay
+    if (isReturning) {
+      setLoading(false);
+      setRevealProgress(100);
+      return;
+    }
 
-  // 🚫 Skip CoffeeLoading on tab switch
-  if (hasLoaded) {
-    setLoading(false);
+    // First-time load — mark as visited then run staggered reveal
+    hasVisitedFavouritesPage = true;
 
-    // Still run bar + coffee cup animation
-    const startTime = Date.now();
-    progressIntervalRef.current = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const pct = Math.min((elapsed / BAR_DURATION) * 100, 100);
-      setRevealProgress(pct);
-      if (pct >= 100) clearInterval(progressIntervalRef.current);
-    }, 16);
+    const timer = setTimeout(() => {
+      setLoading(false);
 
-    return () => clearInterval(progressIntervalRef.current);
-  }
+      const startTime = Date.now();
+      progressIntervalRef.current = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const pct = Math.min((elapsed / BAR_DURATION) * 100, 100);
+        setRevealProgress(pct);
+        if (pct >= 100) clearInterval(progressIntervalRef.current);
+      }, 16);
 
-  // First hard refresh — show CoffeeLoading
-  const timer = setTimeout(() => {
-    setLoading(false);
-    sessionStorage.setItem('favouritesPageLoaded', 'true');
+    }, 1200);
 
-    const startTime = Date.now();
-    progressIntervalRef.current = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const pct = Math.min((elapsed / BAR_DURATION) * 100, 100);
-      setRevealProgress(pct);
-      if (pct >= 100) clearInterval(progressIntervalRef.current);
-    }, 16);
-
-  }, 1200);
-
-  return () => {
-    clearTimeout(timer);
-    clearInterval(progressIntervalRef.current);
-  };
-}, []);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(progressIntervalRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (navRef.current) setNavHeight(navRef.current.offsetHeight);
@@ -86,7 +79,6 @@ useEffect(() => {
       if (!pagesListRef.current || !navRef.current) return;
       const navH = navRef.current.offsetHeight;
       const pagesListTop = pagesListRef.current.getBoundingClientRect().top;
-
       const overlap = navH - pagesListTop;
 
       if (overlap > 0) {
@@ -115,17 +107,16 @@ useEffect(() => {
     { id: 'previous', label: 'Previous', href: '/previous' },
     { id: 'favourites', label: 'Favourites', href: '/favourites' },
   ];
-  
-if (!mounted || loading) return <CoffeeLoading />;
+
+  if (!mounted || loading) return <CoffeeLoading />;
 
   return (
     <>
-        <TopLoadingBar />
+      {!isReturning && <TopLoadingBar />}
 
-      {/* Coffee cup shown until content starts revealing */}
-      {revealProgress < 60 && <CoffeeCupOnly />}
+      {/* Coffee cup shown until content starts revealing — skip on returning visits */}
+      {!isReturning && revealProgress < 60 && <CoffeeCupOnly />}
 
-      {/* ── Navbar ── */}
       <div
         ref={navRef}
         className="fav-navbar-wrapper"
@@ -148,14 +139,13 @@ if (!mounted || loading) return <CoffeeLoading />;
         <MenuTabs activeTab="favourites" tabs={tabs} />
       </div>
 
-      {/* ── Spacer ── */}
       <div
         className="fav-spacer"
         style={{ height: scrolled ? 48 : (navHeight || 100) }}
       />
 
-      {/* ── Favourites Page Content — reveals after coffee cup ── */}
-      <div style={{
+      {/* Content — instant on returning visits, animated on first load */}
+      <div style={isReturning ? {} : {
         opacity: revealProgress >= 60 ? 1 : 0,
         transform: revealProgress >= 60 ? 'translateY(0)' : 'translateY(10px)',
         transition: 'opacity 0.35s ease, transform 0.35s ease',
@@ -163,9 +153,7 @@ if (!mounted || loading) return <CoffeeLoading />;
         <div className="fav-container">
           <h1 className="fav-title">Favourites</h1>
 
-          {/* Empty state */}
           <div className="fav-empty-state">
-            {/* Image illustration */}
             <div className="fav-img-wrapper favourites-gif-delayed">
               <img
                 src="/images/fav-tapes.png"
@@ -175,15 +163,12 @@ if (!mounted || loading) return <CoffeeLoading />;
               />
             </div>
 
-            {/* Heading */}
             <h2 className="fav-empty-heading">Save your favorite mixes</h2>
 
-            {/* Subtext */}
             <p className="fav-empty-subtext">
               Use the heart to save customizations. Your <br/>favorites will appear here to order again.
             </p>
 
-            {/* Buttons */}
             <div className="fav-btn-row">
               <button className="fav-btn fav-btn-signin">Sign in</button>
               <button className="fav-btn fav-btn-join">Join now</button>
@@ -191,7 +176,6 @@ if (!mounted || loading) return <CoffeeLoading />;
           </div>
         </div>
 
-        {/* Wrap PagesListMenu so we can measure exactly when its top hits the nav */}
         <div ref={pagesListRef}>
           <PagesListMenu extraHeight={140} />
         </div>

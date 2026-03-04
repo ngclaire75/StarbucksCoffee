@@ -69,7 +69,7 @@ margin-bottom: 20px;
 .featured-btn {
   background: transparent;
   color: white;
-  border: 1px solid white;
+  border: 1.5px solid white;
   padding: 6px 20px;
   border-radius: 30px;
   font-size: 13px;
@@ -79,4 +79,135 @@ margin-bottom: 20px;
 
 .featured-btn:hover {
   background: rgba(0, 0, 0, 0.182);
+}
+
+
+/* New Coconut Section (light background variant) */
+.featured-coconut-section {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.featured-coconut-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.featured-coconut-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.featured-coconut-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.featured-coconut-content {
+  background-color: #f2ede4; /* light beige like in the screenshot */
+  color: #006242;
+  text-align: center;
+  padding: 40px 40px 50px;
+  flex: 1;
+}
+
+.featured-coconut-content h2 {
+  margin-top: -30px;
+  font-size: 26.5px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #006242;
+}
+
+.featured-coconut-content p {
+  font-size: 21.5px;
+  line-height: 1.5;
+  max-width: 620px;
+  margin: 0 auto 24px auto;
+  color: #006242;
+}
+
+.featured-coconut-btn {
+  background: transparent;
+  color: #006242;
+  border: 1.5px solid #006242;
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.featured-coconut-btn:hover {
+  background: rgba(4, 119, 40, 0.068);
+}
+
+.featured-coconut-btn.right-btn {
+  position: relative;
+  top: 52px; /* ← adjust this value only */
+}
+
+.featured-coconut-btn.left-btn {
+  position: relative;
+  top: 20px; /* ← adjust this value only */
+}
+
+/* Food Banner Section */
+.featured-food-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: #f2ede4;
+}
+
+.featured-food-banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.featured-food-banner-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 80px;
+  background-color: #eeecd0;
+}
+
+.featured-food-banner-content h2 {
+  font-size: 21px;
+  font-weight: 700;
+  color: #006242;
+  margin-bottom: 20px;
+}
+
+.featured-food-banner-content p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #006242;
+  max-width: 500px;
+  margin-bottom: 28px;
+}
+
+.featured-food-banner-btn {
+  background: transparent;
+  color: #006242;
+  border: 1.5px solid #006242;
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.featured-food-banner-btn:hover {
+  background: rgba(4, 119, 40, 0.068);
 }

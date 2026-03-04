@@ -12,16 +12,19 @@ import { usePathname } from 'next/navigation';
 import './previous.css';
 import '../menupage/menu.css';
 
+// Module-level variable — persists across tab switches in the same JS session,
+// resets to false on true first load (fresh page / hard refresh).
+let hasVisitedPreviousPage = false;
+
 export default function PreviousPage() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [loading, setLoading] = useState(() => {
-  if (typeof window === 'undefined') return true;
-  const hasLoaded = sessionStorage.getItem('previousPageLoaded');
-  return !hasLoaded;
-});
-  const [revealProgress, setRevealProgress] = useState(0);
+
+  const [loading, setLoading] = useState(!hasVisitedPreviousPage);
+  const [isReturning] = useState(hasVisitedPreviousPage);
+
+  const [revealProgress, setRevealProgress] = useState(isReturning ? 100 : 0);
   const [navTranslate, setNavTranslate] = useState(0);
   const [navHeight, setNavHeight] = useState(0);
   const [whiteNavHeight, setWhiteNavHeight] = useState(0);
@@ -32,47 +35,37 @@ export default function PreviousPage() {
 
   const BAR_DURATION = 1800;
 
-useEffect(() => {
-  setMounted(true);
+  useEffect(() => {
+    setMounted(true);
 
-  const hasLoaded = sessionStorage.getItem('previousPageLoaded');
+    // Returning visit — skip every animation and delay
+    if (isReturning) {
+      setLoading(false);
+      setRevealProgress(100);
+      return;
+    }
 
-  // 🚫 Skip CoffeeLoading on tab switch
-  if (hasLoaded) {
-    setLoading(false);
+    // First-time load — mark as visited then run staggered reveal
+    hasVisitedPreviousPage = true;
 
-    // Still run reveal animation + coffee cup
-    const startTime = Date.now();
-    progressIntervalRef.current = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const pct = Math.min((elapsed / BAR_DURATION) * 100, 100);
-      setRevealProgress(pct);
-      if (pct >= 100) clearInterval(progressIntervalRef.current);
-    }, 16);
+    const timer = setTimeout(() => {
+      setLoading(false);
 
-    return () => clearInterval(progressIntervalRef.current);
-  }
+      const startTime = Date.now();
+      progressIntervalRef.current = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const pct = Math.min((elapsed / BAR_DURATION) * 100, 100);
+        setRevealProgress(pct);
+        if (pct >= 100) clearInterval(progressIntervalRef.current);
+      }, 16);
 
-  // First hard refresh — show CoffeeLoading
-  const timer = setTimeout(() => {
-    setLoading(false);
-    sessionStorage.setItem('previousPageLoaded', 'true');
+    }, 1200);
 
-    const startTime = Date.now();
-    progressIntervalRef.current = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const pct = Math.min((elapsed / BAR_DURATION) * 100, 100);
-      setRevealProgress(pct);
-      if (pct >= 100) clearInterval(progressIntervalRef.current);
-    }, 16);
-
-  }, 1200);
-
-  return () => {
-    clearTimeout(timer);
-    clearInterval(progressIntervalRef.current);
-  };
-}, []);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(progressIntervalRef.current);
+    };
+  }, []);
 
   // Measure heights after mount
   useEffect(() => {
@@ -84,12 +77,9 @@ useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
 
-      // Push nav up only when the top of PagesListMenu reaches the bottom of the nav
       if (!pagesListRef.current || !navRef.current) return;
       const navH = navRef.current.offsetHeight;
       const pagesListTop = pagesListRef.current.getBoundingClientRect().top;
-
-      // overlap is positive only when PagesListMenu top has crossed above the nav's bottom edge
       const overlap = navH - pagesListTop;
 
       if (overlap > 0) {
@@ -118,17 +108,15 @@ useEffect(() => {
     { id: 'favourites', label: 'Favourites', href: '/favourites' },
   ];
 
-if (!mounted || loading) return <CoffeeLoading />;
+  if (!mounted || loading) return <CoffeeLoading />;
 
   return (
     <>
-        {/* ── Top Loading Bar ── */}
-      <TopLoadingBar />
+      {!isReturning && <TopLoadingBar />}
 
-      {/* Coffee cup shown until content starts revealing */}
-      {revealProgress < 60 && <CoffeeCupOnly />}
-      
-      {/* ── Navbar ── */}
+      {/* Coffee cup shown until content starts revealing — skip on returning visits */}
+      {!isReturning && revealProgress < 60 && <CoffeeCupOnly />}
+
       <div
         ref={navRef}
         className="previous-navbar-wrapper"
@@ -137,7 +125,6 @@ if (!mounted || loading) return <CoffeeLoading />;
           transition: navTranslate === 0 ? 'transform 0.15s ease' : 'none',
         }}
       >
-        {/* WhiteNav smoothly collapses on scroll */}
         <div
           ref={whiteNavRef}
           className="previous-whitenav-collapse"
@@ -152,14 +139,13 @@ if (!mounted || loading) return <CoffeeLoading />;
         <MenuTabs activeTab="previous" tabs={tabs} />
       </div>
 
-      {/* ── Spacer ── */}
       <div
         className="previous-spacer"
         style={{ height: scrolled ? 48 : (navHeight || 100) }}
       />
 
-      {/* ── Previous Page Content — reveals after coffee cup ── */}
-      <div style={{
+      {/* Content — instant on returning visits, animated on first load */}
+      <div style={isReturning ? {} : {
         opacity: revealProgress >= 60 ? 1 : 0,
         transform: revealProgress >= 60 ? 'translateY(0)' : 'translateY(10px)',
         transition: 'opacity 0.35s ease, transform 0.35s ease',
@@ -167,9 +153,7 @@ if (!mounted || loading) return <CoffeeLoading />;
         <div className="previous-container">
           <h1 className="previous-title">Previous</h1>
 
-          {/* Empty state */}
           <div className="previous-empty-state">
-            {/* GIF illustration */}
             <div className="previous-gif-wrapper previous-gif-delayed">
               <img
                 src="/images/previous.gif"
@@ -179,15 +163,12 @@ if (!mounted || loading) return <CoffeeLoading />;
               />
             </div>
 
-            {/* Heading */}
             <h2 className="previous-empty-heading">When history repeats itself</h2>
 
-            {/* Subtext */}
             <p className="previous-empty-subtext">
               Previous orders will appear here to quickly order again.
             </p>
 
-            {/* Buttons */}
             <div className="previous-btn-row">
               <button className="previous-btn previous-btn-signin">Sign in</button>
               <button className="previous-btn previous-btn-join">Join now</button>
@@ -195,7 +176,6 @@ if (!mounted || loading) return <CoffeeLoading />;
           </div>
         </div>
 
-        {/* Wrap PagesListMenu so we can measure exactly when its top hits the nav */}
         <div ref={pagesListRef}>
           <PagesListMenu extraHeight={140} />
         </div>

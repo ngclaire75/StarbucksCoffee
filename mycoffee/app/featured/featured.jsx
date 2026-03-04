@@ -78,6 +78,66 @@ useEffect(() => {
         </div>
       </section>
 
+      {/* 🥥 New Coconut Drinks Section */}
+<section className="featured-coconut-section">
+  <div className="featured-coconut-grid">
+
+    {/* Left Card */}
+    <div className="featured-coconut-card">
+      <img
+        src="/images/ube-coconut.png"
+        alt="New Iced Ube Coconut Macchiato"
+        className="featured-coconut-image"
+      />
+      <div className="featured-coconut-content">
+        <h2>New Iced Ube Coconut Macchiato</h2>
+        <p>
+          Discover creamy layers of sweet, nutty-vanilla ube and toasted
+          coconut flavor. Bold espresso and milk topped with vibrant ube
+          coconut cream cold foam and coconut flakes.
+        </p>
+        <button className="featured-coconut-btn left-btn">Start an order</button>
+      </div>
+    </div>
+
+    {/* Right Card */}
+    <div className="featured-coconut-card">
+      <img
+        src="/images/toasted-coconut-brew.png"
+        alt="New Toasted Coconut Cream Cold Brew"
+        className="featured-coconut-image"
+      />
+      <div className="featured-coconut-content">
+        <h2>New Toasted Coconut Cream Cold Brew</h2>
+        <p>
+          A refreshing favorite gets a flavorful twist. Smooth Starbucks® Cold
+          Brew layered with toasted coconut cream cold foam.
+        </p>
+        <button className="featured-coconut-btn right-btn">Order Toasted Coconut</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{/* 🥓 Food Banner Section */}
+<section className="featured-food-banner">
+  <img
+    src="/images/bacon.png"
+    alt="Bacon, Gouda & Egg Sandwich"
+    className="featured-food-banner-image"
+  />
+  <div className="featured-food-banner-content">
+    <h2>Bacon, Gouda & Egg Sandwich</h2>
+    <p>
+      Packed with a savory 18 grams of protein. Applewood-smoked bacon, fluffy
+      Parmesan cage-free egg frittata and melted aged Gouda stacked on an
+      artisan roll.
+    </p>
+    <button className="featured-food-banner-btn">Order now</button>
+  </div>
+</section>
+
       {/* Footer */}
       <PagesList />
 
