@@ -10,25 +10,21 @@ Language: JavaScript / TypeScript (next-env.d.ts)
 Database: Supabase
 
 # Getting Started
-Prerequisites
+## Prerequisites
 
 Node.js (v18 or later recommended)
 npm or yarn
 
-Installation
-# Clone the repository
+## Installation
+Clone the repository
 git clone https://github.com/ngclaire75/StarbucksCoffee
 cd mycoffee
 
-# Install dependencies
+Install dependencies
 npm install
 Running Locally
 bashnpm run dev
 Open http://localhost:3000 in your browser to view the site.
-
-# Building for Production
-bashnpm run build
-npm start
 
 > Notes
 
