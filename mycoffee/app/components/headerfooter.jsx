@@ -5,13 +5,15 @@ import '../ourcoffeepage/ourcoffee.css';
 import { useRouter } from "next/navigation";
 import { useLanguage } from '../contexts/LanguageContext';
 
-const LANG_OPTIONS = [
-  { code: 'en', label: 'English' },
-  { code: 'fr', label: 'Français' },
-  { code: 'es', label: 'Español' },
-  { code: 'pt', label: 'Português' },
-  { code: 'ja', label: '日本語' },
-];
+const ExternalIcon = () => (
+  <span className="external-icon">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+      <polyline points="15 3 21 3 21 9"></polyline>
+      <line x1="10" y1="14" x2="21" y2="3"></line>
+    </svg>
+  </span>
+);
 
 const HeaderFooter = ({ children }) => {
   const { t, lang, setLang } = useLanguage();
@@ -148,15 +150,35 @@ const HeaderFooter = ({ children }) => {
               <img src="/images/globalicon.png" alt="Globe Icon" />
               {langOpen && (
                 <div className="lang-dropdown" onClick={e => e.stopPropagation()}>
-                  {LANG_OPTIONS.map(({ code, label }) => (
-                    <button
-                      key={code}
-                      className={`lang-drop-btn${lang === code ? ' lang-drop-active' : ''}`}
-                      onClick={() => { setLang(code); setLangOpen(false); }}
-                    >
-                      {label}
-                    </button>
-                  ))}
+                  <div className="footer-regions" style={{ padding: '16px', minWidth: '320px' }}>
+                    <div className="region-group">
+                      <h4>Canada</h4>
+                      <button className={`lang-btn${lang === 'en' ? ' lang-btn-active' : ''}`} onClick={() => { setLang('en'); setLangOpen(false); }}>English <ExternalIcon /></button>
+                      <button className={`lang-btn${lang === 'fr' ? ' lang-btn-active' : ''}`} onClick={() => { setLang('fr'); setLangOpen(false); }}>Français <ExternalIcon /></button>
+                    </div>
+                    <div className="region-group">
+                      <h4>USA</h4>
+                      <button className={`lang-btn${lang === 'en' ? ' lang-btn-active' : ''}`} onClick={() => { setLang('en'); setLangOpen(false); }}>English <ExternalIcon /></button>
+                    </div>
+                    <div className="region-group">
+                      <h4>EMEA</h4>
+                      <button className={`lang-btn${lang === 'en' ? ' lang-btn-active' : ''}`} onClick={() => { setLang('en'); setLangOpen(false); }}>English <ExternalIcon /></button>
+                    </div>
+                    <div className="region-group">
+                      <h4>Latin America</h4>
+                      <button className={`lang-btn${lang === 'en' ? ' lang-btn-active' : ''}`} onClick={() => { setLang('en'); setLangOpen(false); }}>English <ExternalIcon /></button>
+                      <button className={`lang-btn${lang === 'es' ? ' lang-btn-active' : ''}`} onClick={() => { setLang('es'); setLangOpen(false); }}>Español <ExternalIcon /></button>
+                      <button className={`lang-btn${lang === 'pt' ? ' lang-btn-active' : ''}`} onClick={() => { setLang('pt'); setLangOpen(false); }}>Português <ExternalIcon /></button>
+                    </div>
+                    <div className="region-group">
+                      <h4>Asia</h4>
+                      <button className={`lang-btn${lang === 'en' ? ' lang-btn-active' : ''}`} onClick={() => { setLang('en'); setLangOpen(false); }}>English <ExternalIcon /></button>
+                    </div>
+                    <div className="region-group">
+                      <h4>Japan</h4>
+                      <button className={`lang-btn lang-btn-ja${lang === 'ja' ? ' lang-btn-active' : ''}`} onClick={() => { setLang('ja'); setLangOpen(false); }}>日本語 <ExternalIcon /></button>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

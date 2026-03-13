@@ -91,9 +91,12 @@ export default function ComingSoon({ title, icon }) {
               strokeDasharray="240" strokeDashoffset="0"
               style={{ animation: "cs-dash 2s ease forwards" }}/>
             {(() => {
-              const Preset = ICONS[icon];
-              if (Preset) return <Preset />;
-              return <text x="40" y="50" textAnchor="middle" fontSize="30" fill="white">{icon}</text>;
+              if (typeof icon === 'string') {
+                const Preset = ICONS[icon];
+                if (Preset) return <Preset />;
+                return <text x="40" y="50" textAnchor="middle" fontSize="30" fill="white">{icon}</text>;
+              }
+              return icon;
             })()}
           </svg>
         </div>
