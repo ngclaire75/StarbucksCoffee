@@ -597,13 +597,22 @@ img {
 }
 
 .home-footer-column li {
-    margin-left: -27px;       
-    font-size: 14px;     
+    margin-left: -27px;
+    font-size: 14px;
     color: #666;
-    margin-bottom: 17px; 
+    margin-bottom: 17px;
     cursor: pointer;
     transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
+.home-footer-column li svg {
+    flex-shrink: 0;
+    color: #666;
+    transition: color 0.2s;
+}
+.home-footer-column li:hover svg { color: #000; }
 
 .home-footer-column li:hover {
     color: #000;

@@ -13,15 +13,35 @@ export default function PagesList({ extraHeight = 0 }) {
           <ul>
             <li><a href="/ourcompanypage">Our Company</a></li>
             <li><a href="/ourcoffeepage">Our Coffee</a></li>
-            <li style={{ cursor: 'pointer' }} onClick={() => router.push('/aboutstarbuckspage')}>About Starbucks</li>
-            <li style={{ cursor: 'pointer' }} onClick={() => router.push('/customerservice')}>Customer Service</li>
-            <li style={{ cursor: 'pointer' }} onClick={() => router.push('/contactus')}>Contact Us</li>
+            <li style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }} onClick={() => router.push('/aboutstarbuckspage')}>
+              About Starbucks
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </li>
+            <li style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }} onClick={() => router.push('/customerservice')}>
+              Customer Service
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </li>
+            <li style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }} onClick={() => router.push('/contactus')}>
+              Contact Us
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </li>
           </ul>
         </div>
         <div className="home-footer-column">
           <h3>Order and Pick Up</h3>
           <ul>
-            <li style={{ cursor: 'pointer' }} onClick={() => router.push('/orderinapp')}>Order on the App</li>
+            <li style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }} onClick={() => router.push('/orderinapp')}>
+              Order on the App
+              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+            </li>
             <li><a href="/menupage">Order on the Web</a></li>
             <li style={{ cursor: 'pointer' }} onClick={() => router.push('/store-locator?tab=Delivery')}>Delivery</li>
             <li style={{ cursor: 'pointer' }} onClick={() => router.push('/store-locator?tab=Pickup')}>Order and Pick Up Options</li>

@@ -31,14 +31,25 @@
     margin-left: -27px;
     font-size: 14px;
     color: #666;
-    margin-bottom: 17px; /* ← bigger gap than original (was 17px) */
+    margin-bottom: 17px;
     cursor: pointer;
     transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .menu-footer-column li:hover {
     color: #000;
 }
+
+.menu-footer-column li svg {
+    flex-shrink: 0;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.menu-footer-column li:hover svg { color: #000; }
 
 .menu-footer-column a {
     color: #666;
