@@ -123,8 +123,12 @@
 ====================================================================== */
 @media (max-width: 768px) {
 
-  /* ── Prevent horizontal scroll globally ── */
-  html, body { overflow-x: hidden; }
+  /* ── Global: prevent horizontal scroll ── */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
 
   /* ═══════════════════════════════════════
      HOME / WHITE NAVBAR
@@ -134,9 +138,7 @@
     height: 60px !important;
     flex-wrap: nowrap;
   }
-  .logo img {
-    width: 44px !important;
-  }
+  .logo img { width: 44px !important; }
   .nav-links { display: none !important; }
   .find-store span { display: none; }
   .find-store { padding: 0; }
@@ -144,67 +146,50 @@
   .btn-outline, .btn-black { display: none; }
   .hamburger-btn { display: flex; }
 
+
   /* ═══════════════════════════════════════
      HOME PAGE SECTIONS
   ═══════════════════════════════════════ */
-  /* Green banner strip */
   .green-bar {
     flex-direction: column;
-    padding: 20px 20px;
+    padding: 20px;
     text-align: center;
     gap: 10px;
   }
-  .green-bar h2 {
-    font-size: 18px;
-    margin-top: 0;
-    transform: none;
-  }
-  .start-order-btn {
-    font-size: 16px;
-    margin-top: 0;
-    padding: 8px 20px;
-  }
+  .green-bar h2 { font-size: 18px; margin-top: 0; transform: none; }
+  .start-order-btn { font-size: 16px; margin-top: 0; padding: 8px 20px; }
 
-  /* Dubai Chocolate + Khloé sections */
-  .main-section { flex-direction: column; }
-  .left-image { width: 100%; height: 55vw; }
+  .main-section { flex-direction: column !important; }
+  .left-image { width: 100% !important; height: 55vw !important; }
   .left-image img { height: 100%; }
-  .right-text {
-    width: 100%;
-    padding: 36px 20px;
-  }
-  .right-text h1 { font-size: 22px; margin-bottom: 14px; }
-  .right-text p { font-size: 16px; line-height: 26px; margin-bottom: 22px; }
+  .right-text { width: 100% !important; padding: 36px 20px !important; }
+  .right-text h1 { font-size: 22px !important; margin-bottom: 14px; }
+  .right-text p  { font-size: 16px !important; line-height: 26px; margin-bottom: 22px; }
 
-  /* Caramel Protein section */
-  .roller-section { flex-direction: column-reverse; height: auto; }
-  .roller-left { width: 100%; padding: 36px 20px; gap: 16px; }
-  .roller-right { width: 100%; height: 55vw; position: static; }
-  .roller-right img { height: 100%; width: 100%; }
-  .roller-left h1 { font-size: 22px; }
-  .roller-left p { font-size: 16px; }
+  .roller-section { flex-direction: column-reverse !important; height: auto !important; }
+  .roller-left  { width: 100% !important; padding: 36px 20px !important; gap: 16px; }
+  .roller-right { width: 100% !important; height: 55vw !important; position: static !important; }
+  .roller-right img { height: 100% !important; width: 100% !important; }
+  .roller-left h1 { font-size: 22px !important; }
+  .roller-left p  { font-size: 16px !important; }
 
-  /* Free Drink section */
-  .free-drink-section { flex-direction: column-reverse; height: auto; }
-  .free-drink-text { width: 100%; padding: 36px 20px; gap: 16px; }
-  .free-drink-image { width: 100%; height: 55vw; }
-  .free-drink-text h1 { font-size: 22px; }
-  .free-drink-text p { font-size: 16px; }
+  .free-drink-section { flex-direction: column-reverse !important; height: auto !important; }
+  .free-drink-text  { width: 100% !important; padding: 36px 20px !important; gap: 16px; }
+  .free-drink-image { width: 100% !important; height: 55vw !important; }
+  .free-drink-text h1 { font-size: 22px !important; }
+  .free-drink-text p  { font-size: 16px !important; }
 
-  /* Free Refills section */
-  .free-cheer-section { flex-direction: column; height: auto; }
-  .free-cheer-text { width: 100%; padding: 36px 20px; gap: 16px; }
-  .free-cheer-image { width: 100%; height: 55vw; }
-  .free-cheer-text h1 { font-size: 18px; }
-  .free-cheer-text p { font-size: 15px; }
+  .free-cheer-section { flex-direction: column !important; height: auto !important; }
+  .free-cheer-text  { width: 100% !important; padding: 36px 20px !important; gap: 16px; }
+  .free-cheer-image { width: 100% !important; height: 55vw !important; }
+  .free-cheer-text h1 { font-size: 18px !important; }
+  .free-cheer-text p  { font-size: 15px !important; }
 
-  /* Legal notice */
   .notice-section { padding: 32px 20px; }
   .notice-section p { font-size: 13px; max-width: 100%; }
   .notice-section .small-text { font-size: 13px; top: 0; max-width: 100%; }
 
-  /* Home footer columns */
-  .home-footer-links { padding: 20px 20px; gap: 20px; }
+  .home-footer-links { padding: 20px; gap: 20px; }
   .home-footer-column { min-width: 140px; }
   .bottom-footer { padding: 24px 20px; }
 
@@ -213,21 +198,41 @@
      MENU PAGE
   ═══════════════════════════════════════ */
   .menu-container {
-    flex-direction: column;
+    flex-direction: column !important;
     padding: 12px 16px !important;
     gap: 0;
     margin-top: 0;
   }
   .menu-sidebar {
-    width: 100%;
+    width: 100% !important;
     border-bottom: 1px solid #eee;
     padding-bottom: 12px;
     margin-bottom: 12px;
   }
-  .menu-content { margin-left: 0; }
+  .menu-content { margin-left: 0 !important; }
   .section-divider { width: 100% !important; }
-  .drinks-grid, .food-grid, .athome-grid { grid-template-columns: 1fr; }
-  .menu-title { font-size: 20px; }
+  .drinks-grid, .food-grid, .athome-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .menu-title { font-size: 20px !important; }
+
+  /* Menu tabs */
+  .menu-tabs {
+    margin-left: 16px !important;
+    gap: 16px !important;
+    flex-wrap: wrap;
+  }
+
+  /* Menu footer links */
+  .menu-footer-links {
+    padding: 20px 16px !important;
+    gap: 24px !important;
+    flex-wrap: wrap;
+  }
+  .menu-footer-column { min-width: 140px; }
+  .menu-footer-column h3 { margin-left: 0 !important; }
+  .menu-footer-column li { margin-left: 0 !important; }
+  .menu-footer-column a { font-size: 13px; }
 
 
   /* ═══════════════════════════════════════
@@ -236,24 +241,58 @@
   .item-availability-bar {
     padding-left: 16px !important;
     padding-right: 16px !important;
-    height: auto;
-    min-height: 70px;
+    height: auto !important;
+    min-height: 70px !important;
   }
-  .item-availability-bag { right: 0 !important; }
-  .item-availability-chevron { margin-left: 12px; }
+  .item-availability-bag {
+    right: 0 !important;
+    position: static !important;
+    top: auto !important;
+  }
+  .item-availability-chevron { margin-left: 12px !important; }
 
 
   /* ═══════════════════════════════════════
-     GREEN HEADER (ourcoffee/ourcompany)
+     CUSTOMIZE PAGE (menu item detail)
+  ═══════════════════════════════════════ */
+  /* Make the two-column layout stack */
+  nav + div {
+    flex-direction: column !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+  nav + div > div:first-child {
+    width: 100% !important;
+    height: 280px !important;
+    margin-top: 0 !important;
+    flex-shrink: 0;
+  }
+  .sbRightPanel {
+    overflow-y: visible !important;
+    height: auto !important;
+  }
+  /* Hide nutrition strip on mobile to prevent overflow */
+  nav + div > div:first-child > div {
+    position: static !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+  /* Root wrapper scroll */
+  div:has(> nav > .sbBackBtn) {
+    height: auto !important;
+    overflow: auto !important;
+  }
+
+
+  /* ═══════════════════════════════════════
+     GREEN HEADER (ourcoffee / ourcompany)
   ═══════════════════════════════════════ */
   .bar-content { padding: 0 16px !important; }
   .green-nav-links { display: none !important; }
-  .hf-hamburger { display: flex; }
+  .hf-hamburger { display: flex !important; }
 
-  /* Dropdown menus — stack vertically on mobile */
-  .dropdown-menu {
-    border-radius: 0 0 20px 20px;
-  }
+  /* Dropdown menus */
+  .dropdown-menu { border-radius: 0 0 20px 20px; }
   .dropdown-content {
     display: flex !important;
     flex-wrap: wrap;
@@ -268,11 +307,7 @@
     border: none !important;
     border-radius: 10px;
   }
-  .dropdown-icon {
-    width: 52px !important;
-    height: 52px !important;
-    margin-bottom: 8px !important;
-  }
+  .dropdown-icon { width: 52px !important; height: 52px !important; margin-bottom: 8px !important; }
   .dropdown-label { font-size: 13px !important; }
   .empty-grid-left, .empty-grid-right { display: none !important; }
   #newsDropdown .news-item {
@@ -290,10 +325,12 @@
   #newsDropdown .dropdown-content::before,
   #newsDropdown .dropdown-content::after { display: none; }
 
-  /* Search + Globe panels — full width on mobile */
+  /* Search + Globe panels */
   .search-panel, .globe-panel {
     width: 100% !important;
     max-width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
   }
   .search-circle-card {
     width: 280px !important;
@@ -303,10 +340,8 @@
 
 
   /* ═══════════════════════════════════════
-     OURCOFFEE PAGE CONTENT
+     OURCOFFEE PAGE
   ═══════════════════════════════════════ */
-
-  /* Our Coffee Story grid */
   .our-coffee-story {
     grid-template-columns: 1fr !important;
     max-width: 100%;
@@ -321,15 +356,8 @@
     letter-spacing: -1px !important;
     line-height: 0.95 !important;
   }
-  .coffee-image-top {
-    grid-column: 1 !important;
-    grid-row: 2 !important;
-    min-height: 220px !important;
-  }
-  .coffee-image-bottom {
-    grid-column: 1 !important;
-    grid-row: 3 !important;
-  }
+  .coffee-image-top  { grid-column: 1 !important; grid-row: 2 !important; min-height: 220px !important; }
+  .coffee-image-bottom { grid-column: 1 !important; grid-row: 3 !important; }
   .coffee-text {
     grid-column: 1 !important;
     grid-row: 4 !important;
@@ -337,7 +365,6 @@
     margin-left: 0 !important;
   }
 
-  /* Cup / Coffee Tree section */
   .cup-section {
     height: auto !important;
     min-height: 300px;
@@ -349,15 +376,10 @@
     gap: 24px !important;
     align-items: flex-start !important;
   }
-  .cup-text { max-width: 100%; }
-  .cup-text h1 {
-    font-size: 36px !important;
-    transform: none !important;
-    margin-bottom: 14px;
-  }
+  .cup-text { max-width: 100% !important; }
+  .cup-text h1 { font-size: 36px !important; transform: none !important; margin-bottom: 14px; }
   .cup-banner { display: none !important; }
 
-  /* Bean capsule section */
   .bean-section {
     width: 100% !important;
     margin: 32px 0 !important;
@@ -370,62 +392,38 @@
     flex-direction: column !important;
     border-radius: 12px !important;
   }
-  .bean-image {
-    width: 100% !important;
-    height: 220px !important;
-    padding-left: 0 !important;
-  }
+  .bean-image { width: 100% !important; height: 220px !important; padding-left: 0 !important; }
   .bean-image img { height: 100% !important; }
-  .bean-content {
-    width: 100% !important;
-    padding: 28px 24px !important;
-  }
-  .bean-content h1 {
-    font-size: 26px !important;
-    margin-left: 0 !important;
-    transform: none !important;
-    margin-bottom: 14px;
-  }
-  .bean-content p {
-    font-size: 14px !important;
-    margin-left: 0 !important;
-    margin-bottom: 20px;
-  }
+  .bean-content { width: 100% !important; padding: 28px 24px !important; }
+  .bean-content h1 { font-size: 26px !important; margin-left: 0 !important; transform: none !important; margin-bottom: 14px; }
+  .bean-content p  { font-size: 14px !important; margin-left: 0 !important; margin-bottom: 20px; }
   .bean-btn { transform: none !important; }
 
-  /* Numbers / stats section */
   .numbers-section {
     margin-left: 0 !important;
     padding: 16px 20px !important;
     max-width: 100%;
     margin-top: 0 !important;
   }
-  .numbers-title {
-    font-size: 36px !important;
-    transform: none !important;
-  }
+  .numbers-title { font-size: 36px !important; transform: none !important; }
   .numbers-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr 1fr !important;
     column-gap: 0 !important;
   }
   .numbers-grid::before { display: none; }
   .numbers-divider { display: none !important; }
   .big-number { font-size: 48px !important; }
   .numbers-item p { font-size: 14px !important; }
-  .numbers-footer { margin-left: 0; }
+  .numbers-footer { margin-left: 0 !important; }
 
-  /* Global Coffee Creators section */
-  .global-creators-section {
-    height: auto !important;
-    min-height: 260px;
-  }
+  .global-creators-section { height: auto !important; min-height: 260px; }
   .global-creators-content {
     flex-direction: column !important;
     padding: 40px 20px !important;
     gap: 20px;
     align-items: flex-start !important;
   }
-  .global-creators-text { max-width: 100%; }
+  .global-creators-text { max-width: 100% !important; }
   .global-creators-text h1 {
     font-size: 36px !important;
     transform: none !important;
@@ -435,53 +433,30 @@
   .global-creators-text p { font-size: 14px !important; }
   .global-creators-image { display: none !important; }
 
-  /* Coffee Stories grid */
-  .coffee-stories-section {
-    margin: 40px auto !important;
-    padding: 0 16px !important;
-  }
-  .coffee-stories-grid {
-    grid-template-columns: 1fr !important;
-    gap: 100px !important;
-  }
+  .coffee-stories-section { margin: 40px auto !important; padding: 0 16px !important; }
+  .coffee-stories-grid { grid-template-columns: 1fr !important; gap: 80px !important; }
   .story-card { height: 340px !important; }
 
-  /* Pairings section */
-  .pairings-section {
-    height: auto !important;
-    margin-top: 40px !important;
-  }
+  .pairings-section { height: auto !important; margin-top: 40px !important; }
   .pairings-content {
     flex-direction: column !important;
-    padding: 32px 20px 32px !important;
+    padding: 32px 20px !important;
     gap: 20px !important;
     align-items: flex-start !important;
   }
-  .pairings-text h1 {
-    font-size: 36px !important;
-    transform: none !important;
-    margin-left: 0 !important;
-  }
-  .pairings-text p { margin-bottom: 24px !important; }
+  .pairings-text h1 { font-size: 36px !important; transform: none !important; margin-left: 0 !important; }
+  .pairings-text p  { margin-bottom: 24px !important; }
   .pairings-btn { transform: none !important; }
 
-  /* Stories pagination section */
-  .stories-coming-soon {
-    padding: 32px 20px !important;
-  }
+  .stories-coming-soon { padding: 32px 20px !important; }
 
-  /* Footer (ourcoffee footer) */
   .footer-main {
     flex-direction: column !important;
     padding: 32px 20px !important;
     gap: 24px !important;
   }
   .footer-col { width: 100% !important; }
-  .footer-regions-line {
-    flex-wrap: wrap !important;
-    gap: 6px !important;
-    justify-content: flex-start;
-  }
+  .footer-regions-line { flex-wrap: wrap !important; gap: 6px !important; justify-content: flex-start; }
 
 
   /* ═══════════════════════════════════════
@@ -500,39 +475,44 @@
     max-height: 45vh;
     overflow-y: auto;
   }
-  /* Map fills remaining space */
-  .sl-map-wrapper,
-  .sl-map { height: 55vw !important; min-height: 260px; }
+  .sl-map-wrapper, .sl-map { height: 55vw !important; min-height: 260px; }
 
 
   /* ═══════════════════════════════════════
      PAYMENT PAGE
   ═══════════════════════════════════════ */
-  .pp-header {
-    padding: 12px 16px !important;
-    flex-wrap: wrap;
-  }
+  .pp-header { padding: 12px 16px !important; flex-wrap: wrap; }
   .pp-header-title {
     font-size: 15px !important;
     margin-left: 0 !important;
     justify-content: flex-start !important;
   }
   .pp-header-secure { display: none; }
+  .pp-body {
+    flex-direction: column !important;
+    padding: 20px 16px 60px !important;
+    gap: 20px !important;
+  }
+  .pp-summary {
+    width: 100% !important;
+    position: static !important;
+    top: auto !important;
+  }
+  .pp-section { padding: 20px 16px !important; }
+  .pp-field-row { flex-direction: column !important; gap: 12px !important; }
+  .pp-field-row--2 > .pp-field { flex: unset; width: 100%; }
 
 
   /* ═══════════════════════════════════════
      DELIVERY PAGE
   ═══════════════════════════════════════ */
   .dd-page { overflow-x: hidden; }
-
-  /* Navbar */
-  .dd-nav-inner { padding: 0 12px; gap: 8px; }
+  .dd-nav-inner { padding: 0 12px !important; gap: 8px !important; }
   .dd-nav-logo  { margin-right: 0 !important; height: 38px !important; }
-  .dd-addr-btn  { max-width: 100%; width: auto; }
-  .dd-user-name { display: none; }
-  .dd-sign-out-btn { display: none; }
+  .dd-addr-btn  { max-width: 100%; width: auto; font-size: 12px !important; }
+  .dd-user-name { display: none !important; }
+  .dd-sign-out-btn { display: none !important; }
 
-  /* Main layout — stack sidebar below content */
   .dd-main {
     flex-direction: column !important;
     padding: 16px 12px 80px !important;
@@ -544,54 +524,74 @@
     top: auto !important;
   }
   .dd-sidebar-inner { padding: 8px 0; }
-  .dd-cat-list { display: flex; flex-wrap: wrap; gap: 4px; padding: 0 12px; }
-  .dd-cat-btn  { width: auto; padding: 6px 12px; font-size: 12px; border-radius: 20px; background: var(--cream-d,#f2f1ed); }
-  .dd-cat-btn--active { border-left: none; padding-left: 12px; border-radius: 20px; }
-  .dd-sidebar-label { display: none; }
+  .dd-sidebar-label { display: none !important; }
+  .dd-cat-list {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 12px;
+  }
+  .dd-cat-btn {
+    width: auto !important;
+    padding: 6px 14px !important;
+    font-size: 12px !important;
+    border-radius: 20px !important;
+    background: #f2f1ed;
+  }
+  .dd-cat-btn--active {
+    border-left: none !important;
+    padding-left: 14px !important;
+    border-radius: 20px !important;
+  }
+
+  /* Delivery items grid: 2 cols on mobile */
+  .dd-items-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  /* Stores grid: 1 col on mobile */
+  .dd-stores-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .dd-cat-title { font-size: 17px !important; }
+  .dd-section-title { font-size: 17px !important; }
+
+  /* Auth modal in delivery */
+  .dd-auth-modal, [class*="auth-modal"] {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    padding: 28px 20px !important;
+    border-radius: 16px !important;
+  }
 
 
   /* ═══════════════════════════════════════
      SIGNIN / JOIN NOW
   ═══════════════════════════════════════ */
-  .signin-card, .jn-card {
-    padding: 28px 20px 28px !important;
-  }
-  .signin-body, .jn-body {
-    padding: 32px 16px 60px !important;
-  }
-  .signin-theme-toggle, .jn-theme-toggle {
-    top: 16px;
-    right: 16px;
-  }
-  .signin-forgot-row {
-    flex-direction: column;
-    gap: 6px;
-  }
+  .signin-card, .jn-card { padding: 28px 20px !important; }
+  .signin-body, .jn-body { padding: 32px 16px 60px !important; }
+  .signin-theme-toggle, .jn-theme-toggle { top: 16px; right: 16px; }
+  .signin-forgot-row { flex-direction: column; gap: 6px; }
 
 
   /* ═══════════════════════════════════════
      OUR COMPANY / ABOUT PAGES
   ═══════════════════════════════════════ */
-  .page-title-section {
-    padding: 24px 16px 2px !important;
-  }
-  .page-title-section h1 {
-    font-size: 28px !important;
-  }
+  .page-title-section { padding: 24px 16px 2px !important; }
+  .page-title-section h1 { font-size: 28px !important; }
   .content-section h2 { font-size: 22px !important; }
   .content-section h3 { font-size: 18px !important; }
 
 
   /* ═══════════════════════════════════════
-     REWARDS / GIFTS (coming soon pages)
+     REWARDS / GIFTS (coming soon)
   ═══════════════════════════════════════ */
   .coming-soon-section {
     padding: 40px 20px !important;
     height: auto !important;
   }
-  .coming-soon-title {
-    font-size: 22px !important;
-  }
+  .coming-soon-title { font-size: 22px !important; }
 
 
   /* ═══════════════════════════════════════
@@ -601,10 +601,7 @@
     flex-direction: column !important;
     padding: 20px 16px !important;
   }
-  .featured-card {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
+  .featured-card { width: 100% !important; max-width: 100% !important; }
 
 
   /* ═══════════════════════════════════════
@@ -619,9 +616,7 @@
   /* ═══════════════════════════════════════
      LEGAL / COOKIE / ACCESSIBILITY PAGES
   ═══════════════════════════════════════ */
-  .legal-page {
-    padding: 24px 16px !important;
-  }
+  .legal-page { padding: 24px 16px !important; }
   .legal-page h1 { font-size: 24px !important; }
   .cookie-prefs-container {
     padding: 24px 16px !important;
@@ -632,29 +627,26 @@
   /* ═══════════════════════════════════════
      STORIES SUBPAGE
   ═══════════════════════════════════════ */
-  /* Hero */
-  .stories-hero { height: auto !important; min-height: 260px; padding-bottom: 32px; }
+  .stories-hero { height: auto !important; min-height: 220px; padding-bottom: 32px; }
   .hero-title {
     position: static !important;
     transform: none !important;
-    padding: 40px 20px 0;
+    padding: 36px 20px 0;
   }
-  .hero-big { font-size: 44px !important; transform: none !important; }
+  .hero-big { font-size: 42px !important; transform: none !important; }
   .hero-small { font-size: 15px !important; }
   .word-human { margin-left: 0 !important; white-space: normal !important; }
   .hero-img-top, .hero-img-left { display: none !important; }
 
-  /* Description */
   .desc-inner { width: 100% !important; padding: 0 20px; }
 
   /* Feature story */
-  .feature-story { margin-top: 0 !important; padding: 40px 0 !important; }
+  .feature-story { margin-top: 0 !important; padding: 32px 0 !important; }
   .feature-wrapper {
     position: static !important;
     height: auto !important;
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
   .feature-image-large {
     position: static !important;
@@ -672,7 +664,7 @@
   .feature-image-small { display: none !important; }
 
   /* Story feature alt */
-  .story-feature-alt { padding: 40px 0 !important; margin: 0 !important; }
+  .story-feature-alt { padding: 32px 0 !important; margin: 0 !important; }
   .story-feature-inner {
     position: static !important;
     height: auto !important;
@@ -696,15 +688,14 @@
   }
 
   /* Quote feature */
-  .quote-feature-section { padding: 40px 0 !important; margin-top: 0 !important; }
+  .quote-feature-section { padding: 32px 0 !important; margin-top: 0 !important; }
   .quote-feature-wrapper {
     position: static !important;
     width: 100% !important;
     height: auto !important;
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
-    gap: 0;
+    padding: 0;
   }
   .quote-image-large {
     position: static !important;
@@ -730,7 +721,11 @@
   }
   .poc-hero-images { display: none !important; }
   .poc-hero-content-wrapper { width: 100% !important; padding: 40px 20px !important; }
-  .poc-hero-content h1 { font-size: 44px !important; transform: none !important; }
+  .poc-hero-content h1 {
+    font-size: 40px !important;
+    transform: none !important;
+    word-spacing: 0 !important;
+  }
 
   /* Hingakawa */
   .hingakawa-section { height: auto !important; padding: 40px 0 !important; margin-top: 0 !important; }
@@ -755,22 +750,24 @@
   .read-stories { margin-left: 0 !important; }
 
   /* Forgiveness section */
-  .forgiveness-section { height: auto !important; padding: 40px 0 !important; margin: 0 0 32px !important; }
+  .forgiveness-section { height: auto !important; padding: 40px 20px !important; margin: 0 0 32px !important; }
   .forgiveness-container {
     width: 100% !important;
     flex-direction: column !important;
     gap: 24px !important;
-    padding: 0 20px;
+    padding: 0;
   }
   .forgiveness-text {
     position: static !important;
     width: 100% !important;
-    left: auto !important; top: auto !important;
+    left: auto !important;
+    top: auto !important;
   }
   .forgiveness-video {
     position: static !important;
     width: 100% !important;
-    left: auto !important; top: auto !important;
+    left: auto !important;
+    top: auto !important;
   }
   .forgiveness-video iframe { height: 220px !important; }
 
@@ -804,22 +801,22 @@
   /* ── Home sections ── */
   .right-text { padding: 40px 32px; }
   .right-text h1 { font-size: 24px; }
-  .right-text p { font-size: 18px; }
-  .roller-left { padding: 40px 32px; }
+  .right-text p  { font-size: 18px; }
+  .roller-left  { padding: 40px 32px; }
   .roller-left h1 { font-size: 24px; }
   .free-drink-text { padding: 40px 32px; }
   .free-cheer-text { padding: 36px 28px; }
 
   /* ── Menu page ── */
-  .menu-container {
-    padding: 12px 40px !important;
-    gap: 40px;
-  }
+  .menu-container { padding: 12px 40px !important; gap: 40px; }
   .drinks-grid, .food-grid, .athome-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     column-gap: 24px !important;
   }
   .section-divider { width: 100% !important; }
+  .menu-tabs { margin-left: 40px !important; }
+  .menu-footer-column h3 { margin-left: 0 !important; }
+  .menu-footer-column li  { margin-left: 0 !important; }
 
   /* ── Item availability bar ── */
   .item-availability-bar { padding-right: 120px !important; }
@@ -829,12 +826,9 @@
   .green-nav-links { gap: 20px !important; }
   .green-nav-links a { font-size: 13px !important; }
 
-  /* ── Ourcoffee page ── */
+  /* ── Ourcoffee ── */
   .coffee-title h1 { font-size: 50px !important; }
-  .numbers-section {
-    margin-left: 80px !important;
-    padding: 24px !important;
-  }
+  .numbers-section { margin-left: 80px !important; padding: 24px !important; }
   .numbers-title { font-size: 48px !important; }
   .big-number { font-size: 56px !important; }
   .global-creators-content { padding: 0 60px !important; }
@@ -849,16 +843,13 @@
   /* ── Store locator ── */
   .sl-sidebar { width: 380px !important; min-width: 380px !important; max-width: 380px !important; }
 
-  /* ── Cart ── */
-  .cart-overlay { padding: 20px 16px 80px !important; }
-
-  /* ── Dropdown menus ── */
-  .dropdown-label { font-size: 18px !important; }
-  .dropdown-icon { width: 70px !important; height: 70px !important; }
+  /* ── Payment ── */
+  .pp-body { padding: 28px 24px 60px !important; gap: 24px !important; }
 
   /* ── Delivery ── */
   .dd-nav-logo { margin-right: 60px !important; }
   .dd-main { padding: 24px 20px 100px !important; }
+  .dd-items-grid { grid-template-columns: repeat(2, 1fr) !important; }
 
   /* ── Stories ── */
   .hingakawa-container { width: 100% !important; padding: 0 40px; gap: 60px !important; }
