@@ -1,0 +1,62 @@
+/* Wrapper for the tab row */
+.menu-tabs-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: #f9f9f9;
+}
+
+/* Buttons container */
+.menu-tabs {
+  display: flex;
+  gap: 24px; /* space between buttons */
+  padding: 16px 0;
+  margin-left: 137px;
+  margin-bottom: -7px;
+}
+
+/* Individual tab buttons */
+.menu-tab {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 11px;
+  position: relative;
+  padding: 4px 0;
+  letter-spacing: 0.5px;
+  color: #000000de;
+  transition: color 0.2s ease;
+  margin-top: -7px;
+}
+
+/* Underline for active tab only */
+.menu-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; /* adjust distance from text */
+  left: 0;
+  width: 0%; /* default hidden */
+  height: 0.6px; /* thickness of underline */
+  background-color: #000000de; /* underline color */
+}
+
+/* Show underline only on active tab */
+.menu-tab.active::after {
+  width: 100%;
+}
+
+/* Divider line under the tab row */
+.menu-tabs-divider {
+  width: 100%;
+  height: 0.8px;                 /* Thickness of the line */
+  background-color: #000000;      /* Color of the divider */
+  opacity: 0.15;                  /* Subtle transparency */
+  margin-top: 0;                  /* Optional spacing from tabs */
+
+  /* Shadow for subtle depth */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-offset-y: 1px;
+  --shadow-blur: 2px;
+  box-shadow: 0 var(--shadow-offset-y) var(--shadow-blur) var(--shadow-color);
+}

@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SavedAddress {
+  id          String   @id @default(cuid())
+  phone       String
+  country     String
+  street      String
+  apt         String?
+  city        String
+  state       String
+  zip         String
+  fullAddress String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([phone])
+}
+
+model VerificationCode {
+  id        String   @id @default(cuid())
+  phone     String
+  code      String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([phone])
+}
+
+model User {
+  id        String   @id @default(cuid())
+  googleId  String?  @unique
+  email     String   @unique
+  firstName String?
+  lastName  String?
+  name      String
+  password  String?
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+}

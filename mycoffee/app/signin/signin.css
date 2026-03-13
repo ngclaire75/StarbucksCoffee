@@ -1,0 +1,418 @@
+/* ══════════════════════════════════════════════
+   SIGN IN PAGE — Light & Dark Mode
+══════════════════════════════════════════════ */
+
+/* ── CSS Variables ── */
+.signin-page {
+  --bg: #f2f2f2;
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  --text-primary: #1e3932;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --input-bg: #ffffff;
+  --input-border: #c7c7c7;
+  --input-border-focus: #00754a;
+  --input-label: #777777;
+  --input-label-focus: #00754a;
+  --error-color: #c0392b;
+  --success-color: #00754a;
+  --info-bg: #f0f7f4;
+  --info-border: #b2d8c8;
+  --reset-bg: #f7f7f7;
+  --reset-border: #e5e5e5;
+  --btn-primary-bg: #00754a;
+  --btn-primary-hover: #005c39;
+  --btn-join-bg: #1e3932;
+  --btn-join-hover: #162c26;
+  --divider: #e5e5e5;
+  --toggle-bg: #e5e5e5;
+  --toggle-icon: #555;
+  --logo-filter: none;
+}
+
+.signin-page.dark {
+  --bg: #0d1f1a;
+  --card-bg: #1a2e28;
+  --card-shadow: 0 4px 32px rgba(0,0,0,0.45);
+  --text-primary: #f0f0f0;
+  --text-secondary: #b0c4bb;
+  --text-muted: #7a9990;
+  --input-bg: #233d34;
+  --input-border: #3a5a50;
+  --input-border-focus: #00a86b;
+  --input-label: #7a9990;
+  --input-label-focus: #00a86b;
+  --error-color: #e06c75;
+  --success-color: #00a86b;
+  --info-bg: #1f3830;
+  --info-border: #2d5a48;
+  --reset-bg: #1f3428;
+  --reset-border: #2d4a3e;
+  --btn-primary-bg: #00a86b;
+  --btn-primary-hover: #008f5a;
+  --btn-join-bg: #2a4a3e;
+  --btn-join-hover: #1f3830;
+  --divider: #2d4a3e;
+  --toggle-bg: #2d4a3e;
+  --toggle-icon: #b0c4bb;
+  --logo-filter: brightness(0) invert(1);
+}
+
+/* ── Page shell ── */
+.signin-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease;
+}
+
+/* ── Theme toggle button ── */
+.signin-theme-toggle {
+  position: fixed;
+  top: 100px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--toggle-bg);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--toggle-icon);
+  z-index: 50;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.signin-theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ── Body ── */
+.signin-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 52px 24px 80px;
+}
+
+/* ── Logo above card ── */
+.signin-logo {
+  width: 56px;
+  height: auto;
+  margin-bottom: 20px;
+  filter: var(--logo-filter);
+  transition: filter 0.3s;
+}
+
+/* ── Card ── */
+.signin-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  padding: 40px 44px 40px;
+  width: 100%;
+  max-width: 460px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.signin-card h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 30px;
+  text-align: center;
+  transition: color 0.3s;
+}
+
+/* ── Form fields ── */
+.signin-field {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.signin-field input {
+  width: 100%;
+  padding: 20px 14px 8px;
+  border: 1.5px solid var(--input-border);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  transition: border-color 0.2s, background 0.3s, color 0.3s;
+  box-sizing: border-box;
+}
+
+.signin-field input:focus {
+  border-color: var(--input-border-focus);
+}
+
+.signin-field input.error {
+  border-color: var(--error-color);
+}
+
+.signin-field label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--input-label);
+  pointer-events: none;
+  transition: all 0.15s ease, color 0.3s;
+}
+
+.signin-field input:focus ~ label,
+.signin-field input:not(:placeholder-shown) ~ label {
+  top: 10px;
+  font-size: 10px;
+  color: var(--input-label-focus);
+  transform: none;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.signin-field input.error ~ label {
+  color: var(--error-color);
+}
+
+/* ── Hide browser native password eye ── */
+.signin-pw-wrap input::-ms-reveal,
+.signin-pw-wrap input::-ms-clear,
+.signin-pw-wrap input::-webkit-credentials-auto-fill-button,
+.signin-pw-wrap input::-webkit-textfield-decoration-container {
+  display: none !important;
+}
+
+/* ── Password toggle ── */
+.signin-pw-wrap {
+  position: relative;
+}
+
+.signin-pw-wrap input {
+  padding-right: 48px;
+}
+
+.signin-pw-toggle {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.signin-pw-toggle:hover {
+  color: var(--text-primary);
+}
+
+/* ── Error message ── */
+.signin-error {
+  color: var(--error-color);
+  font-size: 13px;
+  margin-bottom: 16px;
+  text-align: center;
+  line-height: 1.5;
+  padding: 10px 14px;
+  background: rgba(192, 57, 43, 0.08);
+  border-radius: 6px;
+  border: 1px solid rgba(192, 57, 43, 0.2);
+}
+
+/* ── Keep me signed in ── */
+.signin-remember {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 18px;
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.signin-remember input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--btn-primary-bg);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ── Divider ── */
+.signin-divider {
+  height: 1px;
+  background: var(--divider);
+  margin: 20px 0;
+  transition: background 0.3s;
+}
+
+/* ── Forgot links ── */
+.signin-forgot-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  gap: 8px;
+}
+
+.signin-forgot-row button {
+  background: none;
+  border: none;
+  color: var(--btn-primary-bg);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.signin-forgot-row button:hover {
+  color: var(--text-primary);
+}
+
+/* ── Forgot username info ── */
+.signin-info-box {
+  background: var(--info-bg);
+  border: 1px solid var(--info-border);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  line-height: 1.6;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+/* ── Forgot password reset form ── */
+.signin-reset-form {
+  background: var(--reset-bg);
+  border: 1px solid var(--reset-border);
+  border-radius: 6px;
+  padding: 22px;
+  margin-bottom: 20px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.signin-reset-form h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+  transition: color 0.3s;
+}
+
+.signin-reset-form .signin-field {
+  margin-bottom: 12px;
+}
+
+/* ── Primary button ── */
+.signin-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--btn-primary-bg);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 0.3px;
+}
+
+.signin-btn:hover {
+  background: var(--btn-primary-hover);
+}
+
+.signin-btn:active {
+  transform: scale(0.99);
+}
+
+.signin-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Small secondary button (inside reset form) ── */
+.signin-btn-sm {
+  width: 100%;
+  padding: 11px;
+  background: transparent;
+  color: var(--btn-primary-bg);
+  border: 1.5px solid var(--btn-primary-bg);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.2s;
+}
+
+.signin-btn-sm:hover {
+  background: rgba(0, 117, 74, 0.07);
+}
+
+/* ── Success message ── */
+.signin-success {
+  color: var(--success-color);
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 14px;
+  font-weight: 600;
+  padding: 10px 14px;
+  background: rgba(0, 117, 74, 0.08);
+  border-radius: 6px;
+  border: 1px solid rgba(0, 117, 74, 0.2);
+}
+
+/* ── Join Now section below card ── */
+.signin-joinnow {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.signin-joinnow p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+  transition: color 0.3s;
+}
+
+.signin-joinnow-btn {
+  padding: 13px 44px;
+  background: var(--btn-join-bg);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 0.3px;
+}
+
+.signin-joinnow-btn:hover {
+  background: var(--btn-join-hover);
+}
+
+.signin-joinnow-btn:active {
+  transform: scale(0.99);
+}

@@ -1,0 +1,705 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Root / page wrapper ──────────────────────────────────────────────────── */
+body,
+html {
+  height: 100%;
+}
+
+/* The outermost div rendered by CustomizePage */
+div:has(> nav > .sbBackBtn) {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #fff;
+  font-family: 'SoDo Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #1e3932;
+  overflow: hidden;
+  margin-bottom: 20px;
+  margin-top: -12px;
+}
+
+/* ─── Top nav bar ──────────────────────────────────────────────────────────── */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 24px;
+  border-bottom: 1px solid #e8e8e8;
+  background: #fff;
+  flex-shrink: 0;
+  min-height: 52px;
+}
+
+nav span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+      margin-bottom: 10px;
+    margin-top: -2.5px;
+}
+
+.sbBackBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 4px 4px 0;
+  color: #888;
+  flex-shrink: 0;
+  transition: color 0.15s;
+    margin-bottom: 10px;
+    margin-top: -2.5px;
+}
+
+.sbBackBtn:hover {
+  color: #1E3932 !important;
+  opacity: 0.7;
+}
+
+/* ─── Two-column layout wrapper ────────────────────────────────────────────── */
+/* direct child div after nav */
+nav + div {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ─── LEFT panel — image ───────────────────────────────────────────────────── */
+nav + div > div:first-child {
+  width: 45%;
+  flex-shrink: 0;
+  margin-top: -40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #1e3932;
+  padding: 32px 24px 0;
+  position: relative;
+  gap: 0;
+}
+
+/* Nutrition strip container */
+nav + div > div:first-child > div {
+  display: flex;
+  gap: 0;
+  justify-content: stretch;
+  width: calc(100% - 32px);
+  border-radius: 16px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 10px;        /* ← adjust this per-drink with a class if needed */
+}
+
+nav + div > div:first-child > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex: 1;
+  padding: 4px 8px;
+  position: relative;
+  margin-top: 40px;
+}
+
+/* divider lines between nutrition items */
+nav + div > div:first-child > div > div + div::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+}
+
+nav + div > div:first-child > div > div > div:first-child {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+nav + div > div:first-child > div > div > div:last-child {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.62);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+/* ─── RIGHT panel ──────────────────────────────────────────────────────────── */
+.sbRightPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+.sbRightPanel::-webkit-scrollbar {
+  width: 4px;
+}
+.sbRightPanel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sbRightPanel::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+
+/* Inner scrollable content div */
+.sbRightPanel > div:first-child {
+  flex: 1;
+  padding: 28px 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: sbFadeUp 0.45s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Drink header (tag) ───────────────────────────────────────────────────── */
+.sbRightPanel > div:first-child > div:first-child {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #00704a;
+}
+
+/* ─── h1 drink name ─────────────────────────────────────────────────────────── */
+.sbRightPanel h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e3932;
+  line-height: 1.25;
+  margin: -8px 0 0;
+}
+
+/* ─── Description paragraph ─────────────────────────────────────────────────── */
+.sbRightPanel > div:first-child > p:first-of-type {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #4a4a4a;
+}
+
+/* ─── Selection summary tags row ────────────────────────────────────────────── */
+/* The div containing SelectionTag spans */
+.sbRightPanel > div:first-child > div:nth-child(4) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sbRightPanel > div:first-child > div:nth-child(4) > span {
+  display: inline-block;
+  background: #f2f8f5;
+  border: 1px solid #d4e8dd;
+  color: #1e3932;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+
+/* ─── SIZE section wrapper ──────────────────────────────────────────────────── */
+/* div containing SectionLabel "Size" + size buttons row */
+.sbRightPanel > div:first-child > div:nth-child(5) {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* SectionLabel text */
+.sbRightPanel > div:first-child > div:nth-child(5) > div:first-child {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e3932;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Size buttons row */
+.sbRightPanel > div:first-child > div:nth-child(5) > div:last-child {
+  display: flex;
+  gap: 8px;
+}
+
+/* ─── Size button ───────────────────────────────────────────────────────────── */
+.sbSizeBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  padding: 10px 12px 8px;
+  flex: 1;
+  min-width: 0;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  color: #1e3932;
+}
+
+.sbSizeBtn img {
+  width: 32px;
+  height: 40px;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.55);
+  transition: filter 0.15s;
+}
+
+.sbSizeBtn span:first-of-type {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1e3932;
+}
+
+.sbSizeBtn span:last-of-type {
+  font-size: 10.5px;
+  color: #767676;
+}
+
+.sbSizeBtn--active {
+  border-color: #1e3932;
+  background: #f2f8f5;
+  box-shadow: 0 0 0 1px #1e3932;
+}
+
+.sbSizeBtn--active img {
+  filter: grayscale(0) opacity(1);
+}
+
+.sbSizeBtn:hover:not(.sbSizeBtn--active) {
+  border-color: #1E3932 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07) !important;
+}
+
+/* ─── Customize accordion section ──────────────────────────────────────────── */
+/* Outer wrapper div for the accordion group */
+.sbRightPanel > div:first-child > div:nth-child(6) {
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* "Customize" label div */
+.sbRightPanel > div:first-child > div:nth-child(6) > div:first-child {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #767676;
+  padding: 12px 16px 8px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Each AccordionSection outer div */
+.sbRightPanel > div:first-child > div:nth-child(6) > div + div {
+  border-top: 1px solid #e0e0e0;
+}
+
+/* AccordionSection toggle button */
+.sbRightPanel > div:first-child > div:nth-child(6) > div > button:first-child {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  gap: 8px;
+  transition: background 0.12s;
+}
+
+.sbRightPanel > div:first-child > div:nth-child(6) > div > button:first-child:hover {
+  background: #f7faf9;
+}
+
+/* Inner div holding title + selected */
+.sbRightPanel > div:first-child > div:nth-child(6) > div > button:first-child > div {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  text-align: left;
+  flex: 1;
+}
+
+/* Accordion title */
+.sbRightPanel > div:first-child > div:nth-child(6) > div > button:first-child > div > div:first-child {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1e3932;
+}
+
+/* Accordion selected value */
+.sbRightPanel > div:first-child > div:nth-child(6) > div > button:first-child > div > div:last-child {
+  font-size: 12.5px;
+  color: #767676;
+}
+
+/* Accordion expanded pill container */
+.sbRightPanel > div:first-child > div:nth-child(6) > div > div:last-child {
+  padding: 4px 16px 14px;
+}
+
+.sbRightPanel > div:first-child > div:nth-child(6) > div > div:last-child > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* PillChip buttons */
+.sbRightPanel > div:first-child > div:nth-child(6) > div > div:last-child > div > button {
+  border: 1.5px solid #ccc;
+  border-radius: 50px;
+  background: #fff;
+  color: #1e3932;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+    margin-top: 10px;
+}
+
+/* ─── Allergen disclaimer ───────────────────────────────────────────────────── */
+.sbRightPanel > div:first-child > p:last-of-type,
+.sbRightPanel > div:first-child > p:nth-of-type(2) {
+  font-size: 11.5px;
+  color: #767676;
+  line-height: 1.55;
+}
+
+/* ─── Sticky CTA bar (bottom of sbRightPanel) ──────────────────────────────── */
+.sbRightPanel > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 32px;
+  border-top: 1px solid #e8e8e8;
+  background: #fff;
+  flex-shrink: 0;
+  position: sticky;
+  bottom: 0;
+}
+
+/* Qty stepper wrapper */
+.sbRightPanel > div:last-child > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f5f5f5;
+  border-radius: 50px;
+  padding: 6px 10px;
+}
+
+.sbRightPanel > div:last-child > div > span {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e3932;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Qty buttons */
+.sbQtyBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  color: #1e3932;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  line-height: 1;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: background 0.15s;
+}
+
+.sbQtyBtn:hover {
+  background: #f2f2f2 !important;
+}
+
+/* Add to Order button */
+.sbAddBtn {
+  flex: 1;
+  height: 44px;
+  background: #00704a;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 0.18s;
+}
+
+.sbAddBtn:hover {
+  background: #008f54 !important;
+}
+
+/* ─── Toast ─────────────────────────────────────────────────────────────────── */
+/* Toast is rendered at root level, position it fixed */
+div:has(> div > svg > path[d="M2 6.5L4.5 9L10 3"]) {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #1e3932;
+  color: #fff;
+  border-radius: 50px;
+  padding: 10px 20px 10px 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  min-width: 260px;
+  animation: sbToastIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  z-index: 999;
+}
+
+/* Checkmark circle */
+div:has(> div > svg > path[d="M2 6.5L4.5 9L10 3"]) > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #00704a;
+  flex-shrink: 0;
+}
+
+/* Toast text block */
+div:has(> div > svg > path[d="M2 6.5L4.5 9L10 3"]) > div:nth-child(2) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+div:has(> div > svg > path[d="M2 6.5L4.5 9L10 3"]) > div:nth-child(2) > div:first-child {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #fff;
+}
+
+div:has(> div > svg > path[d="M2 6.5L4.5 9L10 3"]) > div:nth-child(2) > div:last-child {
+  font-size: 12px;
+  color: rgba(255,255,255,0.72);
+}
+
+/* Toast close button */
+div:has(> div > svg > path[d="M2 6.5L4.5 9L10 3"]) > button {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0 0 0 4px;
+  line-height: 1;
+}
+
+/* ─── Animations ────────────────────────────────────────────────────────────── */
+@keyframes sbImgIn {
+  from { opacity: 0; transform: scale(0.9) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes sbFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sbToastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(16px) scale(0.96); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+@keyframes sbFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── itemavailability modal styles ─────────────────────────────────────────── */
+.store-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: overlay-in 0.25s ease forwards;
+}
+
+.store-popup-overlay.closing {
+  animation: overlay-out 0.25s ease forwards;
+}
+
+.store-popup-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 325px;
+  height: 125px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+  animation: modal-in 0.25s ease forwards;
+}
+
+.store-popup-overlay.closing .store-popup-modal {
+  animation: modal-out 0.25s ease forwards;
+}
+
+@keyframes overlay-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes overlay-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes modal-in { from { opacity: 0; transform: scale(1.2); } to { opacity: 1; transform: scale(1); } }
+@keyframes modal-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(1.2); } }
+
+.store-popup-message {
+  font-size: 13.5px;
+  color: #1e1e1e;
+  margin: 0 0 26px 0;
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+.store-popup-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.store-popup-cancel {
+  background: none;
+  border: none;
+  color: #00704a;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 22px;
+  border-radius: 50px;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+}
+
+.store-popup-cancel:hover { background-color: #e1f0e9; }
+
+.store-popup-select {
+  background-color: #00704a;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: inherit;
+}
+
+.store-popup-select:hover { opacity: 0.9; }
+
+
+.store-confirmed-modal {
+  width: 340px;
+  height: auto;
+  padding: 28px 28px 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.store-confirmed-icon {
+  margin-bottom: 12px;
+  animation: sc-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes sc-pop {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.store-confirmed-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1e3932;
+  margin-bottom: 6px;
+}
+
+.store-confirmed-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e3932;
+  margin-bottom: 2px;
+}
+
+.store-confirmed-addr {
+  font-size: 12.5px;
+  color: #767676;
+  margin-bottom: 12px;
+}
+
+.store-confirmed-hint {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.55;
+  margin: 0 0 20px;
+  padding: 0 4px;
+}
+
+.store-confirmed-btn {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  font-size: 14px;
+}
+
+.cp-toast-view {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.cp-toast-view:hover {
+  background: rgba(255, 255, 255, 0.15);
+}

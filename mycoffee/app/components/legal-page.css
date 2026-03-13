@@ -1,0 +1,331 @@
+/* ── Root ──────────────────────────────────────────────────────────────── */
+.lp-root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'SoDo Sans', sans-serif;
+  background: #0a0e0c;
+  cursor: default;
+}
+
+/* ── 3-D perspective wrapper ───────────────────────────────────────────── */
+.lp-perspective {
+  position: absolute;
+  inset: -12%;
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+}
+
+.lp-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  /* initial state — JS lerp overrides this each frame */
+  transform: scale(1.16) rotateY(0deg) rotateX(0deg);
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* ── Soft vignette — edges only, centre fully clear ───────────────────── */
+.lp-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Lens flares ───────────────────────────────────────────────────────── */
+.lp-flare {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.lp-flare-1 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255, 230, 130, 0.28) 0%, transparent 65%);
+  filter: blur(60px);
+  top: -220px;
+  left: -200px;
+  animation: lpF1 16s ease-in-out infinite alternate;
+}
+
+.lp-flare-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 120, 60, 0.20) 0%, transparent 65%);
+  filter: blur(70px);
+  bottom: -160px;
+  right: -160px;
+  animation: lpF2 19s ease-in-out infinite alternate;
+}
+
+.lp-flare-3 {
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(180, 240, 255, 0.14) 0%, transparent 65%);
+  filter: blur(55px);
+  top: 25%;
+  right: 10%;
+  animation: lpF3 12s ease-in-out infinite alternate;
+}
+
+.lp-flare-4 {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(255, 255, 200, 0.18) 0%, transparent 65%);
+  filter: blur(40px);
+  top: 10%;
+  left: 55%;
+  animation: lpF4 9s ease-in-out infinite alternate;
+}
+
+@keyframes lpF1 {
+  from { transform: translate(0, 0)     scale(1);    opacity: 0.9; }
+  to   { transform: translate(70px, 50px) scale(1.25); opacity: 0.6; }
+}
+@keyframes lpF2 {
+  from { transform: translate(0, 0)      scale(1);    opacity: 1; }
+  to   { transform: translate(-60px, -70px) scale(1.3); opacity: 0.55; }
+}
+@keyframes lpF3 {
+  from { transform: translate(0, 0)  scale(1);    opacity: 0.7; }
+  to   { transform: translate(40px, -60px) scale(0.85); opacity: 1; }
+}
+@keyframes lpF4 {
+  from { transform: translate(0, 0)  scale(1);    opacity: 0.6; }
+  to   { transform: translate(-25px, 35px) scale(1.2); opacity: 0.9; }
+}
+
+/* ── Fuji-film light-leak strip ────────────────────────────────────────── */
+.lp-leak {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: linear-gradient(
+    112deg,
+    rgba(255, 210, 80, 0.12)  0%,
+    transparent                22%,
+    transparent                78%,
+    rgba(200, 55, 90, 0.10)   100%
+  );
+  animation: lpLeak 24s ease-in-out infinite alternate;
+}
+@keyframes lpLeak {
+  from { opacity: 0.5; }
+  to   { opacity: 1; }
+}
+
+/* ── Full-page frosted layer ────────────────────────────────────────────── */
+.lp-band {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 18, 14, 0.22);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
+/* ── Animated film grain ───────────────────────────────────────────────── */
+.lp-grain {
+  position: absolute;
+  inset: -30%;
+  width: 160%;
+  height: 160%;
+  pointer-events: none;
+  opacity: 0.042;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  animation: lpGrain 0.1s steps(1) infinite;
+}
+@keyframes lpGrain {
+  0%   { transform: translate(0,0); }   10%  { transform: translate(-3%,-4%); }
+  20%  { transform: translate(4%, 2%); } 30%  { transform: translate(-2%, 5%); }
+  40%  { transform: translate(5%,-3%); } 50%  { transform: translate(-4%, 3%); }
+  60%  { transform: translate(2%,-5%); } 70%  { transform: translate(-5%, 4%); }
+  80%  { transform: translate(3%,-2%); } 90%  { transform: translate(-2%, 5%); }
+  100% { transform: translate(4%,-4%); }
+}
+
+/* ── Floating orbs ─────────────────────────────────────────────────────── */
+.lp-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(30px);
+}
+.lp-orb-1 {
+  width: 120px; height: 120px;
+  background: rgba(255, 220, 100, 0.12);
+  top: 18%; left: 22%;
+  animation: lpOrb1 18s ease-in-out infinite;
+}
+.lp-orb-2 {
+  width: 80px; height: 80px;
+  background: rgba(180, 255, 200, 0.09);
+  bottom: 22%; right: 28%;
+  animation: lpOrb2 22s ease-in-out infinite;
+}
+.lp-orb-3 {
+  width: 60px; height: 60px;
+  background: rgba(255, 160, 200, 0.10);
+  top: 60%; left: 65%;
+  animation: lpOrb3 15s ease-in-out infinite;
+}
+@keyframes lpOrb1 {
+  0%,100% { transform: translate(0,0); }
+  33%  { transform: translate(30px,-20px); }
+  66%  { transform: translate(-20px, 30px); }
+}
+@keyframes lpOrb2 {
+  0%,100% { transform: translate(0,0); }
+  40%  { transform: translate(-25px, 20px); }
+  70%  { transform: translate(20px,-25px); }
+}
+@keyframes lpOrb3 {
+  0%,100% { transform: translate(0,0); }
+  50%  { transform: translate(20px,20px); }
+}
+
+/* ── Glass card ────────────────────────────────────────────────────────── */
+.lp-card {
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(36px) saturate(180%) brightness(1.08);
+  -webkit-backdrop-filter: blur(36px) saturate(180%) brightness(1.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 32px;
+  padding: 58px 68px;
+  max-width: 560px;
+  width: 90%;
+  box-shadow:
+    0 20px 64px rgba(0, 0, 0, 0.38),
+    0 2px 0 rgba(255, 255, 255, 0.12) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.10) inset;
+  text-align: center;
+}
+
+/* gradient border shimmer */
+.lp-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  padding: 1.5px;
+  background: linear-gradient(
+    140deg,
+    rgba(255, 225, 110, 0.40) 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(210, 80, 120, 0.28) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* sweeping card shine */
+.lp-card-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.13) 0%,
+    rgba(255,255,255,0.00) 50%,
+    rgba(255,255,255,0.06) 100%
+  );
+  pointer-events: none;
+  animation: lpShine 8s ease-in-out infinite alternate;
+}
+@keyframes lpShine {
+  from { opacity: 0.5; transform: skewX(-3deg) scaleX(0.98); }
+  to   { opacity: 1;   transform: skewX(3deg)  scaleX(1.02); }
+}
+
+.lp-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 215, 110, 0.90);
+  margin-bottom: 14px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+}
+
+.lp-title {
+  font-size: 31px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.22;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.45);
+}
+
+.lp-divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(255, 210, 90, 0.85),
+    rgba(225, 80, 120, 0.60));
+  border-radius: 2px;
+  margin: 22px auto 22px;
+  box-shadow: 0 0 12px rgba(255, 200, 80, 0.35);
+}
+
+.lp-body {
+  font-size: 14.5px;
+  line-height: 1.78;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 40px;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+}
+
+.lp-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 32px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 50px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: background 0.25s ease, border-color 0.25s ease,
+              color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease;
+}
+.lp-back:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.42);
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+  transform: translateY(-1px);
+}
+.lp-back:active {
+  transform: translateY(0);
+}
