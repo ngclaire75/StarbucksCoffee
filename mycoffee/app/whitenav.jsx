@@ -7,6 +7,7 @@ export default function WhiteNav({ activePage }) {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownPos, setDropdownPos] = useState({ top: 93, right: 24 });
   const btnRef = useRef(null);
 
@@ -32,6 +33,7 @@ export default function WhiteNav({ activePage }) {
     await fetch('/api/auth/logout', { method: 'POST' });
     setUser(null);
     setMenuOpen(false);
+    setMobileOpen(false);
     router.push('/');
     router.refresh();
   }
@@ -145,8 +147,55 @@ export default function WhiteNav({ activePage }) {
               </button>
             </>
           )}
+
+          {/* Hamburger — mobile only */}
+          <button
+            className="hamburger-btn"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Open menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </header>
+
+      {/* Mobile slide-down menu */}
+      {mobileOpen && (
+        <div className="mobile-menu">
+          <div className="mobile-menu-item" onClick={() => { router.push('/menupage'); setMobileOpen(false); }}>MENU</div>
+          <div className="mobile-menu-item" onClick={() => { router.push('/rewardspage'); setMobileOpen(false); }}>REWARDS</div>
+          <div className="mobile-menu-item" onClick={() => { router.push('/giftspage'); setMobileOpen(false); }}>GIFT CARDS</div>
+          <div className="mobile-menu-item" onClick={() => { router.push('/store-locator'); setMobileOpen(false); }}>FIND A STORE</div>
+
+          <div className="mobile-menu-divider" />
+
+          <div className="mobile-menu-btns">
+            {user ? (
+              <>
+                <div style={{ fontSize: '13px', color: '#555', marginBottom: '6px' }}>{user.email}</div>
+                <button
+                  className="btn-outline"
+                  onClick={handleLogout}
+                  style={{ width: '100%', padding: '10px', fontSize: '13px' }}
+                >
+                  Sign out
+                </button>
+              </>
+            ) : (
+              <>
+                <button className="btn-outline" style={{ width: '100%', padding: '10px', fontSize: '13px' }} onClick={() => { router.push('/signin'); setMobileOpen(false); }}>
+                  Sign in
+                </button>
+                <button className="btn-black" style={{ width: '100%', padding: '10px', fontSize: '13px' }} onClick={() => { router.push('/joinnow'); setMobileOpen(false); }}>
+                  Join now
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 }

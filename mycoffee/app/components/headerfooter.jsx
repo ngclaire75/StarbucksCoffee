@@ -16,6 +16,7 @@ const LANG_OPTIONS = [
 const HeaderFooter = ({ children }) => {
   const { t, lang, setLang } = useLanguage();
   const [langOpen, setLangOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const coffeeDropdownRef = useRef(null);
   const peopleDropdownRef = useRef(null);
   const newsDropdownRef = useRef(null);
@@ -159,6 +160,17 @@ const HeaderFooter = ({ children }) => {
                 </div>
               )}
             </div>
+
+            {/* Hamburger — mobile only */}
+            <button
+              className="hf-hamburger"
+              onClick={() => setMobileOpen(v => !v)}
+              aria-label="Open menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
           </div>
         </div>
 
@@ -234,6 +246,16 @@ const HeaderFooter = ({ children }) => {
 
       {/* Blur Overlay */}
       <div className="dropdown-overlay" id="dropdownOverlay" ref={overlayRef}></div>
+
+      {/* Mobile menu — green header */}
+      {mobileOpen && (
+        <div className="hf-mobile-menu">
+          <div className="hf-mobile-item" onClick={() => { router.push('/ourcoffeepage'); setMobileOpen(false); }}>{t('nav.coffee')}</div>
+          <div className="hf-mobile-item" onClick={() => setMobileOpen(false)}>{t('nav.people')}</div>
+          <div className="hf-mobile-item" onClick={() => setMobileOpen(false)}>{t('nav.news')}</div>
+          <div className="hf-mobile-item" onClick={() => { router.push('/storiessubpage'); setMobileOpen(false); }}>{t('nav.stories')}</div>
+        </div>
+      )}
 
       {/* --- FIX: render children so pages inside HeaderFooter appear --- */}
       <main>{children}</main>
