@@ -525,6 +525,30 @@
   ═══════════════════════════════════════ */
   .dd-page { overflow-x: hidden; }
 
+  /* Navbar */
+  .dd-nav-inner { padding: 0 12px; gap: 8px; }
+  .dd-nav-logo  { margin-right: 0 !important; height: 38px !important; }
+  .dd-addr-btn  { max-width: 100%; width: auto; }
+  .dd-user-name { display: none; }
+  .dd-sign-out-btn { display: none; }
+
+  /* Main layout — stack sidebar below content */
+  .dd-main {
+    flex-direction: column !important;
+    padding: 16px 12px 80px !important;
+    gap: 16px !important;
+  }
+  .dd-sidebar {
+    width: 100% !important;
+    position: static !important;
+    top: auto !important;
+  }
+  .dd-sidebar-inner { padding: 8px 0; }
+  .dd-cat-list { display: flex; flex-wrap: wrap; gap: 4px; padding: 0 12px; }
+  .dd-cat-btn  { width: auto; padding: 6px 12px; font-size: 12px; border-radius: 20px; background: var(--cream-d,#f2f1ed); }
+  .dd-cat-btn--active { border-left: none; padding-left: 12px; border-radius: 20px; }
+  .dd-sidebar-label { display: none; }
+
 
   /* ═══════════════════════════════════════
      SIGNIN / JOIN NOW
@@ -603,6 +627,152 @@
     padding: 24px 16px !important;
     flex-direction: column !important;
   }
+
+
+  /* ═══════════════════════════════════════
+     STORIES SUBPAGE
+  ═══════════════════════════════════════ */
+  /* Hero */
+  .stories-hero { height: auto !important; min-height: 260px; padding-bottom: 32px; }
+  .hero-title {
+    position: static !important;
+    transform: none !important;
+    padding: 40px 20px 0;
+  }
+  .hero-big { font-size: 44px !important; transform: none !important; }
+  .hero-small { font-size: 15px !important; }
+  .word-human { margin-left: 0 !important; white-space: normal !important; }
+  .hero-img-top, .hero-img-left { display: none !important; }
+
+  /* Description */
+  .desc-inner { width: 100% !important; padding: 0 20px; }
+
+  /* Feature story */
+  .feature-story { margin-top: 0 !important; padding: 40px 0 !important; }
+  .feature-wrapper {
+    position: static !important;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .feature-image-large {
+    position: static !important;
+    width: 100% !important;
+    height: 220px !important;
+  }
+  .feature-card {
+    position: static !important;
+    left: auto !important; top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 0 !important;
+    padding: 48px 24px 24px !important;
+  }
+  .feature-image-small { display: none !important; }
+
+  /* Story feature alt */
+  .story-feature-alt { padding: 40px 0 !important; margin: 0 !important; }
+  .story-feature-inner {
+    position: static !important;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 16px;
+  }
+  .story-image-large {
+    position: static !important;
+    width: 100% !important;
+    height: 220px !important;
+  }
+  .story-image-small { display: none !important; }
+  .story-text-card {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    padding: 48px 24px 24px !important;
+  }
+
+  /* Quote feature */
+  .quote-feature-section { padding: 40px 0 !important; margin-top: 0 !important; }
+  .quote-feature-wrapper {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 0;
+  }
+  .quote-image-large {
+    position: static !important;
+    width: 100% !important;
+    height: 220px !important;
+    margin-left: 0 !important;
+  }
+  .quote-image-small { display: none !important; }
+  .quote-card {
+    position: static !important;
+    left: auto !important; top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 48px 24px 24px !important;
+    border-radius: 0 !important;
+  }
+
+  /* POC hero */
+  .poc-hero-section {
+    height: auto !important;
+    padding: 40px 20px !important;
+    margin: 0 !important;
+  }
+  .poc-hero-images { display: none !important; }
+  .poc-hero-content-wrapper { width: 100% !important; padding: 40px 20px !important; }
+  .poc-hero-content h1 { font-size: 44px !important; transform: none !important; }
+
+  /* Hingakawa */
+  .hingakawa-section { height: auto !important; padding: 40px 0 !important; margin-top: 0 !important; }
+  .hingakawa-container {
+    width: 100% !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    padding: 0 20px;
+  }
+  .hingakawa-image-wrapper { width: 100% !important; height: 260px !important; }
+  .hingakawa-image-wrapper img {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+  }
+  .image-frame { display: none !important; }
+  .hingakawa-content { max-width: 100% !important; }
+  .hingakawa-content h2 { margin-left: 0 !important; font-size: 24px !important; }
+  .hingakawa-content p  { margin-left: 0 !important; }
+  .read-stories { margin-left: 0 !important; }
+
+  /* Forgiveness section */
+  .forgiveness-section { height: auto !important; padding: 40px 0 !important; margin: 0 0 32px !important; }
+  .forgiveness-container {
+    width: 100% !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    padding: 0 20px;
+  }
+  .forgiveness-text {
+    position: static !important;
+    width: 100% !important;
+    left: auto !important; top: auto !important;
+  }
+  .forgiveness-video {
+    position: static !important;
+    width: 100% !important;
+    left: auto !important; top: auto !important;
+  }
+  .forgiveness-video iframe { height: 220px !important; }
 
 
   /* ═══════════════════════════════════════
@@ -685,5 +855,16 @@
   /* ── Dropdown menus ── */
   .dropdown-label { font-size: 18px !important; }
   .dropdown-icon { width: 70px !important; height: 70px !important; }
+
+  /* ── Delivery ── */
+  .dd-nav-logo { margin-right: 60px !important; }
+  .dd-main { padding: 24px 20px 100px !important; }
+
+  /* ── Stories ── */
+  .hingakawa-container { width: 100% !important; padding: 0 40px; gap: 60px !important; }
+  .forgiveness-container { width: 100% !important; padding: 0 40px; }
+  .quote-feature-wrapper { width: 100% !important; }
+  .hero-big { font-size: 60px !important; }
+  .poc-hero-content h1 { font-size: 60px !important; }
 
 }
