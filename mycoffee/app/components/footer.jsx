@@ -111,7 +111,11 @@ const Footer = () => {
                   style={sessionEmail ? { background: '#f5f5f5', cursor: 'default', color: '#444' } : {}}
                 />
                 <button type="submit" className="footer-signup-btn" disabled={loading}>
-                  {loading ? '…' : t('footer.signup')}
+                  {loading ? (
+                    <span className="loading-dots">
+                      <span /><span /><span />
+                    </span>
+                  ) : t('footer.signup')}
                 </button>
               </form>
 
