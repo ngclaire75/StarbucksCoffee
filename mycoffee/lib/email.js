@@ -1,31 +1,29 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
 const YEAR = new Date().getFullYear();
 
-function getResend() {
-  return new Resend(process.env.RESEND_API_KEY);
+function getTransporter() {
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
 }
 
 async function sendMail({ to, subject, html, devLabel }) {
-  if (!process.env.RESEND_API_KEY) {
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
     console.log(`[Email - DEV] ${devLabel} → ${to} | Subject: ${subject}`);
     return;
   }
 
-  const resend = getResend();
-  const from = process.env.RESEND_FROM || 'Starbucks <onboarding@resend.dev>';
+  const transporter = getTransporter();
+  const from = `Starbucks <${process.env.GMAIL_USER}>`;
 
-  const recipient = to;
-
-  console.log(`[Email] Sending "${subject}" to ${recipient} via Resend...`);
-  const { data, error } = await resend.emails.send({ from, to: recipient, subject, html });
-
-  if (error) {
-    console.error(`[Email] Resend error:`, JSON.stringify(error, null, 2));
-    throw new Error(error.message);
-  }
-
-  console.log(`[Email] Sent successfully. ID: ${data?.id}`);
+  console.log(`[Email] Sending "${subject}" to ${to}...`);
+  const info = await transporter.sendMail({ from, to, subject, html });
+  console.log(`[Email] Sent successfully. MessageId: ${info.messageId}`);
 }
 
 /* ── Shared email wrapper ──────────────────────────────── */
