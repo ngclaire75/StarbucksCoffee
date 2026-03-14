@@ -616,7 +616,6 @@ const mapUrl = useMemo(() => {
     <div className="dd-tracker-wrap">
       {phase === "delivered" ? (
         <div className="dd-delivered-wrap">
-          <div className="dd-delivered-icon"><Ic.Confetti /></div>
           <h3 className="dd-delivered-title">Your order was delivered!</h3>
           <p className="dd-delivered-sub">Enjoy your Starbucks. Have a great day!</p>
         </div>
@@ -639,7 +638,6 @@ const mapUrl = useMemo(() => {
             {PHASES.filter(p => p.key !== "delivered").map((p, i) => (
               <div key={p.key} className={`dd-step ${i < phaseIdx ? "dd-step--done" : i === phaseIdx ? "dd-step--active" : ""}`}>
                 <div className="dd-step-dot">
-                  {i < phaseIdx ? <Ic.Check /> : (Ic[p.iconKey] ? <span>{(() => { const C = Ic[p.iconKey]; return <C />; })()}</span> : null)}
                 </div>
                 <span className="dd-step-label">{p.label}</span>
                 {i < PHASES.length - 2 && <div className="dd-step-line" />}

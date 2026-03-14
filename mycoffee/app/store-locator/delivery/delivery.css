@@ -136,10 +136,11 @@ img { display: block; max-width: 100% }
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 12px 4px 4px;
+  padding: 4px 4px 4px 4px;
   background: var(--g-xl);
   border: 1.5px solid var(--g-lt);
   border-radius: var(--r-fu);
+  overflow: hidden;
 }
 .dd-user-avatar { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--g-lt) }
 .dd-user-initials {
@@ -151,8 +152,9 @@ img { display: block; max-width: 100% }
 .dd-user-name { font-size: 13px; font-weight: 600; color: var(--g);   margin-bottom: -1.5px; }
 .dd-sign-out-btn {
   font-size: 12px; font-weight: 600; color: var(--ink-s);
-  padding: 2px 9px; border-radius: var(--r-fu);
+  padding: 6px 12px; border-radius: var(--r-fu);
   transition: background .12s, color .12s;
+  align-self: stretch; display: flex; align-items: center;
 }
 .dd-sign-out-btn:hover { background: var(--bd); color: var(--ink) }
 .dd-signin-btn {
