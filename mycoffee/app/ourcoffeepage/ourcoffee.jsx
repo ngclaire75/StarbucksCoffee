@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import './ourcoffee.css';
 import HeaderFooter from '../components/headerfooter';
 import Footer from '../components/footer';
@@ -8,6 +8,7 @@ import HeroParallax from '../components/heroparallax';
 import SearchPanel from '../components/searchpanel';
 import NumbersSlider from '../components/numbersslider';
 import VideoCard from '../components/videocard';
+import NotAvailableModal from '../components/notavailablemodal';
 
 export default function OurCoffee() {
   const [storiesPage, setStoriesPage] = useState(1);
@@ -17,8 +18,9 @@ export default function OurCoffee() {
   const showNotAvailable = (e) => {
     e.preventDefault();
     setPopupVisible(true);
-    setTimeout(() => setPopupVisible(false), 3000);
   };
+
+  const closePopup = useCallback(() => setPopupVisible(false), []);
 
   const goToPage = (pg) => {
     if (pg === storiesPage) return;
@@ -28,11 +30,7 @@ export default function OurCoffee() {
 
   return (
     <>
-      {popupVisible && (
-        <div style={{ position: 'fixed', top: '20px', left: '50%', transform: 'translateX(-50%)', background: '#1e3932', color: '#fff', padding: '14px 24px', borderRadius: '8px', zIndex: 9999, fontSize: '14px', fontWeight: '600', boxShadow: '0 4px 12px rgba(0,0,0,0.2)', whiteSpace: 'nowrap' }}>
-          Learn more is currently not available.
-        </div>
-      )}
+      {popupVisible && <NotAvailableModal onClose={closePopup} />}
 
       {/* Header & Dropdown Navigation */}
       <HeaderFooter />

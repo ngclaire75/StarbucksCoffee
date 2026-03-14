@@ -1,11 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import './ourcompany.css';
 import '../home.css';
 
 import WhiteNav from '../whitenav';
 import PagesList from '../pageslist';
+import NotAvailableModal from '../components/notavailablemodal';
 
 export default function OurCompany() {
   const [popupVisible, setPopupVisible] = useState(false);
@@ -13,16 +14,13 @@ export default function OurCompany() {
   const showNotAvailable = (e) => {
     e.preventDefault();
     setPopupVisible(true);
-    setTimeout(() => setPopupVisible(false), 3000);
   };
+
+  const closePopup = useCallback(() => setPopupVisible(false), []);
 
   return (
     <>
-      {popupVisible && (
-        <div style={{ position: 'fixed', top: '20px', left: '50%', transform: 'translateX(-50%)', background: '#1e3932', color: '#fff', padding: '14px 24px', borderRadius: '8px', zIndex: 9999, fontSize: '14px', fontWeight: '600', boxShadow: '0 4px 12px rgba(0,0,0,0.2)', whiteSpace: 'nowrap' }}>
-          Learn more is currently not available.
-        </div>
-      )}
+      {popupVisible && <NotAvailableModal onClose={closePopup} />}
           <WhiteNav />
           <div className="navbar-divider"></div> 
       {/* Page Title */}
