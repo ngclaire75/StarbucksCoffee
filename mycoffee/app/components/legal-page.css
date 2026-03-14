@@ -329,3 +329,24 @@
 .lp-back:active {
   transform: translateY(0);
 }
+
+@media (max-width: 768px) {
+  .lp-card {
+    padding: 36px 24px;
+    border-radius: 22px;
+    width: 92%;
+  }
+  .lp-title { font-size: 24px; }
+  .lp-body  { font-size: 13.5px; margin-bottom: 32px; }
+  .lp-back  { padding: 11px 24px; font-size: 12px; }
+}
+
+@media (max-width: 480px) {
+  .lp-card {
+    padding: 28px 16px;
+    border-radius: 18px;
+    width: 95%;
+  }
+  .lp-title { font-size: 20px; }
+  .lp-body  { font-size: 13px; margin-bottom: 24px; }
+}
