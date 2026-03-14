@@ -12,6 +12,13 @@ import VideoCard from '../components/videocard';
 export default function OurCoffee() {
   const [storiesPage, setStoriesPage] = useState(1);
   const [fading, setFading] = useState(false);
+  const [popupVisible, setPopupVisible] = useState(false);
+
+  const showNotAvailable = (e) => {
+    e.preventDefault();
+    setPopupVisible(true);
+    setTimeout(() => setPopupVisible(false), 3000);
+  };
 
   const goToPage = (pg) => {
     if (pg === storiesPage) return;
@@ -21,6 +28,12 @@ export default function OurCoffee() {
 
   return (
     <>
+      {popupVisible && (
+        <div style={{ position: 'fixed', top: '20px', left: '50%', transform: 'translateX(-50%)', background: '#1e3932', color: '#fff', padding: '14px 24px', borderRadius: '8px', zIndex: 9999, fontSize: '14px', fontWeight: '600', boxShadow: '0 4px 12px rgba(0,0,0,0.2)', whiteSpace: 'nowrap' }}>
+          Learn more is currently not available.
+        </div>
+      )}
+
       {/* Header & Dropdown Navigation */}
       <HeaderFooter />
 
@@ -62,7 +75,7 @@ export default function OurCoffee() {
               How <br />Starbucks is <br />working to
               save <br />the future of <br />coffee
             </h1>
-            <a href="#" className="cup-btn">
+            <a href="#" className="cup-btn" onClick={showNotAvailable}>
               <span className="circle">→</span>
               <span>Learn More</span>
             </a>
@@ -84,7 +97,7 @@ export default function OurCoffee() {
               spaces for conversations, connection and joy, where our baristas
               share their love of coffee every single day.
             </p>
-            <a href="#" className="bean-btn">
+            <a href="#" className="bean-btn" onClick={showNotAvailable}>
               <span className="icon">→</span>
               <span className="text">Learn More</span>
             </a>
@@ -124,7 +137,7 @@ export default function OurCoffee() {
               <span className="big-number">20</span>
             </div>
             <p>Years we&apos;ve offered Guatemala Casi Cielo, a barista favorite</p>
-            <a href="#" className="explore-btn">
+            <a href="#" className="explore-btn" onClick={showNotAvailable}>
               <span className="circle">→</span>
               <span className="explore-text">Explore</span>
             </a>
@@ -149,7 +162,7 @@ export default function OurCoffee() {
               <span className="big-number">20</span>
             </div>
             <p>Years we&apos;ve offered Guatemala Casi Cielo, a barista favorite</p>
-            <a href="#" className="explore-btn">
+            <a href="#" className="explore-btn" onClick={showNotAvailable}>
               <span className="circle">→</span>
               <span className="explore-text">Explore</span>
             </a>
@@ -183,7 +196,7 @@ export default function OurCoffee() {
               around the world to unique Starbucks locations to tell stories about coffee,
               craft and connection on social media.
             </p>
-            <a href="#" className="cup-btn-global">
+            <a href="#" className="cup-btn-global" onClick={showNotAvailable}>
               <span className="circle">→</span>
               <span>Learn More</span>
             </a>
@@ -240,7 +253,7 @@ export default function OurCoffee() {
               flavor, body, acidity and aroma — and may even change the
               way you think about coffee.
             </p>
-            <a href="#" className="pairings-btn">
+            <a href="#" className="pairings-btn" onClick={showNotAvailable}>
               <span className="circle">→</span>
               <span className="text-underline">Learn More</span>
             </a>
@@ -290,7 +303,7 @@ export default function OurCoffee() {
                 Starbucks celebrates the farmers, roasters and baristas who work relentlessly
                 to craft the perfect cup.
               </p>
-              <button className="learn-more-btn">Learn More</button>
+              <button className="learn-more-btn" onClick={showNotAvailable}>Learn More</button>
               <div className="hero-vertical-line-bottom"></div>
             </div>
           </>
@@ -306,7 +319,7 @@ export default function OurCoffee() {
           <div className="coffee-roast-text">
             <h1>Starbucks Coffee roast spectrum explained</h1>
             <p>The art and science of the Starbucks® Roast Spectrum.</p>
-            <a href="#" className="coffee-roast-btn">
+            <a href="#" className="coffee-roast-btn" onClick={showNotAvailable}>
               <div className="circle">→</div>
               <span>Learn More</span>
             </a>

@@ -128,9 +128,10 @@ export default function WhiteNav({ activePage }) {
                       fontWeight: '600',
                       color: '#1e3932',
                       cursor: 'pointer',
+                      borderRadius: '0 0 8px 8px',
                     }}
-                    onMouseOver={(e) => (e.currentTarget.style.background = '#f5f5f5')}
-                    onMouseOut={(e) => (e.currentTarget.style.background = 'none')}
+                    onMouseOver={(e) => { e.currentTarget.style.background = '#f5f5f5'; e.currentTarget.style.borderRadius = '0 0 8px 8px'; }}
+                    onMouseOut={(e) => { e.currentTarget.style.background = 'none'; e.currentTarget.style.borderRadius = '0 0 8px 8px'; }}
                   >
                     Sign out
                   </button>

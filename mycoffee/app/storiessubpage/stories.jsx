@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import './stories.css';
 import HeaderFooter from '../components/headerfooter';
 import SearchPanel from '../components/searchpanel';
@@ -7,8 +8,21 @@ import HeroParallax from '../components/heroparallax';
 import Footer from '../components/footer';
 
 export default function Stories() {
+  const [popupVisible, setPopupVisible] = useState(false);
+
+  const showNotAvailable = (e) => {
+    e.preventDefault();
+    setPopupVisible(true);
+    setTimeout(() => setPopupVisible(false), 3000);
+  };
+
   return (
     <HeaderFooter>
+      {popupVisible && (
+        <div style={{ position: 'fixed', top: '20px', left: '50%', transform: 'translateX(-50%)', background: '#1e3932', color: '#fff', padding: '14px 24px', borderRadius: '8px', zIndex: 9999, fontSize: '14px', fontWeight: '600', boxShadow: '0 4px 12px rgba(0,0,0,0.2)', whiteSpace: 'nowrap' }}>
+          Learn more is currently not available.
+        </div>
+      )}
       <SearchPanel />
 
       {/* Hero Section */}
@@ -49,7 +63,7 @@ export default function Stories() {
             <h2>
               Keeping your cup full: How Starbucks is working to save the future of coffee
             </h2>
-            <a href="#" className="feature-link">
+            <a href="#" className="feature-link" onClick={showNotAvailable}>
               <span className="circle-arrow">
                 <span className="arrow-char">→</span>
               </span>
@@ -74,7 +88,7 @@ export default function Stories() {
                 unique story.
               </p>
             </div>
-            <a href="#" className="story-link">
+            <a href="#" className="story-link" onClick={showNotAvailable}>
               <span className="story-arrow-circle">
                 <span className="story-arrow">→</span>
               </span>
@@ -108,7 +122,7 @@ export default function Stories() {
               that horse didn’t care that my legs didn’t work.
             </p>
             <span className="quote-author">Rebecca Hart, barista</span>
-            <a href="#" className="quote-link">
+            <a href="#" className="quote-link" onClick={showNotAvailable}>
               <span className="circle-arrow-2">
                 <span className="arrow-char-2">→</span>
               </span>
@@ -190,7 +204,7 @@ export default function Stories() {
               support each other. Here, at Hingakawa, they know that they
               are strongest together.
             </p>
-            <a href="#" className="read-stories">
+            <a href="#" className="read-stories" onClick={showNotAvailable}>
               <span className="arrow-circle-3">
                 <span className="arrow-char-3">→</span>
               </span>

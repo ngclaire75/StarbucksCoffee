@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import './ourcompany.css';
 import '../home.css';
 
@@ -7,8 +8,21 @@ import WhiteNav from '../whitenav';
 import PagesList from '../pageslist';
 
 export default function OurCompany() {
+  const [popupVisible, setPopupVisible] = useState(false);
+
+  const showNotAvailable = (e) => {
+    e.preventDefault();
+    setPopupVisible(true);
+    setTimeout(() => setPopupVisible(false), 3000);
+  };
+
   return (
     <>
+      {popupVisible && (
+        <div style={{ position: 'fixed', top: '20px', left: '50%', transform: 'translateX(-50%)', background: '#1e3932', color: '#fff', padding: '14px 24px', borderRadius: '8px', zIndex: 9999, fontSize: '14px', fontWeight: '600', boxShadow: '0 4px 12px rgba(0,0,0,0.2)', whiteSpace: 'nowrap' }}>
+          Learn more is currently not available.
+        </div>
+      )}
           <WhiteNav />
           <div className="navbar-divider"></div> 
       {/* Page Title */}
@@ -57,7 +71,7 @@ export default function OurCompany() {
           red-ripe coffee cherries, to the master roasters who coax the best from every bean, and to
           the barista who serves it with care.
         </p>
-        <a href="/our-coffee" className="btn">Learn more</a>
+        <a href="/our-coffee" className="btn" onClick={showNotAvailable}>Learn more</a>
       </section>
 
       {/* Our Partners Image */}
@@ -76,7 +90,7 @@ export default function OurCompany() {
           We are committed to making our partners proud and investing in their health, well-being and
           success and to creating a culture of belonging where everyone is welcome.
         </p>
-        <a href="#" className="btn">Explore Careers</a>
+        <a href="#" className="btn" onClick={showNotAvailable}>Explore Careers</a>
       </section>
 
       {/* Doing Good Image */}
@@ -101,7 +115,7 @@ export default function OurCompany() {
           everyone we connect with, from our partners to coffee farmers to the customers in our
           stores and beyond.
         </p>
-        <a href="#" className="btn">Learn more</a>
+        <a href="#" className="btn" onClick={showNotAvailable}>Learn more</a>
       </section>
 
       {/* Planet */}
@@ -112,7 +126,7 @@ export default function OurCompany() {
           planet. We are working to store more carbon than we emit, replenish more freshwater than
           we use, and eliminate waste.
         </p>
-        <a href="#" className="btn">Learn more</a>
+        <a href="#" className="btn" onClick={showNotAvailable}>Learn more</a>
       </section>
 
       {/* Learn More */}
@@ -123,29 +137,29 @@ export default function OurCompany() {
       <section className="content-section">
         <h3>Stories &amp; News</h3>
         <p>Behind every cup of coffee is a story.</p>
-        <a href="#" className="btn">Check out Starbucks Stories</a>
+        <a href="#" className="btn" onClick={showNotAvailable}>Check out Starbucks Stories</a>
       </section>
 
       <section className="content-section">
         <h3>Company Profile</h3>
         <p>Here&apos;s a closer look at our company.</p>
-        <a href="#" className="btn">Learn more</a>
+        <a href="#" className="btn" onClick={showNotAvailable}>Learn more</a>
       </section>
 
       <section className="content-section">
         <h3>Company Timeline</h3>
         <p>Read a brief history of Starbucks.</p>
-        <a href="#" className="btn">Learn more</a>
+        <a href="#" className="btn" onClick={showNotAvailable}>Learn more</a>
       </section>
 
       <section className="content-section">
         <h3>Ethics &amp; Compliance</h3>
-        <a href="#" className="btn">Learn more</a>
+        <a href="#" className="btn" onClick={showNotAvailable}>Learn more</a>
       </section>
 
       <section className="content-section corporate-governance">
         <h3>Corporate Governance</h3>
-        <a href="#" className="btn">Learn more</a>
+        <a href="#" className="btn" onClick={showNotAvailable}>Learn more</a>
       </section>
             <PagesList />
     </>
