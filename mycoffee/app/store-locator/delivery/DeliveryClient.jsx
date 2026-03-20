@@ -21,7 +21,7 @@ export default function DeliveryClient() {
         {/* Left — photo */}
         <div style={{
           flex: '0 0 48%',
-          backgroundImage: 'url(https://images.unsplash.com/photo-1511920170033-f8396924c348?w=900&q=80)',
+          backgroundImage: 'url(/images/deliveries.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           minHeight: '480px',
