@@ -30,19 +30,19 @@ const REGIONS = {
   'latam-en': {
     region: 'Latin America',
     language: 'English',
-    flag: '🌎',
+    flag: 'LA',
     description: 'Starbucks is proud to source many of its finest coffees from Latin America, and serves communities across the region with warmth and connection.',
   },
   'latam-es': {
     region: 'Latin America',
     language: 'Español',
-    flag: '🌎',
+    flag: 'LA',
     description: 'Starbucks se enorgullece de obtener muchos de sus mejores cafés de América Latina y sirve a comunidades de toda la región con calidez y conexión.',
   },
   'latam-pt': {
     region: 'Latin America',
     language: 'Português',
-    flag: '🌎',
+    flag: 'LA',
     description: 'A Starbucks tem orgulho em obter muitos dos seus melhores cafés da América Latina e serve comunidades em toda a região com calor humano e conexão.',
   },
   'asia-en': {
@@ -70,7 +70,11 @@ export default function RegionClient() {
       <div className="rg-card">
         {data ? (
           <>
-            <span className="rg-flag">{data.flag}</span>
+            {data.flag === 'LA' ? (
+              <span className="rg-flag rg-flag-text">LA</span>
+            ) : (
+              <span className="rg-flag">{data.flag}</span>
+            )}
             <p className="rg-eyebrow">{data.region}</p>
             <h1 className="rg-title">{data.language}</h1>
             <div className="rg-divider" />
