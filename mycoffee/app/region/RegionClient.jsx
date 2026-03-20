@@ -48,7 +48,7 @@ const REGIONS = {
   'asia-en': {
     region: 'Asia',
     language: 'English',
-    flag: '🌏',
+    flag: 'ASIA',
     description: 'Across Asia, Starbucks brings its signature coffee craftsmanship and community spirit to millions of customers, blending global quality with local culture.',
   },
   'japan-ja': {
