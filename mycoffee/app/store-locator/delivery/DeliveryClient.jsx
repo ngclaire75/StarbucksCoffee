@@ -30,7 +30,7 @@ export default function DeliveryClient() {
         {/* Right — message */}
         <div style={{
           flex: 1,
-          background: '#3b2a1a',
+          background: '#5c3d20',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
