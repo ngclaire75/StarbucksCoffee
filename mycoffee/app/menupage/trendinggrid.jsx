@@ -939,7 +939,7 @@ export default function TrendingGrid({ onBack, bagCount, setBagCount, storeSelec
               Trending
             </h1>
             <span style={{ display: 'inline-flex', alignItems: 'center', transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease' }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3932" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3932" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="6 9 12 15 18 9" />
               </svg>
             </span>
