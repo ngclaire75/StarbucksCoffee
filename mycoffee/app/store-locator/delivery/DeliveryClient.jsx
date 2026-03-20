@@ -1,9 +1,8 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function DeliveryClient() {
-  const router = useRouter();
   return (
     <div style={{
       minHeight: '100vh',
@@ -54,12 +53,12 @@ export default function DeliveryClient() {
           }}>
             Delivery is<br />not<br />available in<br />this region.
           </p>
-          <button
-            onClick={() => router.back()}
+          <Link
+            href="/store-locator?tab=Delivery"
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '8px',
+              gap: '16px',
               background: 'transparent',
               border: '1.5px solid rgba(255,255,255,0.6)',
               borderRadius: '100px',
@@ -68,12 +67,12 @@ export default function DeliveryClient() {
               fontWeight: 700,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
-              padding: '12px 24px',
-              cursor: 'pointer',
+              padding: '12px 28px',
+              textDecoration: 'none',
             }}
           >
             ← Go Back
-          </button>
+          </Link>
         </div>
       </div>
     </div>
