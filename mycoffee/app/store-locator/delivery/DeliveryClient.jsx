@@ -34,7 +34,7 @@ export default function DeliveryClient() {
         {/* Right — message */}
         <div style={{
           flex: 1,
-          background: '#5c3d20',
+          background: '#443428',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
