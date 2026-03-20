@@ -58,7 +58,7 @@ export default function DeliveryClient() {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '16px',
+              gap: '28px',
               background: 'transparent',
               border: '1.5px solid rgba(255,255,255,0.6)',
               borderRadius: '100px',
