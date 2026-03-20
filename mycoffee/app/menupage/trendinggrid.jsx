@@ -662,86 +662,82 @@ function TrendingCard({ drink, isDimmed, onExpand }) {
       onClick={onExpand}
       style={{
         background: '#fff',
-        borderRadius: 14,
-        border: '2px solid transparent',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.07)',
-        transition: 'all 0.2s ease',
+        borderRadius: 16,
+        border: '1.5px solid #f0f0ee',
+        boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
+        transition: 'transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease',
         cursor: 'pointer',
-        opacity: isDimmed ? 0.32 : 1,
-        transform: isDimmed ? 'scale(0.975)' : 'scale(1)',
+        opacity: isDimmed ? 0.3 : 1,
+        transform: isDimmed ? 'scale(0.97)' : 'scale(1)',
         pointerEvents: isDimmed ? 'none' : 'auto',
         overflow: 'hidden',
         height: '100%',
       }}
       onMouseEnter={(e) => {
         if (!isDimmed) {
-          e.currentTarget.style.boxShadow = `0 8px 28px ${drink.accentColor}28`;
-          e.currentTarget.style.borderColor = `${drink.accentColor}44`;
-          e.currentTarget.style.transform = 'translateY(-2px)';
+          e.currentTarget.style.boxShadow = `0 12px 32px ${drink.accentColor}22`;
+          e.currentTarget.style.borderColor = `${drink.accentColor}33`;
+          e.currentTarget.style.transform = 'translateY(-4px)';
         }
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.07)';
-        e.currentTarget.style.borderColor = 'transparent';
+        e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.06)';
+        e.currentTarget.style.borderColor = '#f0f0ee';
         e.currentTarget.style.transform = 'scale(1)';
       }}
     >
-      <div style={{ padding: '22px 20px 18px' }}>
-        <div
+      {/* Image area */}
+      <div style={{
+        background: drink.collapsedBgColor ?? drink.bgColor,
+        height: 180,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+      }}>
+        <img
+          src={drink.src}
+          alt={drink.name}
+          draggable={false}
           style={{
-            background: drink.collapsedBgColor ?? drink.bgColor,
-            borderRadius: 10,
-            height: 140,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginBottom: 14,
-            overflow: 'hidden',
+            height: drink.collapsedImageHeight,
+            marginTop: drink.collapsedImageMarginTop,
+            marginBottom: drink.collapsedImageMarginBottom,
+            objectFit: 'contain',
+            transition: 'transform 0.35s ease',
           }}
-        >
-          <img
-            src={drink.src}
-            alt={drink.name}
-            draggable={false}
-            style={{
-              height: drink.collapsedImageHeight,
-              marginTop: drink.collapsedImageMarginTop,
-              marginBottom: drink.collapsedImageMarginBottom,
-              objectFit: 'contain',
-              transition: 'transform 0.3s ease',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.06)')}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-          />
-        </div>
-        <span
-          style={{
-            fontSize: 10,
-            fontWeight: 700,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: drink.accentColor,
-            background: drink.bgColor,
-            padding: '3px 9px',
-            borderRadius: 50,
-            display: 'inline-block',
-            marginBottom: 8,
-          }}
-        >
+          onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.07)')}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+        />
+      </div>
+
+      {/* Text area */}
+      <div style={{ padding: '16px 18px 20px' }}>
+        <span style={{
+          fontSize: 9,
+          fontWeight: 800,
+          letterSpacing: '0.14em',
+          textTransform: 'uppercase',
+          color: drink.accentColor,
+          background: drink.bgColor,
+          padding: '3px 10px',
+          borderRadius: 50,
+          display: 'inline-block',
+          marginBottom: 10,
+        }}>
           {drink.tag}
         </span>
-        <div
-          style={{
-            fontSize: 15,
-            fontWeight: 600,
-            color: '#1A1A1A',
-            lineHeight: 1.35,
-            marginBottom: 4,
-          }}
-        >
+        <div style={{
+          fontSize: 15,
+          fontWeight: 700,
+          color: '#1a1a1a',
+          lineHeight: 1.3,
+          marginBottom: 5,
+          letterSpacing: '-0.2px',
+        }}>
           {drink.name}
         </div>
-        <div style={{ fontSize: 11, color: '#999' }}>{drink.calories}</div>
+        <div style={{ fontSize: 11, color: '#bbb', fontWeight: 500 }}>{drink.calories}</div>
       </div>
     </div>
   );
@@ -911,43 +907,61 @@ export default function TrendingGrid({ onBack, bagCount, setBagCount, storeSelec
 
   return (
     <div>
-      <div style={{ marginBottom: 8 }}>
+
+      {/* ── Breadcrumb ── */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 28 }}>
         <button
           onClick={onBack}
           style={{
-            background: 'none', border: 'none', cursor: 'pointer', fontSize: 14,
-            color: '#888', fontWeight: 600, letterSpacing: '0.04em',
-            padding: '0 0 18px 0', display: 'flex', alignItems: 'center', gap: 6,
+            background: 'none', border: 'none', cursor: 'pointer',
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.12em',
+            textTransform: 'uppercase', color: '#aaa', padding: 0,
+            transition: 'color 0.18s',
           }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = '#1e3932')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = '#aaa')}
         >
-          Menu / Trending
+          Menu
         </button>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ccc" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+        <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#1e3932' }}>
+          Trending
+        </span>
+      </div>
 
-        <div style={{ position: 'relative', display: 'inline-block' }}>
-          <button
-            onClick={() => setDropdownOpen((v) => !v)}
-            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'baseline', gap: 10 }}
-          >
-            <h1
-              className="menu-title"
-              style={{
-                marginBottom: 0, display: 'inline',
-                borderBottom: dropdownOpen ,
-                paddingBottom: 2, transition: 'border-color 0.2s',
-              }}
+      {/* ── Title + dropdown ── */}
+      <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 28 }}>
+        <div>
+          <div style={{ width: 32, height: 3, background: '#00a862', borderRadius: 2, marginBottom: 12 }} />
+          <div style={{ position: 'relative', display: 'inline-block' }}>
+            <button
+              onClick={() => setDropdownOpen((v) => !v)}
+              style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 10 }}
             >
-              Trending
-            </h1>
-            <span style={{ display: 'inline-flex', alignItems: 'center', transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease' }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3932" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </span>
-          </button>
+              <h1 className="menu-title" style={{ marginBottom: 0, display: 'inline' }}>
+                Trending
+              </h1>
+              <span style={{
+                display: 'inline-flex', alignItems: 'center',
+                transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.22s ease',
+                marginBottom: 2,
+              }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3932" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </span>
+            </button>
 
-          {dropdownOpen && (
-            <TrendingDropdown drinks={TRENDING_DRINKS} onSelect={handleDropdownSelect} onClose={() => setDropdownOpen(false)} />
-          )}
+            {dropdownOpen && (
+              <TrendingDropdown drinks={TRENDING_DRINKS} onSelect={handleDropdownSelect} onClose={() => setDropdownOpen(false)} />
+            )}
+          </div>
+          <p style={{ fontSize: 13, color: '#999', margin: '8px 0 0', fontWeight: 400 }}>
+            Fan favorites right now — {TRENDING_DRINKS.length} drinks
+          </p>
         </div>
       </div>
 
@@ -955,8 +969,7 @@ export default function TrendingGrid({ onBack, bagCount, setBagCount, storeSelec
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 16,
-          marginTop: 24,
+          gap: 20,
         }}
       >
         {TRENDING_DRINKS.map((drink) => (
