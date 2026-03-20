@@ -217,6 +217,8 @@
 /* SIDEBAR */
 .menu-sidebar {
   width: 220px;
+  position: relative;
+  z-index: 400;
 }
 
 .menu-sidebar h4 {
