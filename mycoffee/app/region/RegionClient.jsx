@@ -54,7 +54,7 @@ const REGIONS = {
   'japan-ja': {
     region: 'Japan',
     language: '日本語',
-    flag: '🇯🇵',
+    flag: 'JP',
     description: 'スターバックスは1996年に日本に上陸して以来、コーヒーの素晴らしさと温かいひとときをお届けしています。',
   },
 };
@@ -70,11 +70,7 @@ export default function RegionClient() {
       <div className="rg-card">
         {data ? (
           <>
-            {data.flag === 'LA' ? (
-              <span className="rg-flag rg-flag-text">LA</span>
-            ) : (
-              <span className="rg-flag">{data.flag}</span>
-            )}
+            <span className="rg-flag">{data.flag}</span>
             <p className="rg-eyebrow">{data.region}</p>
             <h1 className="rg-title">{data.language}</h1>
             <div className="rg-divider" />
