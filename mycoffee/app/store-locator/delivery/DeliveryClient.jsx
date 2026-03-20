@@ -1,6 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 export default function DeliveryClient() {
+  const router = useRouter();
   return (
     <div style={{
       minHeight: '100vh',
@@ -32,9 +35,11 @@ export default function DeliveryClient() {
           flex: 1,
           background: '#5c3d20',
           display: 'flex',
-          alignItems: 'center',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
           justifyContent: 'center',
           padding: '60px 52px',
+          gap: '36px',
         }}>
           <p style={{
             fontFamily: "'Georgia', 'Times New Roman', serif",
@@ -49,6 +54,26 @@ export default function DeliveryClient() {
           }}>
             Delivery is<br />not<br />available in<br />this region.
           </p>
+          <button
+            onClick={() => router.back()}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'transparent',
+              border: '1.5px solid rgba(255,255,255,0.6)',
+              borderRadius: '100px',
+              color: '#fff',
+              fontSize: '13px',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              padding: '12px 24px',
+              cursor: 'pointer',
+            }}
+          >
+            ← Go Back
+          </button>
         </div>
       </div>
     </div>
