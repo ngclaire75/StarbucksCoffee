@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function DeliveryClient() {
+  const [hovered, setHovered] = useState(false);
   return (
     <div style={{
       minHeight: '100vh',
@@ -55,11 +57,13 @@ export default function DeliveryClient() {
           </p>
           <Link
             href="/store-locator?tab=Delivery"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '28px',
-              background: 'transparent',
+              background: hovered ? 'rgba(255,255,255,0.18)' : 'transparent',
               border: '1.5px solid rgba(255,255,255,0.6)',
               borderRadius: '100px',
               color: '#fff',
@@ -69,6 +73,7 @@ export default function DeliveryClient() {
               textTransform: 'uppercase',
               padding: '12px 28px',
               textDecoration: 'none',
+              transition: 'background 0.2s ease',
             }}
           >
             ← Go Back
