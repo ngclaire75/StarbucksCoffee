@@ -655,7 +655,137 @@ function ExpandedOverlay({ drink, onCollapse, onCustomize, storeSelected, itemQt
   );
 }
 
-// ─── Single Collapsed Card ────────────────────────────────────────────────────
+// ─── Magazine: Featured Hero Card (drink 0) ───────────────────────────────────
+function FeaturedCard({ drink, isDimmed, onExpand }) {
+  return (
+    <div
+      onClick={onExpand}
+      style={{
+        background: '#fff',
+        borderRadius: 16,
+        overflow: 'hidden',
+        cursor: 'pointer',
+        opacity: isDimmed ? 0.28 : 1,
+        pointerEvents: isDimmed ? 'none' : 'auto',
+        boxShadow: '0 2px 12px rgba(0,0,0,0.07)',
+        transition: 'box-shadow 0.22s ease, transform 0.22s ease',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.boxShadow = `0 12px 40px ${drink.accentColor}30`;
+        e.currentTarget.style.transform = 'translateY(-3px)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.07)';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
+    >
+      {/* Image area */}
+      <div style={{
+        background: drink.bgColor,
+        flex: '1 1 220px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        minHeight: 220,
+      }}>
+        <img
+          src={drink.src}
+          alt={drink.name}
+          draggable={false}
+          style={{
+            height: drink.collapsedImageHeight,
+            marginTop: drink.collapsedImageMarginTop,
+            objectFit: 'contain',
+            transition: 'transform 0.4s ease',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.07)')}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+        />
+      </div>
+      {/* Content */}
+      <div style={{ padding: '20px 22px 22px', borderTop: `3px solid ${drink.accentColor}` }}>
+        <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.18em', textTransform: 'uppercase', color: drink.accentColor, marginBottom: 8 }}>
+          {drink.tag}
+        </div>
+        <div style={{ fontSize: 18, fontWeight: 800, color: '#111', lineHeight: 1.25, letterSpacing: '-0.3px', marginBottom: 6 }}>
+          {drink.name}
+        </div>
+        <div style={{ fontSize: 11, color: '#bbb', letterSpacing: '0.02em' }}>{drink.calories}</div>
+        <div style={{ fontSize: 12, color: '#666', lineHeight: 1.65, marginTop: 10, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+          {drink.description}
+        </div>
+        <div style={{ marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 700, color: drink.accentColor, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+          Explore
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Magazine: Side-by-side compact card (drinks 1–2) ─────────────────────────
+function SideCard({ drink, isDimmed, onExpand }) {
+  return (
+    <div
+      onClick={onExpand}
+      style={{
+        background: '#fff',
+        borderRadius: 14,
+        overflow: 'hidden',
+        cursor: 'pointer',
+        opacity: isDimmed ? 0.28 : 1,
+        pointerEvents: isDimmed ? 'none' : 'auto',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.06)',
+        transition: 'box-shadow 0.22s ease, transform 0.22s ease',
+        display: 'flex',
+        alignItems: 'stretch',
+        flex: 1,
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.boxShadow = `0 8px 28px ${drink.accentColor}28`;
+        e.currentTarget.style.transform = 'translateY(-2px)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.06)';
+        e.currentTarget.style.transform = 'translateY(0)';
+      }}
+    >
+      {/* Image */}
+      <div style={{
+        background: drink.bgColor,
+        width: 90,
+        flexShrink: 0,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+      }}>
+        <img
+          src={drink.src}
+          alt={drink.name}
+          draggable={false}
+          style={{ height: 100, objectFit: 'contain', marginTop: drink.collapsedImageMarginTop ? drink.collapsedImageMarginTop * 0.4 : 0 }}
+        />
+      </div>
+      {/* Text */}
+      <div style={{ padding: '14px 16px', flex: 1, borderLeft: `3px solid ${drink.accentColor}` }}>
+        <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase', color: drink.accentColor, marginBottom: 5 }}>
+          {drink.tag}
+        </div>
+        <div style={{ fontSize: 13, fontWeight: 700, color: '#111', lineHeight: 1.3, marginBottom: 4, letterSpacing: '-0.1px' }}>
+          {drink.name}
+        </div>
+        <div style={{ fontSize: 10, color: '#bbb' }}>{drink.calories}</div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Magazine: Bottom row card (drinks 3–5) ───────────────────────────────────
 function TrendingCard({ drink, isDimmed, onExpand }) {
   return (
     <div
@@ -663,85 +793,52 @@ function TrendingCard({ drink, isDimmed, onExpand }) {
       style={{
         background: '#fff',
         borderRadius: 14,
-        border: '2px solid transparent',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.07)',
-        transition: 'all 0.2s ease',
-        cursor: 'pointer',
-        opacity: isDimmed ? 0.32 : 1,
-        transform: isDimmed ? 'scale(0.975)' : 'scale(1)',
-        pointerEvents: isDimmed ? 'none' : 'auto',
         overflow: 'hidden',
+        cursor: 'pointer',
+        opacity: isDimmed ? 0.28 : 1,
+        pointerEvents: isDimmed ? 'none' : 'auto',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.06)',
+        transition: 'box-shadow 0.22s ease, transform 0.22s ease',
         height: '100%',
       }}
       onMouseEnter={(e) => {
-        if (!isDimmed) {
-          e.currentTarget.style.boxShadow = `0 8px 28px ${drink.accentColor}28`;
-          e.currentTarget.style.borderColor = `${drink.accentColor}44`;
-          e.currentTarget.style.transform = 'translateY(-2px)';
-        }
+        e.currentTarget.style.boxShadow = `0 8px 28px ${drink.accentColor}28`;
+        e.currentTarget.style.transform = 'translateY(-3px)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.07)';
-        e.currentTarget.style.borderColor = 'transparent';
-        e.currentTarget.style.transform = 'scale(1)';
+        e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.06)';
+        e.currentTarget.style.transform = 'translateY(0)';
       }}
     >
-      <div style={{ padding: '22px 20px 18px' }}>
-        <div
+      <div style={{
+        background: drink.bgColor,
+        height: 130,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+      }}>
+        <img
+          src={drink.src}
+          alt={drink.name}
+          draggable={false}
           style={{
-            background: drink.collapsedBgColor ?? drink.bgColor,
-            borderRadius: 10,
-            height: 140,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginBottom: 14,
-            overflow: 'hidden',
+            height: drink.collapsedImageHeight * 0.78,
+            objectFit: 'contain',
+            transition: 'transform 0.3s ease',
           }}
-        >
-          <img
-            src={drink.src}
-            alt={drink.name}
-            draggable={false}
-            style={{
-              height: drink.collapsedImageHeight,
-              marginTop: drink.collapsedImageMarginTop,
-              marginBottom: drink.collapsedImageMarginBottom,
-              objectFit: 'contain',
-              transition: 'transform 0.3s ease',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.06)')}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-          />
-        </div>
-        <span
-          style={{
-            fontSize: 10,
-            fontWeight: 700,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: drink.accentColor,
-            background: drink.bgColor,
-            padding: '3px 9px',
-            borderRadius: 50,
-            display: 'inline-block',
-            marginBottom: 8,
-          }}
-        >
+          onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.07)')}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+        />
+      </div>
+      <div style={{ padding: '14px 16px 16px', borderTop: `2px solid ${drink.accentColor}` }}>
+        <div style={{ fontSize: 9, fontWeight: 800, letterSpacing: '0.16em', textTransform: 'uppercase', color: drink.accentColor, marginBottom: 6 }}>
           {drink.tag}
-        </span>
-        <div
-          style={{
-            fontSize: 15,
-            fontWeight: 600,
-            color: '#1A1A1A',
-            lineHeight: 1.35,
-            marginBottom: 4,
-          }}
-        >
+        </div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: '#111', lineHeight: 1.3, marginBottom: 4, letterSpacing: '-0.1px' }}>
           {drink.name}
         </div>
-        <div style={{ fontSize: 11, color: '#999' }}>{drink.calories}</div>
+        <div style={{ fontSize: 10, color: '#bbb' }}>{drink.calories}</div>
       </div>
     </div>
   );
@@ -911,63 +1008,89 @@ export default function TrendingGrid({ onBack, bagCount, setBagCount, storeSelec
 
   return (
     <div>
-      <div style={{ marginBottom: 8 }}>
+      {/* ── Magazine header ── */}
+      <div style={{ marginBottom: 20 }}>
+        {/* Breadcrumb */}
         <button
           onClick={onBack}
           style={{
-            background: 'none', border: 'none', cursor: 'pointer', fontSize: 14,
-            color: '#888', fontWeight: 600, letterSpacing: '0.04em',
-            padding: '0 0 18px 0', display: 'flex', alignItems: 'center', gap: 6,
+            background: 'none', border: 'none', cursor: 'pointer',
+            fontSize: 11, color: '#aaa', fontWeight: 600, letterSpacing: '0.1em',
+            textTransform: 'uppercase', padding: '0 0 14px 0',
+            display: 'flex', alignItems: 'center', gap: 6,
           }}
         >
-          Menu / Trending
+          Menu
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ccc" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          Trending
         </button>
 
-        <div style={{ position: 'relative', display: 'inline-block' }}>
-          <button
-            onClick={() => setDropdownOpen((v) => !v)}
-            style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'baseline', gap: 10 }}
-          >
-            <h1
-              className="menu-title"
-              style={{
-                marginBottom: 0, display: 'inline',
-                borderBottom: dropdownOpen ,
-                paddingBottom: 2, transition: 'border-color 0.2s',
-              }}
+        {/* Title row */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1.5px solid #f0f0f0', paddingBottom: 14 }}>
+          <div style={{ position: 'relative', display: 'inline-block' }}>
+            <button
+              onClick={() => setDropdownOpen((v) => !v)}
+              style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', display: 'flex', alignItems: 'baseline', gap: 10 }}
             >
-              Trending
-            </h1>
-            <span style={{ display: 'inline-flex', alignItems: 'center', transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease' }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3932" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </span>
-          </button>
-
-          {dropdownOpen && (
-            <TrendingDropdown drinks={TRENDING_DRINKS} onSelect={handleDropdownSelect} onClose={() => setDropdownOpen(false)} />
-          )}
+              <h1 className="menu-title" style={{ marginBottom: 0, display: 'inline' }}>
+                Trending
+              </h1>
+              <span style={{ display: 'inline-flex', alignItems: 'center', transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.22s ease' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3932" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </span>
+            </button>
+            {dropdownOpen && (
+              <TrendingDropdown drinks={TRENDING_DRINKS} onSelect={handleDropdownSelect} onClose={() => setDropdownOpen(false)} />
+            )}
+          </div>
+          {/* Editorial item count */}
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#bbb' }}>
+            {TRENDING_DRINKS.length} picks
+          </div>
         </div>
       </div>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 16,
-          marginTop: 24,
-        }}
-      >
-        {TRENDING_DRINKS.map((drink) => (
-          <div key={drink.id} ref={(el) => (cardRefs.current[drink.id] = el)}>
-            <TrendingCard
-              drink={drink}
-              isDimmed={expandedId !== null && drink.id !== expandedId}
-              onExpand={() => handleExpand(drink.id, cardRefs.current[drink.id])}
+      {/* ── Magazine editorial grid ── */}
+      <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 14 }}>
+
+        {/* Row 1: featured hero (left) + 2 stacked side cards (right) */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 14 }}>
+          {/* Featured */}
+          <div ref={(el) => (cardRefs.current[TRENDING_DRINKS[0].id] = el)}>
+            <FeaturedCard
+              drink={TRENDING_DRINKS[0]}
+              isDimmed={expandedId !== null && TRENDING_DRINKS[0].id !== expandedId}
+              onExpand={() => handleExpand(TRENDING_DRINKS[0].id, cardRefs.current[TRENDING_DRINKS[0].id])}
             />
           </div>
-        ))}
+          {/* 2 stacked side cards */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            {TRENDING_DRINKS.slice(1, 3).map((drink) => (
+              <div key={drink.id} ref={(el) => (cardRefs.current[drink.id] = el)} style={{ flex: 1 }}>
+                <SideCard
+                  drink={drink}
+                  isDimmed={expandedId !== null && drink.id !== expandedId}
+                  onExpand={() => handleExpand(drink.id, cardRefs.current[drink.id])}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2: 3 equal bottom cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
+          {TRENDING_DRINKS.slice(3).map((drink) => (
+            <div key={drink.id} ref={(el) => (cardRefs.current[drink.id] = el)}>
+              <TrendingCard
+                drink={drink}
+                isDimmed={expandedId !== null && drink.id !== expandedId}
+                onExpand={() => handleExpand(drink.id, cardRefs.current[drink.id])}
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
       {expandedDrink && (
