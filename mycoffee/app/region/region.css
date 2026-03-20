@@ -1,0 +1,87 @@
+.rg-root {
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.rg-card {
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  border: 1px solid #e0ebe6;
+  border-radius: 16px;
+  padding: 52px 44px 48px;
+  box-shadow: 0 4px 24px rgba(30, 57, 50, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.rg-flag {
+  font-size: 2.8rem;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.rg-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1e3932;
+  opacity: 0.5;
+  margin-bottom: 8px;
+}
+
+.rg-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1e3932;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+}
+
+.rg-divider {
+  width: 40px;
+  height: 2px;
+  background: #1e3932;
+  opacity: 0.15;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.rg-body {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 32px;
+}
+
+.rg-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  background: #1e3932;
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.rg-back:hover  { background: #2d5247; }
+.rg-back:active { background: #162e27; }
+
+@media (max-width: 480px) {
+  .rg-card  { padding: 40px 24px 36px; }
+  .rg-title { font-size: 1.6rem; }
+}

@@ -1,0 +1,852 @@
+/* ============================================================
+   CUSTOMER SERVICE PAGE — Starbucks Help Center
+   ============================================================ */
+
+* { box-sizing: border-box; }
+
+.cs-page {
+  min-height: 100vh;
+  background: #f9f9f7;
+  font-family: 'SoDo Sans', 'Helvetica Neue', Arial, sans-serif;
+  color: #1a1a1a;
+  margin-top: -70px;
+}
+
+/* ── Hero / Header ── */
+.cs-hero {
+  background: linear-gradient(135deg, #1e3932 0%, #00704a 100%);
+  padding: 110px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.cs-hero-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.cs-hero-logo img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  object-fit: cover;
+  padding: 0;
+}
+
+.cs-hero-brand-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #fff;
+  object-fit: cover;
+  padding: 0;
+}
+
+.cs-hero-logo-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.4);
+  display: inline-block;
+}
+
+.cs-chat-avatar-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  padding: 0;
+}
+
+.cs-hero-logo-text {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.cs-hero h1 {
+  font-size: 40px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 10px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.cs-hero-sub {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0 0 36px;
+}
+
+/* Search bar */
+.cs-search-wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cs-search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+  display: flex;
+}
+
+.cs-search {
+  width: 100%;
+  height: 54px;
+  border: none;
+  border-radius: 30px;
+  padding: 0 20px 0 50px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #1a1a1a;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14);
+  outline: none;
+  transition: box-shadow 0.2s;
+}
+
+.cs-search:focus {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 0 0 3px rgba(0,168,98,0.25);
+}
+
+.cs-search::placeholder { color: #aaa; }
+
+.cs-search-clear {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+.cs-search-clear:hover { color: #555; }
+
+
+/* ── Quick contact strip ── */
+.cs-contact-strip {
+  background: #fff;
+  border-bottom: 1px solid #ececec;
+  padding: 0 24px;
+}
+
+.cs-contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.cs-contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 28px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.cs-contact-btn:hover {
+  color: #00704a;
+  border-bottom-color: #00704a;
+}
+
+.cs-contact-btn svg { flex-shrink: 0; }
+
+.cs-contact-divider {
+  width: 1px;
+  height: 24px;
+  background: #e5e5e5;
+  flex-shrink: 0;
+}
+
+
+/* ── Main layout ── */
+.cs-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+
+/* ── Sidebar ── */
+.cs-sidebar {
+  position: sticky;
+  top: 24px;
+}
+
+.cs-sidebar-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #999;
+  margin: 0 0 12px 12px;
+}
+
+.cs-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cs-sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  border: none;
+  background: transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: background 0.15s, color 0.15s;
+  border-left: 3px solid transparent;
+}
+
+.cs-sidebar-btn:hover {
+  background: #f0faf5;
+  color: #00704a;
+}
+
+.cs-sidebar-btn.active {
+  background: #e8f5ee;
+  color: #1e3932;
+  font-weight: 700;
+  border-left-color: #00704a;
+}
+
+.cs-sidebar-btn svg { flex-shrink: 0; opacity: 0.7; }
+.cs-sidebar-btn.active svg { opacity: 1; color: #00704a; }
+
+
+/* ── FAQ Content area ── */
+.cs-content {
+  min-width: 0;
+}
+
+.cs-section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.cs-section-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: #e8f5ee;
+  color: #00704a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cs-section-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e3932;
+  margin: 0;
+}
+
+.cs-section-desc {
+  font-size: 14px;
+  color: #777;
+  margin: 2px 0 0;
+}
+
+/* No results */
+.cs-no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+
+.cs-no-results svg { margin-bottom: 14px; opacity: 0.4; }
+.cs-no-results h3 { font-size: 18px; font-weight: 700; color: #555; margin: 0 0 8px; }
+.cs-no-results p { font-size: 14px; margin: 0; }
+
+
+/* ── FAQ Item ── */
+.cs-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cs-faq-item {
+  border: 1.5px solid #e8e8e8;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+
+.cs-faq-item.open {
+  border-color: #b8dfc9;
+  box-shadow: 0 4px 20px rgba(0,112,74,0.08);
+}
+
+.cs-faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.cs-faq-trigger:hover { background: #f8f8f6; }
+.cs-faq-item.open .cs-faq-trigger { background: #f4fbf7; color: #00704a; }
+
+.cs-faq-chevron {
+  flex-shrink: 0;
+  color: #aaa;
+  transition: transform 0.25s ease, color 0.15s;
+}
+
+.cs-faq-item.open .cs-faq-chevron {
+  transform: rotate(180deg);
+  color: #00704a;
+}
+
+.cs-faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.cs-faq-item.open .cs-faq-body {
+  max-height: 600px;
+}
+
+.cs-faq-answer {
+  padding: 0 20px 20px;
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: #444;
+  border-top: 1px solid #e8f5ee;
+  margin-top: 0;
+  text-align: left;
+}
+
+.cs-faq-answer p { margin: 12px 0 0; }
+.cs-faq-answer p:first-child { margin-top: 12px; }
+.cs-faq-answer ul { margin: 10px 0 0 18px; padding: 0; }
+.cs-faq-answer li { margin-bottom: 6px; }
+.cs-faq-answer strong { color: #1e3932; }
+.cs-faq-answer a { color: #00704a; text-decoration: underline; }
+
+/* Was this helpful */
+.cs-faq-helpful {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px 16px;
+  font-size: 12.5px;
+  color: #999;
+}
+
+.cs-helpful-btn {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  color: #555;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cs-helpful-btn:hover { background: #f0faf5; border-color: #00704a; color: #00704a; }
+.cs-helpful-btn.voted { background: #e8f5ee; border-color: #00704a; color: #00704a; }
+
+
+/* ── Contact section at bottom ── */
+.cs-contact-section {
+  max-width: 1100px;
+  margin: 0 auto 60px;
+  padding: 0 24px;
+}
+
+.cs-contact-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1e3932;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.cs-contact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.cs-contact-card {
+  background: #fff;
+  border: 1.5px solid #e8e8e8;
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.15s;
+}
+
+.cs-contact-card:hover {
+  border-color: #00704a;
+  box-shadow: 0 8px 28px rgba(0,112,74,0.1);
+  transform: translateY(-2px);
+}
+
+.cs-contact-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #e8f5ee;
+  color: #00704a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.cs-contact-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e3932;
+  margin: 0 0 6px;
+}
+
+.cs-contact-card p {
+  font-size: 13px;
+  color: #777;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.cs-contact-card-btn {
+  display: inline-block;
+  padding: 9px 20px;
+  border-radius: 50px;
+  border: 1.5px solid #1e3932;
+  background: transparent;
+  color: #1e3932;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cs-contact-card:hover .cs-contact-card-btn {
+  background: #1e3932;
+  color: #fff;
+}
+
+
+/* ══════════════════════════════════
+   CHATBOT WIDGET
+══════════════════════════════════ */
+
+/* Floating button */
+.cs-chat-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00a862, #00704a);
+  border: none;
+  box-shadow: 0 6px 24px rgba(0,112,74,0.38);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: #fff;
+}
+
+.cs-chat-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 32px rgba(0,112,74,0.46);
+}
+
+.cs-chat-fab-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background: #e53935;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  padding: 0 3px;
+  animation: badgePop 0.3s ease;
+}
+
+@keyframes badgePop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+/* Chat panel */
+.cs-chat-panel {
+  position: fixed;
+  bottom: 100px;
+  right: 28px;
+  width: 380px;
+  max-height: 580px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: chatPanelIn 0.28s cubic-bezier(0.34,1.56,0.64,1) both;
+  border: 1.5px solid rgba(0,112,74,0.12);
+}
+
+@keyframes chatPanelIn {
+  from { opacity: 0; transform: scale(0.88) translateY(24px); transform-origin: bottom right; }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.cs-chat-panel.closing {
+  animation: chatPanelOut 0.2s ease forwards;
+}
+
+@keyframes chatPanelOut {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to   { opacity: 0; transform: scale(0.9) translateY(16px); }
+}
+
+/* Chat header */
+.cs-chat-header {
+  background: linear-gradient(135deg, #1e3932, #00704a);
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cs-chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+.cs-chat-header-info { flex: 1; min-width: 0; }
+
+.cs-chat-header-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.cs-chat-header-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.75);
+  margin: 2px 0 0;
+}
+
+.cs-chat-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4cdf8a;
+  animation: statusPulse 2s ease infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.cs-chat-close-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.cs-chat-close-btn:hover { background: rgba(255,255,255,0.28); }
+
+/* Chat messages */
+.cs-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #d0d0d0 transparent;
+}
+
+.cs-chat-messages::-webkit-scrollbar { width: 4px; }
+.cs-chat-messages::-webkit-scrollbar-thumb { background: #d0d0d0; border-radius: 4px; }
+
+/* Message bubbles */
+.cs-msg {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  animation: msgIn 0.22s ease;
+}
+
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cs-msg.user { flex-direction: row-reverse; }
+
+.cs-msg-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e8f5ee;
+  color: #00704a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.cs-msg.user .cs-msg-avatar {
+  background: #1e3932;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.cs-msg-bubble {
+  max-width: 76%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+
+.cs-msg.bot .cs-msg-bubble {
+  background: #f4f4f2;
+  color: #222;
+  border-bottom-left-radius: 4px;
+}
+
+.cs-msg.user .cs-msg-bubble {
+  background: linear-gradient(135deg, #00a862, #00704a);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+/* Typing indicator */
+.cs-typing-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.cs-typing-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #aaa;
+  animation: typingDot 1.4s ease-in-out infinite;
+}
+.cs-typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.cs-typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingDot {
+  0%,80%,100% { transform: scale(0.7); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* Suggested quick replies */
+.cs-chat-suggestions {
+  padding: 0 16px 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cs-suggestion-chip {
+  background: #f0faf5;
+  border: 1.5px solid #b8dfc9;
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #00704a;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.cs-suggestion-chip:hover { background: #d8f2e7; border-color: #00704a; }
+
+/* Chat input */
+.cs-chat-input-wrap {
+  padding: 12px 14px;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.cs-chat-input {
+  flex: 1;
+  min-height: 40px;
+  max-height: 120px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: #1a1a1a;
+  background: #fafafa;
+  outline: none;
+  resize: none;
+  overflow-y: auto;
+  line-height: 1.4;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  scrollbar-width: none;
+}
+.cs-chat-input::-webkit-scrollbar { display: none; }
+.cs-chat-input:focus { border-color: #00704a; background: #fff; box-shadow: 0 0 0 3px rgba(0,112,74,0.1); }
+.cs-chat-input::placeholder { color: #bbb; }
+
+.cs-chat-send {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #00704a;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s, transform 0.12s;
+}
+.cs-chat-send:hover:not(:disabled) { background: #1e3932; transform: scale(1.06); }
+.cs-chat-send:disabled { background: #ccc; cursor: not-allowed; }
+
+/* Chat footer */
+.cs-chat-footer {
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 11px;
+  color: #bbb;
+  border-top: 1px solid #f5f5f5;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .cs-main { grid-template-columns: 1fr; gap: 24px; }
+  .cs-sidebar { position: static; }
+  .cs-sidebar-nav { flex-direction: row; flex-wrap: wrap; gap: 6px; }
+  .cs-sidebar-btn { width: auto; flex-shrink: 0; border-left: none; border-bottom: 3px solid transparent; border-radius: 50px; padding: 8px 16px; }
+  .cs-sidebar-btn.active { border-left: none; border-bottom-color: #00704a; border-radius: 50px; }
+  .cs-contact-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .cs-hero h1 { font-size: 28px; }
+  .cs-hero-sub { font-size: 15px; }
+  .cs-main { padding: 24px 16px 60px; }
+  .cs-contact-inner { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+  .cs-chat-panel { right: 12px; left: 12px; width: auto; bottom: 90px; }
+  .cs-chat-fab { right: 18px; bottom: 18px; }
+}

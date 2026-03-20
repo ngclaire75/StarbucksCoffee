@@ -1,0 +1,33 @@
+{
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "postinstall": "prisma generate"
+  },
+  "devDependencies": {
+    "@types/node": "25.3.2",
+    "@types/nodemailer": "^7.0.11",
+    "@types/react": "19.2.14",
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.1",
+    "typescript": "5.9.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.2",
+    "@tailwindcss/postcss": "^4.2.1",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.3.1",
+    "next": "^14.2.0",
+    "next-auth": "^4.24.13",
+    "nodemailer": "^7.0.13",
+    "prisma": "^6.19.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "resend": "^6.9.3",
+    "three": "^0.168.0",
+    "twilio": "^5.12.2",
+    "uuid": "^13.0.0"
+  }
+}

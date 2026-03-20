@@ -1,0 +1,230 @@
+/* REWARDS PAGE — faithful to starbucks.com/rewards */
+
+.rw-page {
+  min-height: 100vh;
+  background: #fff;
+  color: #1e3932;
+}
+
+/* ── Hero ──────────────────────────────────────────────── */
+.rw-hero {
+  background: linear-gradient(135deg, #1e3932 0%, #2c5f4a 100%);
+  padding: 80px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 72px;
+  flex-wrap: wrap;
+  min-height: 460px;
+}
+.rw-hero-text { max-width: 480px; }
+.rw-hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.rw-hero-sub {
+  font-size: 1rem;
+  color: rgba(255,255,255,.8);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.rw-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Buttons */
+.rw-btn {
+  padding: 12px 28px;
+  border-radius: 500px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all .15s ease;
+  white-space: nowrap;
+}
+.rw-btn--gold { background: #cba258; color: #1e3932; border-color: #cba258; }
+.rw-btn--gold:hover { background: #b8924a; border-color: #b8924a; transform: translateY(-1px); }
+.rw-btn--outline-dark { background: transparent; color: #fff; border-color: rgba(255,255,255,.65); }
+.rw-btn--outline-dark:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+.rw-btn--lg { padding: 15px 40px; font-size: 15px; }
+
+/* Hero card */
+.rw-hero-card {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 20px;
+  padding: 28px 32px;
+  min-width: 300px;
+  flex-shrink: 0;
+  backdrop-filter: blur(8px);
+}
+.rw-hero-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #cba258;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.rw-hero-card-label { font-size: 12px; color: rgba(255,255,255,.6); margin-bottom: 4px; font-weight: 600; }
+.rw-hero-card-stars { font-size: 2.4rem; font-weight: 800; color: #cba258; margin-bottom: 16px; letter-spacing: -0.03em; }
+.rw-hero-card-bar {
+  height: 6px;
+  background: rgba(255,255,255,.15);
+  border-radius: 999px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.rw-hero-card-fill { height: 100%; background: #cba258; border-radius: 999px; }
+.rw-hero-card-hint { font-size: 12px; color: rgba(255,255,255,.55); }
+
+/* ── Container ────────────────────────────────────────── */
+.rw-container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+.rw-section-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #1e3932;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+/* ── How to earn ─────────────────────────────────────── */
+.rw-earn-section { padding: 72px 0; background: #f2f0eb; }
+.rw-earn-row {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.rw-earn-box {
+  flex: 1;
+  min-width: 220px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+.rw-earn-rate {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #1e3932;
+  line-height: 1;
+  margin-bottom: 14px;
+  letter-spacing: -0.03em;
+}
+.rw-earn-rate span { font-size: 1.2rem; font-weight: 600; }
+.rw-earn-desc { font-size: 1rem; color: #595959; line-height: 1.6; }
+.rw-earn-or {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #595959;
+  flex-shrink: 0;
+}
+.rw-earn-note { font-size: 0.875rem; color: #595959; line-height: 1.6; }
+
+/* ── Steps ────────────────────────────────────────────── */
+.rw-steps-section { padding: 72px 0; background: #fff; }
+.rw-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+.rw-step { text-align: center; }
+.rw-step-num {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: #1e3932;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+.rw-step-title { font-size: 1.15rem; font-weight: 700; color: #1e3932; margin-bottom: 10px; }
+.rw-step-body { font-size: 1rem; color: #595959; line-height: 1.65; }
+
+/* ── Tiers ────────────────────────────────────────────── */
+.rw-tiers-section { padding: 72px 0; background: #f2f0eb; }
+.rw-tiers-sub { font-size: 0.975rem; color: #595959; margin-bottom: 40px; line-height: 1.6; }
+.rw-tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+.rw-tier-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 16px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+  transition: transform .2s, box-shadow .2s;
+}
+.rw-tier-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(30,57,50,.1); }
+.rw-tier-stars-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f2f0eb;
+  color: #cba258;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 500px;
+  margin-bottom: 14px;
+}
+.rw-tier-icon-wrap { color: #1e3932; margin-bottom: 12px; display: flex; justify-content: center; }
+.rw-tier-title { font-size: 0.95rem; font-weight: 700; color: #1e3932; margin-bottom: 8px; line-height: 1.35; }
+.rw-tier-desc { font-size: 0.875rem; color: #595959; line-height: 1.55; }
+
+/* ── Perks ────────────────────────────────────────────── */
+.rw-perks-section { padding: 72px 0; background: #fff; }
+.rw-perks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 36px;
+  margin-top: 8px;
+}
+.rw-perk { text-align: center; }
+.rw-perk-icon-wrap { color: #1e3932; display: flex; justify-content: center; margin-bottom: 14px; }
+.rw-perk-title { font-size: 1.1rem; font-weight: 700; color: #1e3932; margin-bottom: 8px; }
+.rw-perk-body { font-size: 0.975rem; color: #595959; line-height: 1.6; }
+
+/* ── CTA ──────────────────────────────────────────────── */
+.rw-cta { background: #1e3932; padding: 80px 24px; text-align: center; }
+.rw-cta-title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.rw-cta-sub { font-size: 1rem; color: rgba(255,255,255,.75); margin-bottom: 32px; }
+.rw-cta-fine { font-size: 0.78rem; color: rgba(255,255,255,.45); margin-top: 20px; }
+.rw-cta-link { color: rgba(255,255,255,.65); text-decoration: underline; }
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .rw-tiers-grid { grid-template-columns: repeat(3, 1fr); }
+  .rw-perks-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .rw-hero { flex-direction: column; padding: 52px 24px; gap: 36px; text-align: center; }
+  .rw-hero-btns { justify-content: center; }
+  .rw-steps { grid-template-columns: 1fr; gap: 32px; }
+  .rw-tiers-grid { grid-template-columns: repeat(2, 1fr); }
+  .rw-hero-card { min-width: unset; width: 100%; max-width: 400px; }
+}
+@media (max-width: 480px) {
+  .rw-tiers-grid { grid-template-columns: 1fr 1fr; }
+  .rw-perks-grid { grid-template-columns: 1fr; }
+}

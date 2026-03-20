@@ -1,0 +1,348 @@
+/* ══════════════════════════════════════════════
+   JOIN NOW PAGE — Light & Dark Mode
+══════════════════════════════════════════════ */
+
+/* ── CSS Variables ── */
+.jn-page {
+  --bg: #f2f2f2;
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  --text-primary: #1e3932;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --input-bg: #ffffff;
+  --input-border: #c7c7c7;
+  --input-border-focus: #00754a;
+  --input-label: #777777;
+  --input-label-focus: #00754a;
+  --error-color: #c0392b;
+  --divider: #e5e5e5;
+  --toggle-bg: #e5e5e5;
+  --toggle-icon: #555;
+  --btn-bg: #1e3932;
+  --btn-hover: #162c26;
+  --link-color: #00754a;
+  --logo-filter: none;
+  --section-title: #1e3932;
+}
+
+.jn-page.dark {
+  --bg: #0d1f1a;
+  --card-bg: #1a2e28;
+  --card-shadow: 0 4px 32px rgba(0,0,0,0.45);
+  --text-primary: #f0f0f0;
+  --text-secondary: #b0c4bb;
+  --text-muted: #7a9990;
+  --input-bg: #233d34;
+  --input-border: #3a5a50;
+  --input-border-focus: #00a86b;
+  --input-label: #7a9990;
+  --input-label-focus: #00a86b;
+  --error-color: #e06c75;
+  --divider: #2d4a3e;
+  --toggle-bg: #2d4a3e;
+  --toggle-icon: #b0c4bb;
+  --btn-bg: #00a86b;
+  --btn-hover: #008f5a;
+  --link-color: #00c87a;
+  --logo-filter: brightness(0) invert(1);
+  --section-title: #a8d5c2;
+}
+
+/* ── Page shell ── */
+.jn-page {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease;
+}
+
+/* ── Theme toggle ── */
+.jn-theme-toggle {
+  position: fixed;
+  top: 100px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--toggle-bg);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--toggle-icon);
+  z-index: 50;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.jn-theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* ── Body ── */
+.jn-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 52px 24px 80px;
+}
+
+/* ── Logo above card ── */
+.jn-logo {
+  width: 56px;
+  height: auto;
+  margin-bottom: 20px;
+  filter: var(--logo-filter);
+  transition: filter 0.3s;
+}
+
+/* ── Card ── */
+.jn-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  padding: 40px 44px 44px;
+  width: 100%;
+  max-width: 480px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.jn-required-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+  transition: color 0.3s;
+}
+
+/* ── Section heading ── */
+.jn-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--section-title);
+  margin: 0 0 16px;
+  transition: color 0.3s;
+}
+
+/* ── Divider ── */
+.jn-divider {
+  height: 1px;
+  background: var(--divider);
+  margin: 24px 0;
+  transition: background 0.3s;
+}
+
+/* ── Form fields ── */
+.jn-field {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.jn-field input {
+  width: 100%;
+  padding: 20px 14px 8px;
+  border: 1.5px solid var(--input-border);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  transition: border-color 0.2s, background 0.3s, color 0.3s;
+  box-sizing: border-box;
+}
+
+.jn-field input:focus {
+  border-color: var(--input-border-focus);
+}
+
+.jn-field input.error {
+  border-color: var(--error-color);
+}
+
+.jn-field label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--input-label);
+  pointer-events: none;
+  transition: all 0.15s ease, color 0.3s;
+}
+
+.jn-field input:focus ~ label,
+.jn-field input:not(:placeholder-shown) ~ label {
+  top: 10px;
+  font-size: 10px;
+  color: var(--input-label-focus);
+  transform: none;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.jn-field input.error ~ label {
+  color: var(--error-color);
+}
+
+/* ── Hide browser native password eye ── */
+.jn-pw-wrap input::-ms-reveal,
+.jn-pw-wrap input::-ms-clear,
+.jn-pw-wrap input::-webkit-credentials-auto-fill-button,
+.jn-pw-wrap input::-webkit-textfield-decoration-container {
+  display: none !important;
+}
+
+/* ── Password wrapper ── */
+.jn-pw-wrap {
+  position: relative;
+}
+
+.jn-pw-wrap input {
+  padding-right: 48px;
+}
+
+.jn-pw-toggle {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.jn-pw-toggle:hover {
+  color: var(--text-primary);
+}
+
+/* ── Password hint ── */
+.jn-pw-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  margin-bottom: 2px;
+  line-height: 1.5;
+  transition: color 0.3s;
+}
+
+/* ── Username hint ── */
+.jn-username-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: -6px;
+  margin-bottom: 10px;
+  transition: color 0.3s;
+}
+
+/* ── Error message ── */
+.jn-error {
+  color: var(--error-color);
+  font-size: 13px;
+  margin-bottom: 16px;
+  text-align: center;
+  line-height: 1.5;
+  padding: 10px 14px;
+  background: rgba(192, 57, 43, 0.08);
+  border-radius: 6px;
+  border: 1px solid rgba(192, 57, 43, 0.2);
+}
+
+/* ── Terms checkbox ── */
+.jn-terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.jn-terms input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--btn-bg);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.jn-terms-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: color 0.3s;
+}
+
+.jn-terms-label a {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.jn-terms-label a:hover {
+  opacity: 0.8;
+}
+
+/* ── Submit button ── */
+.jn-btn {
+  padding: 13px 40px;
+  background: var(--btn-bg);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  display: block;
+  margin-left: auto;
+  letter-spacing: 0.3px;
+}
+
+.jn-btn:hover {
+  background: var(--btn-hover);
+}
+
+.jn-btn:active {
+  transform: scale(0.99);
+}
+
+.jn-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Already have account ── */
+.jn-signin-row {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: color 0.3s;
+}
+
+.jn-signin-row button {
+  background: none;
+  border: none;
+  color: var(--link-color);
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 0;
+  margin-left: 4px;
+  transition: color 0.2s;
+}
+
+.jn-signin-row button:hover {
+  opacity: 0.8;
+}

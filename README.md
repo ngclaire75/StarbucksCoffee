@@ -1,0 +1,5 @@
+# Starbucks Coffee Website
+
+Access the website here: https://mycoffee-beta.vercel.app
+
+A full-stack Starbucks website clone built with Next.js 14 (App Router) and React, recreating the design and functionality of the official Starbucks web experience. The site features a fully navigable menu with customizable drink and food items, a store locator powered by the Google Maps API, and a complete delivery flow with Twilio SMS OTP verification, order tracking, and a notification centre to notify that an order has been delivered. User authentication is handled end-to-end - including email/password registration, Google OAuth via NextAuth, sign-in confirmation emails, and a newsletter subscription system — all backed by a PostgreSQL database hosted on Neon and managed through Prisma ORM, with transactional emails sent via Nodemailer and Gmail SMTP. Additional pages include a description of the company via Our Coffee and Our Company, and a Payment page. The UI is currently responsive across all desktops, with Three.js-powered animations, CSS transitions, parallax effects, and a multi-language support system covering English, French, Spanish, Portuguese, and Japanese. 

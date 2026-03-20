@@ -1,0 +1,78 @@
+.coffee-loading-container {
+  position: relative; /* make container a reference for absolute positioning */
+  height: 100vh;      /* full screen */
+  width: 100%;
+  background-color: #fff; /* optional */
+}
+
+#skeleton-loadingCoffeeCup {
+  position: absolute;  /* allows percentage positioning */
+  top: var(--top, 50%);   /* default vertically centered */
+  left: var(--left, 50%); /* default horizontally centered */
+  transform: translate(-50%, -50%); /* center the cup exactly */
+  height: 85px;
+  width: 73px;
+  opacity: 0.7;
+    margin-top: -190px;
+}
+
+#skeleton-loadingCoffeeSteam {
+  opacity: 0.4;
+  stroke-dasharray: 25;
+  animation: dash 2.4s infinite linear;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 25;
+  }
+  to {
+    stroke-dashoffset: -25;
+  }
+}
+
+/* Navbar skeleton */
+.skeleton-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 16px;
+}
+
+.skeleton-logo {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: contain;
+  background: transparent;
+    margin-left: 8px;
+    margin-top: -2.5px;
+}
+
+.skeleton-nav-pills {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 8px;
+}
+
+.skeleton-pill {
+  height: 20px;
+  border-radius: 6px;
+  background: #e0e0e0;
+  animation: shimmer 1.6s infinite ease-in-out;
+}
+
+.skeleton-pill:nth-child(1) { width: 68px; animation-delay: 0s; }
+.skeleton-pill:nth-child(2) { width: 68px; animation-delay: 0.15s; }
+.skeleton-pill:nth-child(3) { width: 68px; animation-delay: 0.3s; }
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}

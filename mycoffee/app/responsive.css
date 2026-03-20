@@ -1,0 +1,753 @@
+/* ========================================================================
+   RESPONSIVE.CSS — Complete Mobile Redesign
+   Strategy: Real responsive layouts. No zoom. Proper stacking and reflowing.
+   Breakpoints: ≤480px (small phone), ≤768px (mobile), 769–1024px (tablet)
+======================================================================== */
+
+
+/* ─── HAMBURGER BUTTONS ─── */
+.hamburger-btn {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 44px; height: 44px;
+  background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0;
+}
+.hamburger-btn span {
+  display: block; width: 22px; height: 2px;
+  background: #000; border-radius: 2px; transition: all 0.25s ease;
+}
+.hf-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; align-items: center;
+  gap: 5px; width: 44px; height: 44px;
+  background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0;
+}
+.hf-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: #fff; border-radius: 2px; transition: all 0.25s ease;
+}
+
+
+/* ─── MOBILE MENUS ─── */
+.mobile-menu {
+  position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+  background: #fff; z-index: 900;
+  display: flex; flex-direction: column; padding: 0 0 40px; overflow-y: auto;
+  border-top: 1px solid #eee;
+}
+.mobile-menu-item {
+  padding: 18px 24px; font-size: 15px; font-weight: 800; letter-spacing: 1px;
+  cursor: pointer; color: #000; border-bottom: 1px solid #f0f0f0; transition: color 0.2s;
+}
+.mobile-menu-item:hover { color: #00754A; }
+.mobile-menu-divider { height: 1px; background: #e8e8e8; }
+.mobile-menu-btns { padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+
+.hf-mobile-menu {
+  position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+  background: #1e3932; z-index: 999;
+  display: flex; flex-direction: column; padding: 0 0 40px; overflow-y: auto;
+}
+.hf-mobile-item {
+  padding: 20px 24px; font-size: 15px; font-weight: 600; color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: background 0.2s;
+}
+.hf-mobile-item:hover { background: rgba(255,255,255,0.08); }
+
+
+/* ========================================================================
+   TABLET  769px – 1024px
+======================================================================== */
+@media (max-width: 1024px) and (min-width: 769px) {
+
+  /* ── Navbars ── */
+  .navbar { padding: 0 28px !important; }
+  .nav-links { gap: 12px !important; font-size: 11px !important; }
+  .bar-content { padding: 0 24px !important; }
+  .green-nav-links { gap: 18px !important; }
+  .green-nav-links a { font-size: 13px !important; }
+
+  /* ── Home ── */
+  .right-text { padding: 40px 30px !important; }
+  .right-text h1 { font-size: 22px !important; }
+  .right-text p  { font-size: 17px !important; }
+  .roller-left h1 { font-size: 22px !important; }
+  .roller-left p  { font-size: 17px !important; }
+  .free-drink-text h1 { font-size: 22px !important; }
+  .free-drink-text p  { font-size: 17px !important; }
+
+  /* ── Menu ── */
+  .menu-container { padding: 12px 28px !important; gap: 24px !important; }
+  .drinks-grid, .food-grid, .athome-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .section-divider { width: 100% !important; }
+  .menu-footer-column h3, .menu-footer-column li { margin-left: 0 !important; }
+  .item-availability-bar { padding-right: 80px !important; }
+  .item-availability-bag { right: -40px !important; }
+
+  /* ── Our Coffee ── */
+  .coffee-title h1 { font-size: 52px !important; }
+  .numbers-title { font-size: 44px !important; }
+  .big-number { font-size: 52px !important; }
+  .numbers-section { margin-left: 32px !important; padding: 24px !important; }
+  .global-creators-content { padding: 0 36px !important; }
+  .global-creators-text h1 { font-size: 36px !important; }
+  .global-creators-image { width: 240px !important; height: 280px !important; }
+  .pairings-text h1 { font-size: 36px !important; }
+  .bean-wrapper { width: 92% !important; }
+  .coffee-stories-grid { gap: 20px !important; }
+  .hingakawa-container { width: 100% !important; padding: 0 36px !important; gap: 40px !important; }
+  .forgiveness-container { width: 100% !important; padding: 0 36px !important; }
+  .forgiveness-text { position: relative !important; left: auto !important; }
+  .forgiveness-video { position: relative !important; left: auto !important; }
+
+  /* ── Stories ── */
+  .hero-big { font-size: 60px !important; }
+  .poc-hero-content h1 { font-size: 50px !important; }
+  .quote-feature-wrapper { width: 100% !important; }
+  .quote-image-large { width: 55% !important; margin-left: 0 !important; }
+  .quote-card { left: 48% !important; }
+
+  /* ── Featured ── */
+  .featured-hero-title { font-size: 44px !important; }
+  .featured-food-banner-content { padding: 40px !important; }
+
+  /* ── Favourites ── */
+  .fav-title { padding-left: 60px !important; }
+  .fav-img-wrapper   { margin-left: -180px !important; }
+  .fav-empty-heading { margin-left: -160px !important; }
+  .fav-empty-subtext { margin-left: -130px !important; }
+  .fav-btn-row       { margin-left: -200px !important; }
+
+  /* ── Store Locator ── */
+  .sl-container { flex-direction: row !important; }
+  .sl-sidebar { width: 300px !important; min-width: 260px !important; max-width: 320px !important; height: 100% !important; }
+
+  /* ── Payment ── */
+  .pp-body { padding: 24px 20px 60px !important; gap: 20px !important; }
+  .pp-order-summary { width: 300px !important; }
+
+  /* ── Delivery ── */
+  .dd-main { padding: 20px 20px 90px !important; }
+  .dd-items-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+
+/* ========================================================================
+   MOBILE  ≤ 768px
+======================================================================== */
+@media (max-width: 768px) {
+
+  html, body { overflow-x: hidden !important; }
+
+
+  /* ══ NAVBARS ══════════════════════════════════════════════════════════ */
+  .navbar {
+    padding: 0 14px !important; height: 60px !important;
+    position: sticky !important; top: 0 !important; z-index: 200 !important;
+  }
+  .logo img { width: 42px !important; }
+  .nav-links { display: none !important; }
+  .btn-outline, .btn-black { display: none !important; }
+  .hamburger-btn { display: flex !important; }
+  .find-store img { width: 24px !important; height: 24px !important; }
+  .find-store span { font-size: 11px !important; }
+
+  .top-green-bar { overflow: visible !important; }
+  .bar-content { padding: 0 14px !important; height: 60px !important; }
+  body { padding-top: 60px !important; }
+  .logo-small img { width: 40px !important; }
+  .green-nav-links { display: none !important; }
+  .hf-hamburger { display: flex !important; }
+  .right-icons { gap: 4px !important; }
+  .lang-dropdown { right: 0 !important; }
+
+  /* Dropdowns */
+  .dropdown-menu { left: 0 !important; right: 0 !important; width: 100% !important; border-radius: 0 0 20px 20px !important; }
+  .dropdown-content { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; padding: 16px 8px !important; gap: 6px !important; min-height: unset !important; }
+  .dropdown-item { width: calc(33% - 6px) !important; padding: 10px 4px !important; border-radius: 8px !important; border: none !important; }
+  .dropdown-icon { width: 48px !important; height: 48px !important; margin-bottom: 6px !important; }
+  .dropdown-label { font-size: 11px !important; }
+  .empty-grid-left, .empty-grid-right { display: none !important; }
+  #newsDropdown .dropdown-content { flex-direction: column !important; padding: 0 !important; }
+  #newsDropdown .news-item { padding: 14px 20px !important; font-size: 15px !important; border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.1) !important; grid-column: unset !important; grid-row: unset !important; }
+  .search-panel, .globe-panel { width: 100% !important; max-width: 100vw !important; left: 0 !important; right: 0 !important; }
+
+
+  /* ══ HOME PAGE ════════════════════════════════════════════════════════ */
+
+  /* Green bar — stack vertically */
+  .green-bar {
+    flex-direction: column !important; padding: 20px 20px !important;
+    gap: 12px !important; text-align: center !important;
+  }
+  .green-bar h2 { font-size: 18px !important; margin-top: 0 !important; transform: none !important; }
+  .start-order-btn { font-size: 14px !important; margin-top: 0 !important; }
+
+  /* Main sections — stack image above text */
+  .main-section { flex-direction: column !important; }
+  .left-image { width: 100% !important; height: 56vw !important; }
+  .right-text {
+    width: 100% !important; padding: 28px 20px !important;
+    min-height: unset !important;
+  }
+  .right-text h1 { font-size: 20px !important; margin-bottom: 10px !important; }
+  .right-text p  { font-size: 16px !important; line-height: 1.5 !important; margin-bottom: 14px !important; }
+
+  /* Roller section — stack */
+  .roller-section { flex-direction: column-reverse !important; height: auto !important; }
+  .roller-left {
+    width: 100% !important; padding: 28px 20px !important;
+    gap: 14px !important; min-height: unset !important;
+  }
+  .roller-left h1 { font-size: 20px !important; }
+  .roller-left p  { font-size: 16px !important; }
+  .roller-btn { font-size: 13px !important; width: auto !important; padding: 8px 18px !important; }
+  .roller-right { width: 100% !important; height: 56vw !important; }
+
+  /* Free drink section — stack */
+  .free-drink-section { flex-direction: column !important; height: auto !important; }
+  .free-drink-text {
+    width: 100% !important; padding: 28px 20px !important;
+    gap: 14px !important; min-height: unset !important;
+  }
+  .free-drink-text h1 { font-size: 20px !important; }
+  .free-drink-text p  { font-size: 16px !important; }
+  .free-drink-image { width: 100% !important; height: 56vw !important; }
+
+  /* Free cheer section — stack */
+  .free-cheer-section { flex-direction: column !important; height: auto !important; }
+  .free-cheer-text {
+    width: 100% !important; padding: 24px 20px !important;
+    gap: 12px !important; min-height: unset !important;
+  }
+  .free-cheer-text h1 { font-size: 18px !important; }
+  .free-cheer-text p  { font-size: 14px !important; }
+  .free-cheer-image { width: 100% !important; height: 52vw !important; }
+
+  /* Notice section */
+  .notice-section { padding: 24px 20px !important; min-height: unset !important; }
+  .notice-section p { font-size: 14px !important; }
+  .notice-section .small-text { position: static !important; top: auto !important; font-size: 13px !important; }
+
+  /* Home footer */
+  .home-footer-links { padding: 20px 16px !important; gap: 20px !important; flex-wrap: wrap !important; }
+  .home-footer-column { min-width: 140px !important; flex: 1 1 140px; }
+  .home-footer-column h3 { font-size: 14px !important; margin-left: 0 !important; }
+  .home-footer-column li { margin-left: 0 !important; font-size: 13px !important; margin-bottom: 12px !important; }
+  .bottom-footer { padding: 20px 16px !important; }
+  .home-social-icons { margin-left: 0 !important; }
+  .home-copyright { font-size: 10px !important; }
+
+
+  /* ══ MENU PAGE ════════════════════════════════════════════════════════ */
+  .menu-container { padding: 8px 12px !important; gap: 8px !important; }
+  .menu-sidebar { width: 68px !important; min-width: 68px !important; flex-shrink: 0 !important; font-size: 10px !important; }
+  .menu-content { min-width: 0 !important; flex: 1 !important; overflow-x: hidden !important; margin-left: 0 !important; }
+  .menu-title { font-size: 17px !important; margin-bottom: 20px !important; }
+  .section-title { font-size: 14px !important; }
+  .section-divider { width: 100% !important; min-width: unset !important; }
+
+  /* Menu grids — 2 columns */
+  .drinks-grid, .food-grid, .athome-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    column-gap: 10px !important;
+    row-gap: 14px !important;
+  }
+  .trending-image-wrapper { width: 80px !important; height: 80px !important; }
+  .trending-image { width: 120% !important; height: 120% !important; }
+  .trending-label { font-size: 13px !important; }
+
+  /* Cart */
+  .cart-overlay { align-items: flex-end !important; padding: 0 !important; }
+  .cart-modal {
+    width: 100% !important; max-width: 100% !important;
+    max-height: 90vh !important; border-radius: 20px 20px 0 0 !important;
+  }
+
+  /* Item availability bar */
+  .item-availability-bar { padding: 8px 14px !important; height: auto !important; flex-wrap: wrap !important; gap: 8px !important; }
+  .item-availability-bag { position: static !important; }
+  .item-availability-spacer { display: none !important; }
+
+  /* Menu footer */
+  .menu-footer-links { padding: 16px 12px !important; gap: 14px !important; flex-wrap: wrap !important; }
+  .menu-footer-column { min-width: 130px !important; flex: 1 1 130px; }
+  .menu-footer-column h3 { margin-left: 0 !important; font-size: 13px !important; }
+  .menu-footer-column li { margin-left: 0 !important; font-size: 12px !important; }
+
+
+  /* ══ OUR COFFEE PAGE ═════════════════════════════════════════════════ */
+  .our-coffee-story { max-width: 100% !important; }
+  .coffee-title { padding: 24px 16px 14px !important; }
+  .coffee-title h1 { font-size: 36px !important; letter-spacing: -1px !important; }
+  .coffee-text { padding: 14px 16px 24px !important; font-size: 14px !important; line-height: 1.7 !important; }
+  .coffee-image-top img, .coffee-image-bottom img { width: 100% !important; height: auto !important; }
+
+  /* Cup section — stack */
+  .cup-section { height: auto !important; padding: 0 !important; }
+  .cup-content-wrapper { flex-direction: column-reverse !important; gap: 0 !important; }
+  .cup-text { padding: 24px 20px !important; flex: unset !important; width: 100% !important; }
+  .cup-text h1 { font-size: 18px !important; transform: none !important; line-height: 1.3 !important; }
+  .cup-banner { width: 100% !important; height: 55vw !important; flex-shrink: 0 !important; }
+  .cup-banner img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+
+  /* Bean section — stack */
+  .bean-section { margin: 0 !important; }
+  .bean-wrapper { flex-direction: column !important; height: auto !important; width: 100% !important; }
+  .bean-image { width: 100% !important; height: 56vw !important; padding: 0 !important; overflow: hidden !important; flex-shrink: 0 !important; }
+  .bean-image img { width: 100% !important; height: 100% !important; object-fit: cover !important; transform: none !important; }
+  .bean-content { padding: 24px 20px !important; flex: unset !important; width: 100% !important; }
+  .bean-content h1 { font-size: 18px !important; transform: none !important; margin: 0 0 10px !important; line-height: 1.3 !important; }
+  .bean-content p  { font-size: 14px !important; margin: 0 0 14px !important; }
+  .bean-btn { transform: none !important; font-size: 13px !important; }
+
+  /* Numbers section */
+  .numbers-section { margin: 0 !important; padding: 28px 16px !important; }
+  .numbers-title { font-size: 26px !important; transform: none !important; }
+  .numbers-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 14px !important; }
+  .numbers-divider { display: none !important; }
+  .big-number { font-size: 30px !important; }
+  .numbers-item p { font-size: 11px !important; line-height: 1.4 !important; }
+  .explore-btn { font-size: 12px !important; }
+
+  /* Global creators — compact on mobile (background-image section) */
+  .global-creators-section { height: auto !important; min-height: 280px !important; }
+  .global-creators-content { flex-direction: column !important; padding: 20px !important; gap: 16px !important; }
+  .global-creators-image { width: 100% !important; max-width: 280px !important; height: auto !important; flex-shrink: 0 !important; }
+  .global-creators-text { max-width: 100% !important; width: 100% !important; }
+  .global-creators-text h1 { font-size: 28px !important; transform: none !important; margin: 0 0 10px !important; line-height: 1.1 !important; margin-left: 0 !important; }
+  .global-creators-text p { font-size: 14px !important; margin-bottom: 14px !important; }
+
+  /* Coffee stories — horizontal scroll */
+  .coffee-stories-section { padding: 20px 0 20px 16px !important; overflow-x: auto !important; }
+  .coffee-stories-grid {
+    display: flex !important; flex-direction: row !important;
+    gap: 10px !important; flex-wrap: nowrap !important;
+    width: max-content !important;
+  }
+  .story-card { width: 200px !important; height: 240px !important; flex-shrink: 0 !important; }
+
+  /* Pairings — stack */
+  .pairings-section { height: auto !important; margin-top: 0 !important; }
+  .pairings-bg { height: auto !important; flex-direction: column !important; }
+  .pairings-content {
+    flex-direction: column !important; padding: 24px 20px !important;
+    gap: 20px !important; align-items: flex-start !important;
+  }
+  .pairings-text { max-width: 100% !important; width: 100% !important; }
+  .pairings-text h1 { font-size: 22px !important; transform: none !important; margin: 0 0 12px !important; line-height: 1.1 !important; }
+  .pairings-text p  { font-size: 14px !important; margin-bottom: 14px !important; }
+  .pairings-btn { transform: none !important; font-size: 13px !important; }
+  .pairings-card { width: 100% !important; max-width: 100% !important; }
+  .pairings-card video { width: 100% !important; height: auto !important; border-radius: 8px !important; }
+
+  /* Hero parallax — restructure */
+  .hero-images {
+    position: relative !important; height: 55vw !important; overflow: hidden !important;
+  }
+  .hero-content { padding: 28px 20px !important; }
+  .hero-content h1 { font-size: 22px !important; }
+  .hero-content p  { font-size: 14px !important; }
+  .hero-vertical-line-top, .hero-vertical-line-bottom { display: none !important; }
+  .learn-more-btn { font-size: 13px !important; padding: 9px 20px !important; }
+
+  /* Coffee roast — stack */
+  .coffee-roast-section { padding: 0 !important; margin: 0 !important; }
+  .coffee-roast-wrapper { flex-direction: column !important; gap: 0 !important; }
+  .coffee-roast-image { width: 100% !important; height: 56vw !important; flex-shrink: 0 !important; overflow: hidden !important; }
+  .coffee-roast-image img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+  .coffee-roast-text { padding: 24px 20px !important; flex: unset !important; width: 100% !important; }
+  .coffee-roast-text h1 { font-size: 18px !important; transform: none !important; margin: 0 0 10px !important; line-height: 1.3 !important; }
+  .coffee-roast-text p  { font-size: 14px !important; margin-bottom: 12px !important; }
+  .coffee-roast-btn { transform: none !important; font-size: 13px !important; }
+
+  /* More stories */
+  .more-stories-section { padding: 28px 16px !important; }
+  .more-stories-title { font-size: 22px !important; }
+  .story-item { padding: 14px 0 !important; gap: 12px !important; }
+  .story-img { width: 80px !important; height: 80px !important; flex-shrink: 0 !important; border-radius: 6px !important; }
+  .story-title span { font-size: 14px !important; }
+  .story-category { font-size: 12px !important; }
+  .story-side { display: none !important; }
+  .story-meta { font-size: 12px !important; }
+  .pagination { gap: 6px !important; flex-wrap: wrap !important; justify-content: center !important; }
+  .page-number { width: 36px !important; height: 36px !important; font-size: 13px !important; }
+  .page-next { font-size: 13px !important; padding: 8px 14px !important; }
+
+
+  /* ══ STORIES SUBPAGE ═════════════════════════════════════════════════ */
+
+  /* Hero — simplified stacked layout */
+  .stories-hero { height: auto !important; min-height: 200px !important; overflow: hidden !important; position: relative !important; }
+  .hero-inner { height: auto !important; min-height: 200px !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 40px 20px !important; }
+  .hero-title {
+    position: static !important; transform: none !important;
+    top: auto !important; left: auto !important;
+    text-align: center !important;
+  }
+  .hero-small { font-size: 14px !important; text-align: center !important; }
+  .hero-big { font-size: 36px !important; transform: none !important; line-height: 1 !important; text-align: center !important; }
+  .word-human { margin-left: 0 !important; display: block !important; }
+  .hero-img-top, .hero-img-left { display: none !important; }
+
+  /* Description */
+  .stories-desc { padding: 32px 0 !important; }
+  .desc-inner { width: 100% !important; padding: 0 20px !important; font-size: 14px !important; }
+
+  /* Feature story — stack image then card */
+  .feature-story { margin-top: 0 !important; padding: 0 !important; overflow: hidden !important; }
+  .feature-wrapper {
+    position: static !important; height: auto !important;
+    display: flex !important; flex-direction: column !important;
+    max-width: 100% !important; margin: 0 !important;
+  }
+  .feature-image-large {
+    position: static !important; width: 100% !important; height: 56vw !important;
+    left: auto !important; top: auto !important;
+  }
+  .feature-image-large::before { display: none !important; }
+  .feature-card {
+    position: static !important; width: 100% !important; height: auto !important;
+    left: auto !important; top: auto !important; padding: 28px 24px !important;
+    border-radius: 0 !important;
+  }
+  .feature-card h2 { font-size: 18px !important; margin: 40px 0 16px !important; line-height: 1.4 !important; }
+  .quote-mark { font-size: 72px !important; }
+  .feature-image-small { display: none !important; }
+
+  /* Graduates story — stack */
+  .story-feature-alt { padding: 0 !important; margin: 0 !important; overflow: hidden !important; }
+  .story-feature-inner {
+    position: static !important; height: auto !important;
+    display: flex !important; flex-direction: column !important;
+    max-width: 100% !important;
+  }
+  .story-image-large {
+    position: static !important; width: 100% !important; height: 56vw !important;
+    left: auto !important; top: auto !important;
+  }
+  .story-image-large::before { display: none !important; }
+  .story-text-card {
+    position: static !important; width: 100% !important; height: auto !important;
+    left: auto !important; top: auto !important; transform: none !important;
+    padding: 28px 24px !important; border-radius: 0 !important;
+  }
+  .story-text-content { margin-top: 40px !important; }
+  .story-text-content p { font-size: 18px !important; }
+  .story-quote { font-size: 72px !important; }
+  .story-image-small { display: none !important; }
+
+  /* Quote feature — stack */
+  .quote-feature-section { padding: 0 !important; margin-top: 0 !important; overflow: hidden !important; }
+  .quote-feature-wrapper {
+    position: static !important; width: 100% !important; height: auto !important;
+    display: flex !important; flex-direction: column !important; margin: 0 !important;
+  }
+  .quote-image-large {
+    position: static !important; width: 100% !important; height: 56vw !important;
+    margin-left: 0 !important; left: auto !important; top: auto !important;
+  }
+  .quote-card {
+    position: static !important; width: 100% !important; height: auto !important;
+    left: auto !important; top: auto !important; padding: 28px 24px !important;
+    border-radius: 0 !important;
+  }
+  .quote-mark-2 { font-size: 72px !important; }
+  .quote-text { font-size: 18px !important; margin-top: 50px !important; margin-left: 0 !important; }
+  .quote-author { margin-left: 0 !important; }
+  .quote-image-small { display: none !important; }
+
+  .border-wrapper { overflow: hidden !important; margin: 0 !important; }
+  .section-border { width: 100% !important; height: 4px !important; object-fit: fill !important; }
+
+  /* Power of connection — simplify */
+  .poc-hero-section { height: auto !important; min-height: unset !important; margin-top: 0 !important; padding: 0 !important; overflow: hidden !important; }
+  .poc-hero-images { display: none !important; }
+  .poc-hero-content-wrapper { width: 100% !important; padding: 40px 20px !important; }
+  .poc-hero-content { margin-top: 0 !important; }
+  .poc-hero-content h1 {
+    font-size: 28px !important; transform: none !important;
+    word-spacing: normal !important; line-height: 1.1 !important;
+    letter-spacing: -0.5px !important;
+  }
+  .poc-hero-content p  { font-size: 14px !important; }
+  .poc-hero-vertical-line-top, .poc-hero-vertical-line-bottom { display: none !important; }
+
+  /* Hingakawa — stack image and text */
+  .hingakawa-section { height: auto !important; padding: 40px 0 !important; margin-top: 0 !important; }
+  .hingakawa-container {
+    width: 100% !important; flex-direction: column !important;
+    padding: 0 20px !important; gap: 24px !important; align-items: center !important;
+  }
+  .hingakawa-image-wrapper { width: 100% !important; height: 70vw !important; position: relative !important; }
+  .hingakawa-image-wrapper img {
+    position: absolute !important; top: 0 !important; left: 0 !important;
+    transform: none !important; width: 75% !important; height: 100% !important;
+    object-fit: cover !important; z-index: 2 !important;
+  }
+  .image-frame {
+    top: 16px !important; left: 20px !important;
+    width: 80% !important; height: 90% !important;
+  }
+  .hingakawa-content { max-width: 100% !important; }
+  .hingakawa-content h2 { font-size: 22px !important; margin-left: 0 !important; margin-bottom: 14px !important; }
+  .hingakawa-content p  { font-size: 14px !important; margin-left: 0 !important; margin-bottom: 20px !important; }
+  .read-stories { margin-left: 0 !important; }
+
+  /* Forgiveness — stack text and video */
+  .forgiveness-section { height: auto !important; padding: 40px 0 !important; margin: 0 !important; }
+  .forgiveness-container {
+    width: 100% !important; flex-direction: column !important;
+    padding: 0 20px !important; gap: 24px !important; align-items: flex-start !important;
+    position: static !important;
+  }
+  .forgiveness-text {
+    position: static !important; left: auto !important; top: auto !important;
+    width: 100% !important;
+  }
+  .forgiveness-text h2 { font-size: 24px !important; margin-bottom: 14px !important; }
+  .forgiveness-text p  { font-size: 14px !important; max-width: 100% !important; }
+  .forgiveness-video {
+    position: static !important; left: auto !important; top: auto !important;
+    width: 100% !important;
+  }
+  .forgiveness-video iframe { height: 56vw !important; }
+
+
+  /* ══ STORE LOCATOR ════════════════════════════════════════════════════ */
+  .sl-root { height: 100vh !important; }
+  .sl-container {
+    flex-direction: column !important; height: calc(100vh - 60px) !important;
+    overflow: hidden !important;
+  }
+  .sl-sidebar {
+    width: 100% !important; min-width: unset !important; max-width: unset !important;
+    max-height: 45vh !important; overflow-y: auto !important; flex-shrink: 0 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+  }
+  .sl-map-wrapper, .sl-map { flex: 1 !important; height: 100% !important; min-height: 0 !important; }
+  .sl-filters-panel { width: 92vw !important; }
+  .sl-modal, .sl-modal--rebuild { width: 92vw !important; max-width: 92vw !important; }
+
+
+  /* ══ PAYMENT PAGE ════════════════════════════════════════════════════ */
+  .pp-header { padding: 10px 14px !important; flex-wrap: wrap !important; gap: 6px !important; }
+  .pp-header-title { font-size: 14px !important; margin-left: 0 !important; }
+  .pp-body { flex-direction: column !important; padding: 14px 14px 80px !important; gap: 14px !important; }
+  .pp-summary, .pp-order-summary { width: 100% !important; position: static !important; }
+  .pp-section { padding: 14px !important; }
+  .pp-field-row { flex-wrap: wrap !important; gap: 8px !important; }
+  .pp-field-row--2 > .pp-field { flex: unset !important; width: 100% !important; }
+  .pp-success-modal { width: 92vw !important; padding: 24px 16px !important; }
+
+
+  /* ══ DELIVERY PAGE ═══════════════════════════════════════════════════ */
+  .dd-page { overflow-x: hidden !important; }
+  .dd-nav-inner { padding: 0 12px !important; gap: 4px !important; }
+  .dd-nav-logo { height: 34px !important; margin-right: 0 !important; }
+  .dd-addr-btn { max-width: 140px !important; font-size: 12px !important; padding: 5px 8px !important; }
+  .dd-user-name { display: none !important; }
+  .dd-main { flex-direction: column !important; padding: 10px 10px 90px !important; gap: 10px !important; }
+  .dd-sidebar { width: 100% !important; position: static !important; }
+  .dd-sidebar-label { display: none !important; }
+  .dd-cat-list {
+    display: flex !important; flex-wrap: nowrap !important; overflow-x: auto !important;
+    gap: 6px !important; padding: 4px 0 !important; scrollbar-width: none !important;
+  }
+  .dd-cat-list::-webkit-scrollbar { display: none !important; }
+  .dd-cat-btn {
+    width: auto !important; padding: 7px 14px !important; font-size: 12px !important;
+    border-radius: 20px !important; flex-shrink: 0 !important;
+  }
+  .dd-cat-btn--active { border-left: none !important; border-radius: 20px !important; }
+  .dd-items-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  .dd-stores-grid { grid-template-columns: 1fr !important; }
+  .dd-cart-drawer { width: 100% !important; max-width: 100vw !important; }
+  .dd-modal, .dd-modal--addr { max-width: 92vw !important; width: 92vw !important; padding: 20px 14px !important; }
+  .dd-float-cart { bottom: 14px !important; right: 14px !important; font-size: 12px !important; }
+
+
+  /* ══ SIGN IN / JOIN NOW ══════════════════════════════════════════════ */
+  .signin-body, .jn-body { padding: 20px 0 50px !important; }
+  .signin-card, .jn-card {
+    padding: 28px 20px !important; max-width: 100% !important;
+    margin: 0 16px !important; border-radius: 18px !important;
+  }
+  .signin-theme-toggle, .jn-theme-toggle { top: 12px !important; right: 12px !important; }
+  .signin-forgot-row { flex-direction: column !important; gap: 6px !important; }
+
+
+  /* ══ FEATURED PAGE ═══════════════════════════════════════════════════ */
+  .featured-hero { padding: 40px 16px 28px !important; margin-top: -60px !important; }
+  .featured-hero-title { font-size: 30px !important; letter-spacing: 1px !important; }
+
+  /* Stack drink cards to single column */
+  .featured-drinks-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .featured-drink-content { height: auto !important; padding: 24px 20px !important; }
+  .featured-drink-content h2 { font-size: 18px !important; margin-top: 0 !important; margin-bottom: 10px !important; }
+  .featured-drink-content p  { font-size: 15px !important; line-height: 1.5 !important; }
+
+  .featured-coconut-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .featured-coconut-content { padding: 24px 20px !important; }
+  .featured-coconut-content h2 { font-size: 18px !important; margin-top: 0 !important; margin-bottom: 10px !important; }
+  .featured-coconut-content p  { font-size: 15px !important; line-height: 1.5 !important; }
+  .featured-coconut-btn { position: static !important; top: unset !important; margin-top: 12px !important; }
+  .featured-coconut-btn.left-btn, .featured-coconut-btn.right-btn { position: static !important; top: unset !important; }
+
+  /* Food banner — stack */
+  .featured-food-banner { grid-template-columns: 1fr !important; }
+  .featured-food-banner-content { padding: 24px 20px !important; }
+  .featured-food-banner-content h2 { font-size: 18px !important; margin-bottom: 10px !important; }
+  .featured-food-banner-content p  { font-size: 15px !important; }
+
+
+  /* ══ FAVOURITES ══════════════════════════════════════════════════════ */
+  .fav-navbar-wrapper { position: sticky !important; top: 0 !important; z-index: 100 !important; }
+  .fav-container { padding-left: 0 !important; align-items: center !important; padding-top: 20px !important; }
+  .fav-title {
+    padding-left: 0 !important; text-align: center !important;
+    font-size: 20px !important; width: 100% !important;
+  }
+  .fav-empty-state { padding: 20px 20px 50px !important; align-items: center !important; }
+  .fav-img-wrapper { margin: 0 0 16px !important; }
+  .fav-img { width: 160px !important; height: 160px !important; }
+  .fav-empty-heading { margin: 0 0 8px !important; text-align: center !important; font-size: 22px !important; }
+  .fav-empty-subtext { margin: 0 0 20px !important; text-align: center !important; font-size: 14px !important; max-width: 280px !important; }
+  .fav-btn-row { margin: 0 !important; justify-content: center !important; flex-wrap: wrap !important; gap: 10px !important; }
+  .fav-btn-signin { margin-left: 0 !important; }
+  .favourites-grid { grid-template-columns: 1fr 1fr !important; padding: 16px !important; gap: 12px !important; }
+
+
+  /* ══ FOOTER ══════════════════════════════════════════════════════════ */
+  .footer-main { padding: 20px 16px !important; gap: 16px !important; flex-wrap: wrap !important; }
+  .footer-column { min-width: 130px !important; flex: 1 1 130px !important; }
+  .footer-column h3, .footer-column h4 { font-size: 13px !important; }
+  .footer-column a, .footer-column li { font-size: 12px !important; }
+  .footer-top { flex-wrap: wrap !important; padding: 20px 16px !important; gap: 14px !important; }
+  .footer-stay-in-touch { width: 100% !important; }
+  .footer-signup-btn { font-size: 12px !important; padding: 12px !important; }
+  .footer-form label { font-size: 12px !important; }
+  .footer-form input { font-size: 13px !important; }
+  .footer-social-icons { gap: 6px !important; flex-wrap: wrap !important; }
+  .footer-bottom { padding: 14px 16px !important; flex-wrap: wrap !important; gap: 8px !important; }
+  .footer-bottom-links { flex-wrap: wrap !important; gap: 6px !important; font-size: 11px !important; }
+  .footer-regions-line { flex-wrap: wrap !important; gap: 4px !important; font-size: 11px !important; }
+  .footer-divider { margin: 10px 0 !important; }
+  .footer-legal { padding: 14px 16px !important; font-size: 11px !important; }
+  .footer-links { flex-wrap: wrap !important; gap: 6px !important; }
+
+
+  /* ══ LEGAL / COOKIE / COMING SOON ════════════════════════════════════ */
+  .lp-card { padding: 36px 22px !important; border-radius: 22px !important; width: 92% !important; }
+  .lp-title { font-size: 22px !important; }
+  .lp-body  { font-size: 13.5px !important; margin-bottom: 28px !important; }
+  .lp-back  { padding: 11px 26px !important; font-size: 12px !important; }
+
+  .cp-card { padding: 20px 16px !important; max-width: 100% !important; }
+  .cp-footer { flex-direction: column !important; gap: 10px !important; }
+
+  .cs-content { padding: 32px 20px !important; }
+  .cs-title { font-size: clamp(1.8rem, 9vw, 3rem) !important; }
+  .cs-card { padding: 20px 18px !important; }
+
+
+  /* ══ MODALS ══════════════════════════════════════════════════════════ */
+  .modal-card { width: 90vw !important; }
+  .modal-body { padding: 36px 18px 24px !important; }
+  .modal-heading { font-size: 17px !important; }
+  .modal-subtext { font-size: 12px !important; }
+
+  .menu-unavail-card { padding: 32px 18px !important; width: 90vw !important; }
+  .menu-unavail-title { font-size: 17px !important; }
+  .menu-unavail-text { font-size: 13px !important; }
+
+
+  /* ══ CUSTOMIZE PAGE ══════════════════════════════════════════════════ */
+  div:has(> nav > .sbBackBtn) { height: auto !important; min-height: 100vh !important; overflow-y: auto !important; }
+  nav + div { overflow: visible !important; height: auto !important; }
+  nav + div > div:first-child { width: 100% !important; height: 220px !important; overflow: hidden !important; }
+  .sbRightPanel { overflow-y: auto !important; height: auto !important; }
+
+}
+
+
+/* ========================================================================
+   SMALL PHONES  ≤ 480px
+======================================================================== */
+@media (max-width: 480px) {
+
+  /* Navbars */
+  .navbar { height: 56px !important; }
+  .bar-content { height: 56px !important; }
+  body { padding-top: 56px !important; }
+  .logo img { width: 38px !important; }
+  .logo-small img { width: 36px !important; }
+  .hf-mobile-menu, .mobile-menu { top: 56px !important; }
+
+  /* Home sections — smaller on tiny screens */
+  .left-image, .roller-right, .free-drink-image, .free-cheer-image { height: 60vw !important; }
+  .cup-banner { height: 60vw !important; }
+  .bean-image, .coffee-roast-image { height: 60vw !important; }
+  .right-text h1, .roller-left h1, .free-drink-text h1 { font-size: 17px !important; }
+  .right-text p, .roller-left p, .free-drink-text p { font-size: 14px !important; }
+
+  /* Green bar */
+  .green-bar h2 { font-size: 16px !important; }
+  .start-order-btn { font-size: 13px !important; }
+
+  /* Menu grids */
+  .drinks-grid, .food-grid, .athome-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+
+  /* Numbers */
+  .big-number { font-size: 26px !important; }
+  .numbers-title { font-size: 22px !important; }
+
+  /* Stories hero */
+  .hero-big { font-size: 28px !important; }
+
+  /* Feature sections */
+  .feature-card h2 { font-size: 16px !important; }
+  .story-text-content p { font-size: 16px !important; }
+  .quote-text { font-size: 16px !important; }
+
+  /* POC hero */
+  .poc-hero-content h1 { font-size: 24px !important; }
+
+  /* Hingakawa */
+  .hingakawa-content h2 { font-size: 20px !important; }
+  .hingakawa-image-wrapper { height: 80vw !important; }
+
+  /* Forgiveness */
+  .forgiveness-text h2 { font-size: 20px !important; }
+  .forgiveness-video iframe { height: 60vw !important; }
+
+  /* Featured */
+  .featured-hero-title { font-size: 24px !important; }
+  .featured-drink-content h2, .featured-coconut-content h2 { font-size: 16px !important; }
+  .featured-drink-content p, .featured-coconut-content p { font-size: 14px !important; }
+  .featured-food-banner-content h2 { font-size: 16px !important; }
+  .featured-food-banner-content p  { font-size: 14px !important; }
+
+  /* Sign in */
+  .signin-card, .jn-card { padding: 22px 16px !important; margin: 0 12px !important; }
+
+  /* Favourites */
+  .favourites-grid { grid-template-columns: 1fr !important; }
+  .fav-img { width: 140px !important; height: 140px !important; }
+  .fav-empty-heading { font-size: 18px !important; }
+
+  /* Modals */
+  .modal-card { width: 94vw !important; }
+  .menu-unavail-card { width: 94vw !important; }
+
+  /* Footer */
+  .footer-main { padding: 14px 12px !important; gap: 12px !important; }
+  .footer-column { min-width: 110px !important; }
+
+  /* Store locator sidebar height on small phones */
+  .sl-sidebar { max-height: 38vh !important; }
+
+  /* Coffee stories cards */
+  .story-card { width: 170px !important; height: 210px !important; }
+}

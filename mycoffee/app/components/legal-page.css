@@ -1,0 +1,87 @@
+/* ── Root ─────────────────────────────────────────────────────────────── */
+.lp-root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  font-family: 'SoDo Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────── */
+.lp-card {
+  text-align: center;
+  max-width: 480px;
+  width: 90%;
+  padding: 56px 48px;
+  background: #fff;
+  border: 1px solid #e0ebe6;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(30, 57, 50, 0.07);
+}
+
+.lp-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #1e3932;
+  margin: 0 0 14px;
+  opacity: 0.5;
+}
+
+.lp-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #1e3932;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.lp-divider {
+  width: 40px;
+  height: 2px;
+  background: #1e3932;
+  border-radius: 2px;
+  margin: 20px auto;
+  opacity: 0.2;
+}
+
+.lp-body {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: #555;
+  margin-bottom: 36px;
+}
+
+.lp-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 13px 32px;
+  background: #1e3932;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.2px;
+  line-height: 1;
+  transition: background 0.15s ease;
+}
+.lp-back svg {
+  display: block;
+  flex-shrink: 0;
+}
+.lp-back:hover  { background: #2d5247; }
+.lp-back:active { background: #162e27; }
+
+@media (max-width: 600px) {
+  .lp-card  { padding: 36px 24px; }
+  .lp-title { font-size: 22px; }
+}
