@@ -37,12 +37,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'SoDo Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    min-width: 0;
-}
-
-h1, h2, h3, h4, h5, h6, p, span, li, a, button, label {
-    overflow-wrap: break-word;
-    word-break: break-word;
 }
 
 body {
@@ -336,7 +330,7 @@ img {
 /* Roller Rabbit Section */
 .roller-section {
     display: flex;
-    min-height: 55vh;
+    height: 55vh;
 }
 
 .roller-left {
@@ -357,7 +351,7 @@ img {
 }
 
 .roller-left .tight-title {
-    line-height: 1.05;
+    line-height: 0.9;
     max-width: 550px;
 }
 
@@ -424,7 +418,7 @@ img {
 /* Free Drink Section */
 .free-drink-section {
     display: flex;
-    min-height: 55vh;
+    height: 55vh;
 }
 
 /* Text side */
@@ -443,7 +437,7 @@ img {
 
 .free-drink-text h1 {
     font-size: 28px;
-    line-height: 1.1;
+    line-height: 0.9;
     max-width: 550px;
     color: #32462f;
 }
@@ -496,7 +490,7 @@ img {
 .free-cheer-section {
     display: flex;
     flex-direction: row-reverse;
-    min-height: 35vh;
+    height: 35vh;
 }
 
 /* Text side */

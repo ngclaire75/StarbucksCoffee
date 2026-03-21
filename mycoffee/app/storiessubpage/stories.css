@@ -52,7 +52,7 @@ body {
 .hero-big {
     color: #fff;
     font-size: 82px;
-    line-height: 1.0;
+    line-height: 0.85;
     letter-spacing: -0.7px;
 
     transform: scaleY(1.10);
@@ -939,7 +939,7 @@ body {
 .poc-hero-content h1 {
     font-size: 81px;
     font-weight: 700;
-    line-height: 1.0;
+    line-height: 0.85;
     margin-bottom: 20px;
     letter-spacing: -0.9px;
     text-transform: uppercase;
