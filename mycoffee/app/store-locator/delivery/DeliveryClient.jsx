@@ -69,7 +69,7 @@ export default function DeliveryClient() {
               transition: 'background 0.2s ease',
             }}
           >
-            ← Go Back
+            Go Back
           </Link>
         </div>
       </div>

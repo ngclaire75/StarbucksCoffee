@@ -60,7 +60,7 @@ export default function OrderInAppPage() {
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="oia-hero">
         <div className="oia-hero-inner">
-          <h1 className="oia-hero-title">Great days start with the Starbucks® app</h1>
+          <h1 className="oia-hero-title">Great days start with the Starbucks<sup style={{fontSize:'0.5em',verticalAlign:'super'}}>®</sup> app</h1>
           <p className="oia-hero-sub">
             Order ahead, explore the menu and find Starbucks cafés near you in the app.
             Joining Starbucks® Rewards is always free to sign up.
