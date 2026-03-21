@@ -935,7 +935,7 @@ function handleContinueOrdering() {
     return;
   }
 
-  router.back();
+  router.push('/menupage');
 }
 
   var filteredStores = applyFilters(stores);
