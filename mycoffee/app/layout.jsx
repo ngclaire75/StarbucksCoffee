@@ -1,13 +1,7 @@
-import { Inter, Dancing_Script } from 'next/font/google';
+import { Dancing_Script } from 'next/font/google';
 import './home.css';
 import './responsive.css';
 import ClientProviders from './components/ClientProviders';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-});
 
 const dancing = Dancing_Script({
   subsets: ['latin'],
@@ -25,7 +19,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${dancing.variable}`}>
+    <html lang="en" className={dancing.variable}>
       <body>
         <ClientProviders>{children}</ClientProviders>
       </body>

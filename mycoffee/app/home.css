@@ -1,10 +1,42 @@
 /*----------------------------------------------------------------------------------*/
 
-* {  
+@font-face {
+  font-family: 'SoDo Sans';
+  src: url('/fonts/SoDoSans-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SoDo Sans';
+  src: url('/fonts/SoDoSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SoDo Sans';
+  src: url('/fonts/SoDoSans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SoDo Sans';
+  src: url('/fonts/SoDoSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: var(--font-sans), 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'SoDo Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 body {
