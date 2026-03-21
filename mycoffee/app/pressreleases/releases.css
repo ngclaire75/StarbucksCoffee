@@ -38,7 +38,7 @@
 .pr-broadsheet-body { display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: end; }
 .pr-broadsheet-title {
   font-size: clamp(3rem, 7.5vw, 7rem);
-  font-weight: 900; letter-spacing: -0.05em; line-height: 0.88;
+  font-weight: 900; letter-spacing: -0.05em; line-height: 1.05;
   color: #fff; margin: 0 0 18px;
 }
 .pr-broadsheet-sub {

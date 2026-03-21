@@ -31,7 +31,7 @@
 }
 .ftr-hero-title {
   font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 900;
-  letter-spacing: -0.04em; line-height: 0.9; margin: 0 0 24px;
+  letter-spacing: -0.04em; line-height: 1.05; margin: 0 0 24px;
   background: linear-gradient(145deg, #fff 40%, rgba(255,255,255,0.45) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }

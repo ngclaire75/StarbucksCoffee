@@ -1260,10 +1260,10 @@ body.dropdown-open .top-green-bar {
 }
 
 .coffee-title h1 {
-    font-size: 70px;          
+    font-size: 70px;
     font-weight: 600;
-    color: #32462f;           
-    line-height: 0.9;        
+    color: #32462f;
+    line-height: 1.05;
     margin: 0;
     text-transform: uppercase;
     letter-spacing: -2px; 
@@ -1392,7 +1392,7 @@ body.dropdown-open .top-green-bar {
 /* Title */
 .cup-text h1 {
     font-size: 64px;      
-    line-height: 0.9;
+    line-height: 1.05;
     font-weight: 800;         
     margin-bottom: 20px;
     transform: scaleX(1.06);
@@ -1920,7 +1920,7 @@ body.dropdown-open .top-green-bar {
 .global-creators-text h1 {
     margin-top:20px;
     font-size: 68px; 
-    line-height: 0.85;
+    line-height: 1.0;
     letter-spacing: 0.5px;
     font-weight: 800;
     margin-bottom: 18px;
@@ -2231,7 +2231,7 @@ body.dropdown-open .top-green-bar {
 
 .pairings-text h1 {
     font-size: 64px;
-    line-height: 0.89;
+    line-height: 1.05;
     font-weight: 600;
     margin-bottom: 20px;
     letter-spacing: -0.5px;
@@ -2989,7 +2989,7 @@ hr {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 2px;
-    line-height: 0.9;
+    line-height: 1.05;
     margin-bottom: 5px; 
 }
 
