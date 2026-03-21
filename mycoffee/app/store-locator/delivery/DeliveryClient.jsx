@@ -7,20 +7,14 @@ export default function DeliveryClient() {
   const [hovered, setHovered] = useState(false);
   return (
     <div style={{
-      minHeight: '100vh',
+      position: 'fixed',
+      inset: 0,
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: '#fff',
-      padding: '40px 24px',
     }}>
       <div style={{
         display: 'flex',
         width: '100%',
-        maxWidth: '1100px',
-        borderRadius: '4px',
-        overflow: 'hidden',
-        boxShadow: '0 8px 40px rgba(0,0,0,0.13)',
+        height: '100%',
       }}>
         {/* Left — photo */}
         <div style={{
@@ -28,7 +22,6 @@ export default function DeliveryClient() {
           backgroundImage: 'url(/images/deliveries.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          minHeight: '480px',
         }} />
 
         {/* Right — message */}
