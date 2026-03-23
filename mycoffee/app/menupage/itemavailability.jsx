@@ -45,7 +45,7 @@ export function useCartCount() {
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
-export default function ItemAvailability({ storeSelected, setStoreSelected, onBagClick }) {
+export default function ItemAvailability({ storeSelected, setStoreSelected, onBagClick, bottomOffset = 0 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -102,7 +102,7 @@ export default function ItemAvailability({ storeSelected, setStoreSelected, onBa
         </div>
       )}
 
-      <div className={`item-availability-bar${barVisible ? ' bar-visible' : ' bar-hidden'}`}>
+      <div className={`item-availability-bar${barVisible ? ' bar-visible' : ' bar-hidden'}`} style={{ transform: `translateY(-${bottomOffset}px)`, transition: 'transform 0.2s ease' }}>
         <div className="item-availability-spacer" />
 
         <div

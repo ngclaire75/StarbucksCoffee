@@ -151,6 +151,7 @@ export default function MenuPage() {
   const [showFooter,     setShowFooter]     = useState(false);
   const [revealProgress, setRevealProgress] = useState(isReturning ? 100 : 0);
   const [navTranslate,   setNavTranslate]   = useState(0);
+  const [barOffset,      setBarOffset]      = useState(0);
   const [navHeight,      setNavHeight]      = useState(0);
   const [whiteNavHeight, setWhiteNavHeight] = useState(0);
   const [showTabs,       setShowTabs]       = useState(isReturning);
@@ -311,8 +312,10 @@ export default function MenuPage() {
     const onScroll = () => {
       setScrolled(window.scrollY > 10);
       if (!footerRef.current || !navRef.current) return;
-      const overlap = navRef.current.offsetHeight - footerRef.current.getBoundingClientRect().top;
+      const footerTop = footerRef.current.getBoundingClientRect().top;
+      const overlap = navRef.current.offsetHeight - footerTop;
       setNavTranslate(overlap > 0 ? Math.min(overlap, navRef.current.offsetHeight) : 0);
+      setBarOffset(Math.max(0, window.innerHeight - footerTop));
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -681,6 +684,7 @@ export default function MenuPage() {
         <ItemAvailability
           storeSelected={storeSelected}
           setStoreSelected={setStoreSelected}
+          bottomOffset={barOffset}
           onBagClick={() => {
             setCartItems(JSON.parse(localStorage.getItem('cart') || '[]'));
             setCartOpen(true);
