@@ -268,7 +268,7 @@ export default function MenuPage() {
   useEffect(() => { setStoreSelected(!!localStorage.getItem('selectedStore')); }, []);
 
   useEffect(() => {
-    setShowTrending(localStorage.getItem('menuLastPage') === 'trending');
+    localStorage.removeItem('menuLastPage');
 
     if (isReturning) {
       setMounted(true);
