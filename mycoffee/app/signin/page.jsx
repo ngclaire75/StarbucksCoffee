@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import WhiteNav from '../whitenav';
@@ -49,13 +49,6 @@ function EyeClosed() {
 export default function SignInPage() {
   const router = useRouter();
   const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    fetch('/api/auth/me')
-      .then((r) => r.json())
-      .then((d) => { if (d.user) router.replace('/'); })
-      .catch(() => {});
-  }, []);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

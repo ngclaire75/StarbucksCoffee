@@ -52,13 +52,6 @@ export default function JoinNowPage() {
   const router = useRouter();
   const [dark, setDark] = useState(false);
 
-  useEffect(() => {
-    fetch('/api/auth/me')
-      .then((r) => r.json())
-      .then((d) => { if (d.user) router.replace('/'); })
-      .catch(() => {});
-  }, []);
-
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
