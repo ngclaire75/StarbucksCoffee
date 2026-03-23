@@ -58,6 +58,47 @@
   transition: background 0.3s ease;
 }
 
+/* ── Google button ── */
+.signin-google-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 16px;
+  background: #fff;
+  border: 1.5px solid #dadce0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #3c4043;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+  margin-bottom: 4px;
+  font-family: inherit;
+}
+.signin-google-btn:hover {
+  background: #f8f8f8;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+/* ── Or divider ── */
+.signin-or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+  color: var(--text-secondary, #6b6b6b);
+  font-size: 0.82rem;
+}
+.signin-or::before,
+.signin-or::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--divider, #e0e0e0);
+}
+
 /* ── Theme toggle ── */
 .jn-theme-toggle {
   position: fixed;
