@@ -255,8 +255,6 @@ export default function CustomizePage({ drink, storeSelected, onBack, onAddToBag
   const [toast,   setToast]   = useState(false);
   const [noStore, setNoStore] = useState(false);
 
-  const router = useRouter();
-
   useEffect(() => {
     const pendingItem = localStorage.getItem("pendingCartItem");
     if (pendingItem) {
@@ -330,11 +328,9 @@ export default function CustomizePage({ drink, storeSelected, onBack, onAddToBag
     };
     if (store) {
       addToCart(item);
-      alert("Added to cart");
     } else {
       savePendingItem(item);
-      alert("Please select a store first");
-      router.push("/store-locator");
+      setNoStore(true);
     }
   }
 

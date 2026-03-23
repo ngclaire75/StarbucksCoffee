@@ -18,7 +18,6 @@ div:has(> nav > .sbBackBtn) {
   background: #fff;
   font-family: 'SoDo Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #1e3932;
-  overflow: hidden;
   margin-bottom: 20px;
   margin-top: -12px;
 }
