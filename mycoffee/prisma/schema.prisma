@@ -48,6 +48,7 @@ model User {
   updatedAt    DateTime      @updatedAt
   savedStores  SavedStore[]
   paymentCards PaymentCard[]
+  purchases    Purchase[]
 
   @@index([email])
 }
@@ -78,6 +79,19 @@ model PaymentCard {
   expYear      Int
   nameOnCard   String
   securityCode String?
+  createdAt    DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Purchase {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  items        Json
+  storeName    String?
+  storeAddress String?
+  total        Float
   createdAt    DateTime @default(now())
 
   @@index([userId])

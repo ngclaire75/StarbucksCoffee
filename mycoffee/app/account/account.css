@@ -527,6 +527,83 @@ select.acct-input {
   background: #fafafa;
 }
 
+/* ── Purchases ── */
+.acct-purchase-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.acct-purchase-item {
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 16px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.acct-purchase-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.acct-purchase-date {
+  font-size: 12px;
+  color: #888;
+  margin: 0 0 2px;
+}
+
+.acct-purchase-store {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e3932;
+  margin: 0;
+}
+
+.acct-purchase-total {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e3932;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.acct-purchase-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid #e8e8e8;
+  padding-top: 10px;
+}
+
+.acct-purchase-item-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #444;
+}
+
+.acct-purchase-qty {
+  font-weight: 700;
+  color: #1e3932;
+  min-width: 24px;
+}
+
+.acct-purchase-name {
+  flex: 1;
+}
+
 /* ── Responsive ── */
 @media (max-width: 700px) {
   .acct-page {

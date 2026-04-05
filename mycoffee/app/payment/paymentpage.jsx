@@ -107,7 +107,13 @@ export default function PaymentPage() {
   const [store,        setStore]        = useState(null);
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [pickupCountdown, setPickupCountdown] = useState(null);
-const [orderReady, setOrderReady] = useState(false);
+  const [orderReady, setOrderReady] = useState(false);
+
+  /* Auth + saved cards */
+  const [userId,       setUserId]       = useState(null);
+  const [savedCards,   setSavedCards]   = useState([]);
+  const [selectedSavedCard, setSelectedSavedCard] = useState(null);
+  const [cardSaveStatus, setCardSaveStatus] = useState(null); // 'saving' | 'saved' | 'error'
 
   useEffect(() => {
     try {
@@ -118,6 +124,26 @@ const [orderReady, setOrderReady] = useState(false);
       setDisplayTotal(typeof total === 'number' ? total : 0);
       setStore(savedStore);
     } catch (_) {}
+  }, []);
+
+  /* Fetch user + saved cards */
+  useEffect(() => {
+    async function fetchUserAndCards() {
+      try {
+        const res = await fetch('/api/auth/me');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!data?.id) return;
+        setUserId(data.id);
+
+        const cardsRes = await fetch('/api/user/payment-cards');
+        if (cardsRes.ok) {
+          const cardsData = await cardsRes.json();
+          setSavedCards(cardsData.cards || []);
+        }
+      } catch (_) {}
+    }
+    fetchUserAndCards();
   }, []);
 
   /* Form state */
@@ -136,23 +162,51 @@ const [orderReady, setOrderReady] = useState(false);
   const [estimateMins, setEstimateMins] = useState(15);
 
   const detectedBrand = detectCardBrand(cardNumber);
-const cardBrand = selectedBrand || detectedBrand;
+  const cardBrand = selectedSavedCard?.brand || selectedBrand || detectedBrand;
+
+  /* Apply a saved card to the form */
+  function applySavedCard(card) {
+    setSelectedSavedCard(card);
+    setCardNumber(`**** **** **** ${card.last4}`);
+    const mm = String(card.expMonth).padStart(2, '0');
+    const yy = String(card.expYear).slice(-2);
+    setExpiry(`${mm}/${yy}`);
+    setNameOnCard(card.nameOnCard || '');
+    setCvv('');
+    setSelectedBrand(card.brand || null);
+  }
+
+  function clearSavedCard() {
+    setSelectedSavedCard(null);
+    setCardNumber('');
+    setExpiry('');
+    setNameOnCard('');
+    setCvv('');
+    setSelectedBrand(null);
+  }
 
   function validate() {
     const errs = {};
     if (!firstName.trim())                     errs.firstName  = 'First name is required';
     if (!lastName.trim())                      errs.lastName   = 'Last name is required';
     if (!email.trim() || !email.includes('@')) errs.email      = 'Valid email is required';
-    const rawCard = cardNumber.replace(/\s/g, '');
-    if (rawCard.length < 13 || rawCard.length > 16) errs.cardNumber = 'Enter a valid card number';
-    if (!expiry || expiry.length < 5)          errs.expiry     = 'Enter a valid expiry (MM/YY)';
-    if (!cvv || cvv.length < 3)                errs.cvv        = 'Enter a valid CVV';
-    if (!nameOnCard.trim())                    errs.nameOnCard = 'Name on card is required';
+
+    if (selectedSavedCard) {
+      /* Using a saved card — only CVV needs re-entering */
+      if (!cvv || cvv.length < 3) errs.cvv = 'Enter a valid CVV';
+    } else {
+      const rawCard = cardNumber.replace(/\s/g, '');
+      if (rawCard.length < 13 || rawCard.length > 16) errs.cardNumber = 'Enter a valid card number';
+      if (!expiry || expiry.length < 5)          errs.expiry     = 'Enter a valid expiry (MM/YY)';
+      if (!cvv || cvv.length < 3)                errs.cvv        = 'Enter a valid CVV';
+      if (!nameOnCard.trim())                    errs.nameOnCard = 'Name on card is required';
+    }
+
     if (!billingZip || billingZip.length < 5)  errs.billingZip = 'Enter a valid ZIP code';
     return errs;
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length > 0) {
@@ -162,6 +216,48 @@ const cardBrand = selectedBrand || detectedBrand;
     }
     setErrors({});
     setLoading(true);
+
+    /* Save card to DB if requested (only for new cards, not already-saved ones) */
+    if (saveCard && userId && !selectedSavedCard) {
+      setCardSaveStatus('saving');
+      try {
+        const rawCard = cardNumber.replace(/\s/g, '');
+        const [expMM, expYY] = expiry.split('/');
+        const brand = cardBrand || 'visa';
+        await fetch('/api/user/payment-cards', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            cardNumber:  rawCard,
+            expMonth:    parseInt(expMM, 10),
+            expYear:     2000 + parseInt(expYY, 10),
+            nameOnCard:  nameOnCard.trim(),
+            brand,
+            securityCode: cvv,
+          }),
+        });
+        setCardSaveStatus('saved');
+      } catch (_) {
+        setCardSaveStatus('error');
+      }
+    }
+
+    /* Save purchase record to DB */
+    if (userId) {
+      try {
+        await fetch('/api/user/purchases', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: cartItems,
+            storeName: store?.name || null,
+            storeAddress: store?.address || null,
+            total: displayTotal,
+          }),
+        });
+      } catch (_) {}
+    }
+
     setTimeout(() => {
       setLoading(false);
       setEstimateMins(getPickupEstimate());
@@ -202,13 +298,6 @@ const cardBrand = selectedBrand || detectedBrand;
         <div className="pp-header-title">
           Grab Your Starbucks® Drink Now!
         </div>
-        <div className="pp-header-secure">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="#00a862" />
-            <polyline points="9 12 11 14 15 10" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          SSL Secured
-        </div>
       </div>
 
       <div className="pp-body">
@@ -248,29 +337,31 @@ const cardBrand = selectedBrand || detectedBrand;
           <div className="pp-section">
             <h2 className="pp-section-title">Payment Details</h2>
 
-       <div className="pp-accepted-cards">
-  {['visa','mastercard','amex','discover'].map(brand => (
-    <button
-      type="button"
-      key={brand}
-      onClick={() => setSelectedBrand(brand)}
-      className={`pp-card-logo pp-card-logo--${brand}${cardBrand === brand ? ' pp-card-logo--active' : ''}`}
-    >
-      {brand === 'visa' && <span>VISA</span>}
-      {brand === 'mastercard' && <span>MC</span>}
-      {brand === 'amex' && <span>AMEX</span>}
-      {brand === 'discover' && <span>DISC</span>}
-    </button>
-  ))}
-</div>
+            <div className="pp-accepted-cards">
+              {['visa','mastercard','amex','discover'].map(brand => (
+                <button
+                  type="button"
+                  key={brand}
+                  onClick={() => { clearSavedCard(); setSelectedBrand(brand); }}
+                  className={`pp-card-logo pp-card-logo--${brand}${cardBrand === brand ? ' pp-card-logo--active' : ''}`}
+                >
+                  {brand === 'visa' && <span>VISA</span>}
+                  {brand === 'mastercard' && <span>MC</span>}
+                  {brand === 'amex' && <span>AMEX</span>}
+                  {brand === 'discover' && <span>DISC</span>}
+                </button>
+              ))}
+            </div>
 
             <div className="pp-field">
               <label className="pp-label">Card Number</label>
               <div className="pp-input-wrap">
                 <input className={`pp-input pp-input--card${errors.cardNumber ? ' pp-input--error' : ''}`}
                   type="text" placeholder="1234 5678 9012 3456" value={cardNumber}
-                  onChange={e => setCardNumber(formatCardNumber(e.target.value))}
-                  maxLength={19} autoComplete="cc-number" inputMode="numeric" />
+                  readOnly={!!selectedSavedCard}
+                  onChange={e => { if (!selectedSavedCard) setCardNumber(formatCardNumber(e.target.value)); }}
+                  maxLength={19} autoComplete="cc-number" inputMode="numeric"
+                  style={selectedSavedCard ? { background: '#f5f5f5', color: '#888', letterSpacing: '2px' } : {}} />
                 {cardBrand && <CardBrandIcon brand={cardBrand} />}
                 <svg className="pp-card-icon" width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <rect x="1" y="4" width="22" height="16" rx="3" stroke="#aaa" strokeWidth="1.5" />
@@ -285,8 +376,10 @@ const cardBrand = selectedBrand || detectedBrand;
                 <label className="pp-label">Expiry Date</label>
                 <input className={`pp-input${errors.expiry ? ' pp-input--error' : ''}`}
                   type="text" placeholder="MM/YY" value={expiry}
-                  onChange={e => setExpiry(formatExpiry(e.target.value))}
-                  maxLength={5} autoComplete="cc-exp" inputMode="numeric" />
+                  readOnly={!!selectedSavedCard}
+                  onChange={e => { if (!selectedSavedCard) setExpiry(formatExpiry(e.target.value)); }}
+                  maxLength={5} autoComplete="cc-exp" inputMode="numeric"
+                  style={selectedSavedCard ? { background: '#f5f5f5', color: '#888' } : {}} />
                 {errors.expiry && <span className="pp-field-error">{errors.expiry}</span>}
               </div>
               <div className="pp-field">
@@ -308,7 +401,10 @@ const cardBrand = selectedBrand || detectedBrand;
               <label className="pp-label">Name on Card</label>
               <input className={`pp-input${errors.nameOnCard ? ' pp-input--error' : ''}`}
                 type="text" placeholder="Jane Doe" value={nameOnCard}
-                onChange={e => setNameOnCard(e.target.value)} autoComplete="cc-name" />
+                readOnly={!!selectedSavedCard}
+                onChange={e => { if (!selectedSavedCard) setNameOnCard(e.target.value); }}
+                autoComplete="cc-name"
+                style={selectedSavedCard ? { background: '#f5f5f5', color: '#888' } : {}} />
               {errors.nameOnCard && <span className="pp-field-error">{errors.nameOnCard}</span>}
             </div>
 
@@ -321,10 +417,50 @@ const cardBrand = selectedBrand || detectedBrand;
               {errors.billingZip && <span className="pp-field-error">{errors.billingZip}</span>}
             </div>
 
-            <label className="pp-checkbox-row">
-              <input type="checkbox" checked={saveCard} onChange={e => setSaveCard(e.target.checked)} />
-              <span className="pp-checkbox-label">Save card for future orders</span>
-            </label>
+            {/* Save card checkbox */}
+            {userId && (
+              <label className="pp-checkbox-row">
+                <input type="checkbox" checked={saveCard} onChange={e => setSaveCard(e.target.checked)} />
+                <span className="pp-checkbox-label">Save card for future orders</span>
+              </label>
+            )}
+
+            {/* Auto-Add Card from saved cards */}
+            {userId && savedCards.length > 0 && (
+              <div className="pp-saved-cards-section">
+                <p className="pp-saved-cards-label">Auto-Add Card</p>
+                <div className="pp-saved-cards-list">
+                  {savedCards.map(card => {
+                    const isSelected = selectedSavedCard?.id === card.id;
+                    const mm = String(card.expMonth).padStart(2, '0');
+                    const yy = String(card.expYear).slice(-2);
+                    return (
+                      <button
+                        key={card.id}
+                        type="button"
+                        className={`pp-saved-card-btn${isSelected ? ' pp-saved-card-btn--active' : ''}`}
+                        onClick={() => isSelected ? clearSavedCard() : applySavedCard(card)}
+                      >
+                        <span className="pp-saved-card-brand">{(card.brand || 'Card').toUpperCase()}</span>
+                        <span className="pp-saved-card-num">•••• {card.last4}</span>
+                        <span className="pp-saved-card-exp">{mm}/{yy}</span>
+                        {isSelected && (
+                          <svg className="pp-saved-card-check" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" fill="#1e3932" />
+                            <polyline points="8 12 11 15 16 9" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+                {selectedSavedCard && (
+                  <button type="button" className="pp-clear-saved-card" onClick={clearSavedCard}>
+                    Enter a different card
+                  </button>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Pickup reminder */}
@@ -404,21 +540,21 @@ const cardBrand = selectedBrand || detectedBrand;
           </div>
 
           {displayTotal > 0 && (
-  <div className="pp-summary-totals">
-    <div className="pp-summary-row">
-      <span>Subtotal</span>
-      <span>{(displayTotal / 1.0875).toFixed(2)}</span>
-    </div>
-    <div className="pp-summary-row">
-      <span>Estimated tax (8.75%)</span>
-      <span>{(displayTotal - displayTotal / 1.0875).toFixed(2)}</span>
-    </div>
-    <div className="pp-summary-row pp-summary-row--total">
-      <span>Total</span>
-      <span>{displayTotal.toFixed(2)}</span>
-    </div>
-  </div>
-)}
+            <div className="pp-summary-totals">
+              <div className="pp-summary-row">
+                <span>Subtotal</span>
+                <span>{(displayTotal / 1.0875).toFixed(2)}</span>
+              </div>
+              <div className="pp-summary-row">
+                <span>Estimated tax (8.75%)</span>
+                <span>{(displayTotal - displayTotal / 1.0875).toFixed(2)}</span>
+              </div>
+              <div className="pp-summary-row pp-summary-row--total">
+                <span>Total</span>
+                <span>{displayTotal.toFixed(2)}</span>
+              </div>
+            </div>
+          )}
 
           <div className="pp-trust-badges">
             <div className="pp-trust-badge">

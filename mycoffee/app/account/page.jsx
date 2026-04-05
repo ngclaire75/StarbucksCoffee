@@ -79,6 +79,9 @@ export default function AccountPage() {
   const [cardMsg, setCardMsg]               = useState('');
   const [cardSaving, setCardSaving]         = useState(false);
 
+  // Purchases
+  const [purchases, setPurchases] = useState([]);
+
   const [section, setSection] = useState('profile');
 
   useEffect(() => {
@@ -103,6 +106,10 @@ export default function AccountPage() {
 
   useEffect(() => {
     fetch('/api/user/payment-cards').then(r => r.json()).then(d => setCards(d.cards || []));
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/user/purchases').then(r => r.json()).then(d => setPurchases(d.purchases || []));
   }, []);
 
   // ── Avatar ──────────────────────────────────────────────────────────────
@@ -321,9 +328,10 @@ export default function AccountPage() {
 
           <nav className="acct-nav" style={{ display: 'flex', flexDirection: 'column', width: '100%', gap: '4px' }}>
             {[
-              { id: 'profile', label: 'Profile', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> },
-              { id: 'stores',  label: 'Saved Stores', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> },
-              { id: 'cards',   label: 'Payment Cards', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> },
+              { id: 'profile',   label: 'Profile', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> },
+              { id: 'stores',    label: 'Saved Stores', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> },
+              { id: 'cards',     label: 'Payment Cards', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> },
+              { id: 'purchases', label: 'My Purchases', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg> },
             ].map(({ id, label, icon }) => (
               <button
                 key={id}
@@ -408,6 +416,48 @@ export default function AccountPage() {
                           <button className="acct-icon-btn" aria-label="Remove store" onClick={() => handleRemoveStore(s.placeId)}><TrashIcon /></button>
                         </li>
                       ))}
+                    </ul>
+                  )}
+                </section>
+              )}
+
+              {/* My Purchases */}
+              {section === 'purchases' && (
+                <section className="acct-section">
+                  <h2 className="acct-section-title">My Purchases</h2>
+                  {purchases.length === 0 ? (
+                    <div className="acct-empty">
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ccc" strokeWidth="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                      <p>No purchases yet.</p>
+                      <button className="acct-btn-outline" onClick={() => router.push('/menupage')}>Order now</button>
+                    </div>
+                  ) : (
+                    <ul className="acct-purchase-list">
+                      {purchases.map(p => {
+                        const d = new Date(p.createdAt);
+                        const dateStr = d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                        const timeStr = d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                        const items = Array.isArray(p.items) ? p.items : [];
+                        return (
+                          <li key={p.id} className="acct-purchase-item">
+                            <div className="acct-purchase-header">
+                              <div>
+                                <p className="acct-purchase-date">{dateStr} · {timeStr}</p>
+                                {p.storeName && <p className="acct-purchase-store">{p.storeName}</p>}
+                              </div>
+                              <span className="acct-purchase-total">${p.total.toFixed(2)}</span>
+                            </div>
+                            <ul className="acct-purchase-items">
+                              {items.map((item, i) => (
+                                <li key={i} className="acct-purchase-item-row">
+                                  <span className="acct-purchase-qty">{item.qty}×</span>
+                                  <span className="acct-purchase-name">{item.size ? `${item.size} ` : ''}{item.name}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </li>
+                        );
+                      })}
                     </ul>
                   )}
                 </section>
