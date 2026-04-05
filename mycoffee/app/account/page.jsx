@@ -445,7 +445,6 @@ export default function AccountPage() {
                                 <p className="acct-purchase-date">{dateStr} · {timeStr}</p>
                                 {p.storeName && <p className="acct-purchase-store">{p.storeName}</p>}
                               </div>
-                              <span className="acct-purchase-total">${p.total.toFixed(2)}</span>
                             </div>
                             <ul className="acct-purchase-items">
                               {items.map((item, i) => (
