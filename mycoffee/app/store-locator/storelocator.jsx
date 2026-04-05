@@ -564,14 +564,24 @@ export default function StoreLocator({ onStoreSelect, savedStore }) {
   var searchInputRef = useRef(null);
   var suppressSuggestionsRef = useRef(false);
   
-  // Load favorites from localStorage when user changes
+  // Load favorites from DB (fall back to localStorage cache)
   useEffect(function () {
-    if (currentUser?.id) {
-      var raw = localStorage.getItem("sbux_favorites_" + currentUser.id);
-      setFavorites(raw ? JSON.parse(raw) : []);
-    } else {
-      setFavorites([]);
-    }
+    if (!currentUser?.id) { setFavorites([]); return; }
+    var key = "sbux_favorites_" + currentUser.id;
+    // Show cached version immediately
+    var raw = localStorage.getItem(key);
+    if (raw) setFavorites(JSON.parse(raw));
+    // Then fetch from DB and sync
+    fetch("/api/user/saved-stores")
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.stores && Array.isArray(d.stores)) {
+          var dbFavs = d.stores.map(function (s) { return s.storeData || { id: s.placeId, name: s.name }; });
+          setFavorites(dbFavs);
+          localStorage.setItem(key, JSON.stringify(dbFavs));
+        }
+      })
+      .catch(function () {});
   }, [currentUser?.id]);
 
   useEffect(() => {
@@ -855,12 +865,35 @@ export default function StoreLocator({ onStoreSelect, savedStore }) {
       setShowSignInModal(true);
       return;
     }
-    var key = "sbux_favorites_" + currentUser.id;
-    var updated = favorites.some(function (f) { return f.id === store.id; })
+    var isFav = favorites.some(function (f) { return f.id === store.id; });
+    var updated = isFav
       ? favorites.filter(function (f) { return f.id !== store.id; })
       : favorites.concat(store);
     setFavorites(updated);
+    // Persist to localStorage as cache
+    var key = "sbux_favorites_" + currentUser.id;
     localStorage.setItem(key, JSON.stringify(updated));
+    // Sync to database
+    if (isFav) {
+      fetch("/api/user/saved-stores", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ placeId: store.id }),
+      }).catch(function () {});
+    } else {
+      fetch("/api/user/saved-stores", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          placeId: store.id,
+          name: store.name,
+          address: store.address || store.vicinity || "",
+          lat: store.lat,
+          lng: store.lng,
+          storeData: store,
+        }),
+      }).catch(function () {});
+    }
   }
 
   /* ── Save a store (from list row quick-save or detail panel) ── */

@@ -104,8 +104,8 @@ export default function WhiteNav({ activePage }) {
                     border: '1px solid #e0e0e0',
                     borderRadius: '8px',
                     boxShadow: '0 4px 12px rgba(0,0,0,0.12)',
-                    minWidth: '160px',
-                    maxWidth: '220px',
+                    minWidth: '180px',
+                    maxWidth: '240px',
                     zIndex: 9999,
                   }}
                 >
@@ -114,6 +114,27 @@ export default function WhiteNav({ activePage }) {
                   >
                     {user.email}
                   </div>
+                  <button
+                    onClick={() => { setMenuOpen(false); router.push('/account'); }}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      padding: '12px 16px',
+                      background: 'none',
+                      border: 'none',
+                      borderBottom: '1px solid #f0f0f0',
+                      textAlign: 'left',
+                      fontSize: '13px',
+                      fontFamily: 'inherit',
+                      fontWeight: '600',
+                      color: '#1e3932',
+                      cursor: 'pointer',
+                    }}
+                    onMouseOver={(e) => { e.currentTarget.style.background = '#f5f5f5'; }}
+                    onMouseOut={(e) => { e.currentTarget.style.background = 'none'; }}
+                  >
+                    My Account
+                  </button>
                   <button
                     onClick={handleLogout}
                     style={{
@@ -176,6 +197,13 @@ export default function WhiteNav({ activePage }) {
             {user ? (
               <>
                 <div style={{ fontSize: '13px', color: '#555', marginBottom: '6px' }}>{user.email}</div>
+                <button
+                  className="btn-outline"
+                  onClick={() => { router.push('/account'); setMobileOpen(false); }}
+                  style={{ width: '100%', padding: '10px', fontSize: '13px', marginBottom: '6px' }}
+                >
+                  My Account
+                </button>
                 <button
                   className="btn-outline"
                   onClick={handleLogout}

@@ -1,6 +1,7 @@
 
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { prisma } from "@/lib/prisma";
 
 // Ensure NEXTAUTH_URL is always set (Vercel auto-sets VERCEL_URL as fallback)
 if (process.env.VERCEL_URL && !process.env.NEXTAUTH_URL) {
@@ -34,9 +35,26 @@ const handler = NextAuth({
   },
   callbacks: {
     async signIn({ account, profile }) {
-      // Allow all Google accounts
       if (account?.provider === "google") {
-        return !!(profile?.email_verified && profile?.email);
+        if (!(profile?.email_verified && profile?.email)) return false;
+        // Upsert the Google user into the database so they have a stable DB id
+        try {
+          await prisma.user.upsert({
+            where: { email: profile.email },
+            update: { googleId: profile.sub, name: profile.name, image: profile.picture },
+            create: {
+              googleId: profile.sub,
+              email: profile.email,
+              name: profile.name,
+              firstName: profile.given_name || profile.name?.split(" ")[0] || "",
+              lastName: profile.family_name || "",
+              image: profile.picture,
+            },
+          });
+        } catch (err) {
+          console.error("NextAuth signIn upsert error:", err);
+        }
+        return true;
       }
       return true;
     },

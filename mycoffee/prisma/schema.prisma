@@ -35,16 +35,49 @@ model VerificationCode {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  googleId  String?  @unique
-  email     String   @unique
-  firstName String?
-  lastName  String?
-  name      String
-  password  String?
-  image     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String        @id @default(cuid())
+  googleId     String?       @unique
+  email        String        @unique
+  firstName    String?
+  lastName     String?
+  name         String
+  password     String?
+  image        String?
+  phone        String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  savedStores  SavedStore[]
+  paymentCards PaymentCard[]
 
   @@index([email])
+}
+
+model SavedStore {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  placeId   String
+  name      String
+  address   String
+  lat       Float?
+  lng       Float?
+  storeData Json
+  createdAt DateTime @default(now())
+
+  @@unique([userId, placeId])
+  @@index([userId])
+}
+
+model PaymentCard {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  last4      String
+  brand      String
+  expMonth   Int
+  expYear    Int
+  nameOnCard String
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
 }

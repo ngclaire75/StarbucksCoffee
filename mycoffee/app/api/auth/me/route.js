@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { verifyToken } from '@/lib/auth';
 import { getToken } from 'next-auth/jwt';
+import { prisma } from '@/lib/prisma';
 
 export async function GET(request) {
   try {
@@ -12,6 +13,20 @@ export async function GET(request) {
     if (token) {
       const payload = verifyToken(token);
       if (payload) {
+        // Refresh full user data from DB
+        const dbUser = await prisma.user.findUnique({ where: { id: payload.id } });
+        if (dbUser) {
+          return NextResponse.json({
+            user: {
+              id: dbUser.id,
+              email: dbUser.email,
+              name: dbUser.name,
+              firstName: dbUser.firstName,
+              lastName: dbUser.lastName,
+              phone: dbUser.phone,
+            },
+          });
+        }
         return NextResponse.json({ user: payload });
       }
     }
@@ -22,9 +37,24 @@ export async function GET(request) {
       secret: process.env.NEXTAUTH_SECRET || 'starbucks-secret-change-me',
     });
 
-    if (nextAuthToken?.name) {
+    if (nextAuthToken?.email) {
+      // Look up the full DB user so we have a stable id and phone
+      const dbUser = await prisma.user.findUnique({ where: { email: nextAuthToken.email } });
+      if (dbUser) {
+        return NextResponse.json({
+          user: {
+            id: dbUser.id,
+            email: dbUser.email,
+            name: dbUser.name,
+            firstName: dbUser.firstName,
+            lastName: dbUser.lastName,
+            phone: dbUser.phone,
+          },
+        });
+      }
+      // Google user not in DB yet (edge case) – return minimal data
       return NextResponse.json({
-        user: { name: nextAuthToken.name, email: nextAuthToken.email },
+        user: { id: nextAuthToken.sub, name: nextAuthToken.name, email: nextAuthToken.email },
       });
     }
 
