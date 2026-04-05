@@ -268,7 +268,7 @@ export default function AccountPage() {
       <div className="acct-page">
 
         {/* ── Sidebar — always rendered ── */}
-        <aside className="acct-sidebar">
+        <aside className="acct-sidebar" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '220px', flexShrink: 0, border: 'none' }}>
           <div className="acct-avatar-section">
             <div
               className="acct-avatar-wrap"
@@ -319,19 +319,22 @@ export default function AccountPage() {
             }
           </div>
 
-          <nav className="acct-nav">
-            <button className={`acct-nav-item ${section === 'profile' ? 'acct-nav-item--active' : ''}`} onClick={() => setSection('profile')}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              Profile
-            </button>
-            <button className={`acct-nav-item ${section === 'stores' ? 'acct-nav-item--active' : ''}`} onClick={() => setSection('stores')}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Saved Stores
-            </button>
-            <button className={`acct-nav-item ${section === 'cards' ? 'acct-nav-item--active' : ''}`} onClick={() => setSection('cards')}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-              Payment Cards
-            </button>
+          <nav className="acct-nav" style={{ display: 'flex', flexDirection: 'column', width: '100%', gap: '4px' }}>
+            {[
+              { id: 'profile', label: 'Profile', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> },
+              { id: 'stores',  label: 'Saved Stores', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> },
+              { id: 'cards',   label: 'Payment Cards', icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> },
+            ].map(({ id, label, icon }) => (
+              <button
+                key={id}
+                className={`acct-nav-item ${section === id ? 'acct-nav-item--active' : ''}`}
+                onClick={() => setSection(id)}
+                style={{ display: 'flex', alignItems: 'center', gap: '10px', textAlign: 'left', width: '100%' }}
+              >
+                {icon}
+                {label}
+              </button>
+            ))}
           </nav>
         </aside>
 
