@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './gifts.css';
 
 const CARD_DESIGNS = [
@@ -27,6 +27,54 @@ export default function GiftsPage() {
   const [selectedDesign, setSelectedDesign] = useState(CARD_DESIGNS[0]);
   const [selectedAmount, setSelectedAmount] = useState('$25');
   const [customAmount, setCustomAmount] = useState('');
+
+  // Check balance state
+  const [savedCards, setSavedCards]     = useState([]);
+  const [balCardNum, setBalCardNum]     = useState('');
+  const [balSecCode, setBalSecCode]     = useState('');
+  const [balResult,  setBalResult]      = useState(null); // null | 'found' | 'not_found' | 'not_signed_in'
+  const [balChecked, setBalChecked]     = useState(false);
+  const [isSignedIn, setIsSignedIn]     = useState(false);
+
+  useEffect(() => {
+    fetch('/api/auth/me')
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if (!d?.user?.id) return;
+        setIsSignedIn(true);
+        fetch('/api/user/payment-cards')
+          .then(r => r.json())
+          .then(d => setSavedCards(d.cards || []));
+      })
+      .catch(() => {});
+  }, []);
+
+  function handleCheckBalance(e) {
+    e.preventDefault();
+    setBalChecked(false);
+    setBalResult(null);
+
+    if (!isSignedIn) {
+      setBalResult('not_signed_in');
+      setBalChecked(true);
+      return;
+    }
+
+    const digits = balCardNum.replace(/\D/g, '');
+    if (digits.length !== 16 || balSecCode.replace(/\D/g, '').length < 3) {
+      setBalResult('not_found');
+      setBalChecked(true);
+      return;
+    }
+
+    const last4 = digits.slice(-4);
+    const match = savedCards.find(
+      c => c.last4 === last4 && c.securityCode === balSecCode.trim()
+    );
+
+    setBalResult(match ? 'found' : 'not_found');
+    setBalChecked(true);
+  }
 
   return (
     <div className="gf-page">
@@ -168,13 +216,51 @@ export default function GiftsPage() {
               <div className="gf-panel-narrow">
                 <h2 className="gf-panel-title">Check your card balance</h2>
                 <p className="gf-panel-sub">Enter your card number and security code to see your balance.</p>
-                <div className="gf-form-fields">
-                  <input className="gf-input" type="text" placeholder="Card number (16 digits)" />
-                  <input className="gf-input" type="text" placeholder="Security code (8 digits)" />
-                  <button className="gf-cta-btn">Check Balance</button>
-                </div>
+                <form className="gf-form-fields" onSubmit={handleCheckBalance}>
+                  <input
+                    className="gf-input"
+                    type="text"
+                    placeholder="Card number (16 digits)"
+                    maxLength={16}
+                    inputMode="numeric"
+                    value={balCardNum}
+                    onChange={e => { setBalCardNum(e.target.value.replace(/\D/g, '')); setBalChecked(false); }}
+                  />
+                  <input
+                    className="gf-input"
+                    type="password"
+                    placeholder="Security code"
+                    value={balSecCode}
+                    onChange={e => { setBalSecCode(e.target.value.replace(/\D/g, '').slice(0, 8)); setBalChecked(false); }}
+                    maxLength={8}
+                    inputMode="numeric"
+                    style={{ WebkitTextSecurity: 'disc' }}
+                    autoComplete="off"
+                  />
+                  <button className="gf-cta-btn" type="submit">Check Balance</button>
+                </form>
+
+                {balChecked && balResult === 'not_signed_in' && (
+                  <div className="gf-balance-result gf-balance-result--err">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#cc0000"/><line x1="12" y1="8" x2="12" y2="13" stroke="#fff" strokeWidth="2.5" strokeLinecap="round"/><circle cx="12" cy="16.5" r="1.2" fill="#fff"/></svg>
+                    Please sign in to check your card balance.
+                  </div>
+                )}
+                {balChecked && balResult === 'not_found' && (
+                  <div className="gf-balance-result gf-balance-result--err">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#cc0000"/><line x1="12" y1="8" x2="12" y2="13" stroke="#fff" strokeWidth="2.5" strokeLinecap="round"/><circle cx="12" cy="16.5" r="1.2" fill="#fff"/></svg>
+                    Card not found. Please check your card number and security code.
+                  </div>
+                )}
+                {balChecked && balResult === 'found' && (
+                  <div className="gf-balance-result gf-balance-result--ok">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#00a862"/><polyline points="8 12 11 15 16 9" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    Card verified! Your card ending in {balCardNum.slice(-4)} is active.
+                  </div>
+                )}
+
                 <p className="gf-balance-hint">
-                  Find your card number on the back of your Starbucks card.
+                  Only cards saved to your Payment Cards in My Account can be checked here.
                 </p>
               </div>
             </div>
