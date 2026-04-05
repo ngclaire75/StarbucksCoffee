@@ -69,15 +69,16 @@ model SavedStore {
 }
 
 model PaymentCard {
-  id         String   @id @default(cuid())
-  userId     String
-  user       User     @relation(fields: [userId], references: [id])
-  last4      String
-  brand      String
-  expMonth   Int
-  expYear    Int
-  nameOnCard String
-  createdAt  DateTime @default(now())
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  last4        String
+  brand        String
+  expMonth     Int
+  expYear      Int
+  nameOnCard   String
+  securityCode String?
+  createdAt    DateTime @default(now())
 
   @@index([userId])
 }

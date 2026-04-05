@@ -42,17 +42,74 @@ export async function POST(request) {
     const userId = await getUserId(request);
     if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-    const { last4, brand, expMonth, expYear, nameOnCard } = await request.json();
-    if (!last4 || !brand || !expMonth || !expYear || !nameOnCard) {
+    const { cardNumber, brand, expMonth, expYear, nameOnCard, securityCode } = await request.json();
+
+    if (!cardNumber || !brand || !expMonth || !expYear || !nameOnCard) {
       return NextResponse.json({ error: 'All card fields are required' }, { status: 400 });
     }
 
+    const digits = cardNumber.replace(/\s/g, '');
+    if (digits.length !== 16 || !/^\d{16}$/.test(digits)) {
+      return NextResponse.json({ error: 'Card number must be 16 digits' }, { status: 400 });
+    }
+
+    if (securityCode && (securityCode.length !== 8 || !/^\d{8}$/.test(securityCode))) {
+      return NextResponse.json({ error: 'Security code must be 8 digits' }, { status: 400 });
+    }
+
+    const last4 = digits.slice(-4);
+
     const card = await prisma.paymentCard.create({
-      data: { userId, last4, brand, expMonth: Number(expMonth), expYear: Number(expYear), nameOnCard },
+      data: {
+        userId,
+        last4,
+        brand,
+        expMonth: Number(expMonth),
+        expYear: Number(expYear),
+        nameOnCard,
+        securityCode: securityCode || null,
+      },
     });
     return NextResponse.json({ card });
   } catch {
     return NextResponse.json({ error: 'Failed to save card' }, { status: 500 });
+  }
+}
+
+export async function PUT(request) {
+  try {
+    const userId = await getUserId(request);
+    if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    const { cardId, cardNumber, brand, expMonth, expYear, nameOnCard, securityCode } = await request.json();
+
+    if (!cardId) return NextResponse.json({ error: 'Card ID required' }, { status: 400 });
+
+    const existing = await prisma.paymentCard.findFirst({ where: { id: cardId, userId } });
+    if (!existing) return NextResponse.json({ error: 'Card not found' }, { status: 404 });
+
+    const data = {};
+    if (brand) data.brand = brand;
+    if (expMonth) data.expMonth = Number(expMonth);
+    if (expYear) data.expYear = Number(expYear);
+    if (nameOnCard) data.nameOnCard = nameOnCard;
+    if (securityCode !== undefined) data.securityCode = securityCode || null;
+
+    if (cardNumber) {
+      const digits = cardNumber.replace(/\s/g, '');
+      if (digits.length !== 16 || !/^\d{16}$/.test(digits)) {
+        return NextResponse.json({ error: 'Card number must be 16 digits' }, { status: 400 });
+      }
+      data.last4 = digits.slice(-4);
+    }
+
+    const card = await prisma.paymentCard.update({
+      where: { id: cardId },
+      data,
+    });
+    return NextResponse.json({ card });
+  } catch {
+    return NextResponse.json({ error: 'Failed to update card' }, { status: 500 });
   }
 }
 
