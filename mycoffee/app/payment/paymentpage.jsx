@@ -192,7 +192,7 @@ export default function PaymentPage() {
 
     if (selectedSavedCard) {
       /* Using a saved card — only CVV needs re-entering */
-      if (!cvv || cvv.length < 3) errs.cvv = 'Enter a valid CVV';
+      if (!cvv || cvv.length < 3) errs.cvv = 'Enter a valid CVV (3–8 digits)';
     } else {
       const rawCard = cardNumber.replace(/\s/g, '');
       if (rawCard.length < 13 || rawCard.length > 16) errs.cardNumber = 'Enter a valid card number';
@@ -409,8 +409,8 @@ export default function PaymentPage() {
                 <label className="pp-label">CVV</label>
                 <input className={`pp-input${errors.cvv ? ' pp-input--error' : ''}`}
                   type="password" placeholder="•••" value={cvv}
-                  onChange={e => setCvv(e.target.value.replace(/\D/g, '').slice(0, 4))}
-                  maxLength={4} autoComplete="off" inputMode="numeric"
+                  onChange={e => setCvv(e.target.value.replace(/\D/g, '').slice(0, 8))}
+                  maxLength={8} autoComplete="off" inputMode="numeric"
                   style={{ WebkitTextSecurity: 'disc' }} />
                 {errors.cvv && <span className="pp-field-error">{errors.cvv}</span>}
               </div>
