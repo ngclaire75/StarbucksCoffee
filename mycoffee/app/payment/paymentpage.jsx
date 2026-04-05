@@ -158,6 +158,7 @@ export default function PaymentPage() {
   const [loading,     setLoading]     = useState(false);
   const [success,     setSuccess]     = useState(false);
   const [estimateMins, setEstimateMins] = useState(15);
+  const [cvvError,    setCvvError]    = useState(false);
 
   const detectedBrand = detectCardBrand(cardNumber);
   const cardBrand = selectedSavedCard?.brand || selectedBrand || detectedBrand;
@@ -170,7 +171,7 @@ export default function PaymentPage() {
     const yy = String(card.expYear).slice(-2);
     setExpiry(`${mm}/${yy}`);
     setNameOnCard(card.nameOnCard || '');
-    setCvv(card.securityCode || '');
+    setCvv('');
     setSelectedBrand(card.brand || null);
   }
 
@@ -213,6 +214,13 @@ export default function PaymentPage() {
       return;
     }
     setErrors({});
+
+    /* CVV match check against saved card */
+    if (selectedSavedCard?.securityCode && cvv !== selectedSavedCard.securityCode) {
+      setCvvError(true);
+      return;
+    }
+
     setLoading(true);
 
     /* Save card to DB if requested (only for new cards, not already-saved ones) */
@@ -285,6 +293,23 @@ export default function PaymentPage() {
 
   return (
     <div className="pp-root">
+
+      {/* CVV mismatch error popup */}
+      {cvvError && (
+        <div className="pp-cvv-overlay" onClick={() => setCvvError(false)}>
+          <div className="pp-cvv-modal" onClick={e => e.stopPropagation()}>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" fill="#cc0000" />
+              <line x1="12" y1="8" x2="12" y2="13" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" />
+              <circle cx="12" cy="16.5" r="1.25" fill="#fff" />
+            </svg>
+            <h3 className="pp-cvv-modal-title">Invalid Card Details</h3>
+            <p className="pp-cvv-modal-msg">Please Enter Again.</p>
+            <button className="pp-cvv-modal-btn" onClick={() => setCvvError(false)}>OK</button>
+          </div>
+        </div>
+      )}
+
       {/* Header */}
       <div className="pp-header">
         <button className="pp-back-btn" onClick={() => router.back()} aria-label="Back">
@@ -382,15 +407,11 @@ export default function PaymentPage() {
               </div>
               <div className="pp-field">
                 <label className="pp-label">CVV</label>
-                <div className="pp-input-wrap">
-                  <input className={`pp-input${errors.cvv ? ' pp-input--error' : ''}`}
-                    type="password" placeholder="•••" value={cvv}
-                    onChange={e => setCvv(e.target.value.replace(/\D/g, '').slice(0, 4))}
-                    maxLength={4} autoComplete="cc-csc" inputMode="numeric" />
-                  <svg className="pp-card-icon" width="18" height="18" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#aaa" strokeWidth="1.5" />
-                  </svg>
-                </div>
+                <input className={`pp-input${errors.cvv ? ' pp-input--error' : ''}`}
+                  type="password" placeholder="•••" value={cvv}
+                  onChange={e => setCvv(e.target.value.replace(/\D/g, '').slice(0, 4))}
+                  maxLength={4} autoComplete="off" inputMode="numeric"
+                  style={{ WebkitTextSecurity: 'disc' }} />
                 {errors.cvv && <span className="pp-field-error">{errors.cvv}</span>}
               </div>
             </div>
