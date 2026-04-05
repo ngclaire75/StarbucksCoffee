@@ -211,7 +211,14 @@
 }
 .gf-input:focus { border-color: #1e3932; }
 .gf-input::placeholder { color: #aaa; }
-.gf-textarea { resize: vertical; min-height: 88px; }
+.gf-textarea {
+  resize: none;
+  min-height: 88px;
+  overflow-y: auto;
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE / Edge */
+}
+.gf-textarea::-webkit-scrollbar { display: none; } /* Chrome / Safari */
 
 /* CTA button */
 .gf-cta-btn {

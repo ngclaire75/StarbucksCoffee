@@ -149,7 +149,7 @@ export default function GiftsPage() {
                   <div className="gf-form-fields">
                     <input className="gf-input" type="text" placeholder="Recipient's name" />
                     <input className="gf-input" type="email" placeholder="Recipient's email" />
-                    <textarea className="gf-input gf-textarea" placeholder="Personal message (optional)" rows="3" style={{ resize: 'none' }} />
+                    <textarea className="gf-input gf-textarea" placeholder="Personal message (optional)" rows="3" />
                   </div>
                 </div>
 
