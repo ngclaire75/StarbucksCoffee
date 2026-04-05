@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import './paymentpage.css';
 
 /* ─── Helpers ────────────────────────────────────────────────────────── */
-function getPickupEstimate() { return Math.floor(Math.random() * 16) + 10; }
 
 function formatCardNumber(value) {
   return value.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
@@ -33,19 +32,7 @@ function CardBrandIcon({ brand }) {
 }
 
 /* ─── Order Success Modal ────────────────────────────────────────────── */
-function OrderSuccessModal({ store, estimateMins, total, cartItems, onDone }) {
-  const [countdown, setCountdown] = useState(estimateMins * 60);
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setCountdown(c => { if (c <= 0) { clearInterval(t); return 0; } return c - 1; });
-    }, 1000);
-    return () => clearInterval(t);
-  }, []);
-
-  const mins = Math.floor(countdown / 60);
-  const secs = countdown % 60;
-
+function OrderSuccessModal({ store, cartItems, onDone }) {
   return (
     <div className="pp-success-overlay">
       <div className="pp-success-modal">
@@ -71,17 +58,6 @@ function OrderSuccessModal({ store, estimateMins, total, cartItems, onDone }) {
           </div>
         </div>
 
-        <div className="pp-success-timer-wrap">
-          <div className="pp-success-timer-label">Estimated ready in</div>
-          {countdown > 0 ? (
-            <div className="pp-success-timer">
-              {String(mins).padStart(2, '0')}:{String(secs).padStart(2, '0')}
-            </div>
-          ) : (
-            <div className="pp-success-ready-pulse">Ready for pickup! 🎉</div>
-          )}
-          <div className="pp-success-timer-sub">~{estimateMins} minutes</div>
-        </div>
 
         <div className="pp-success-items">
           {(cartItems ?? []).map((item, i) => (
@@ -111,7 +87,6 @@ export default function PaymentPage() {
   const [userId,           setUserId]           = useState(null);
   const [savedCards,       setSavedCards]       = useState([]);
   const [selectedSavedCard, setSelectedSavedCard] = useState(null);
-  const [cardSaveStatus,   setCardSaveStatus]   = useState(null);
 
   useEffect(() => {
     try {
@@ -157,7 +132,6 @@ export default function PaymentPage() {
   const [errors,      setErrors]      = useState({});
   const [loading,     setLoading]     = useState(false);
   const [success,     setSuccess]     = useState(false);
-  const [estimateMins, setEstimateMins] = useState(15);
   const [cvvError,    setCvvError]    = useState(false);
 
   const detectedBrand = detectCardBrand(cardNumber);
@@ -225,7 +199,6 @@ export default function PaymentPage() {
 
     /* Save card to DB if requested (only for new cards, not already-saved ones) */
     if (saveCard && userId && !selectedSavedCard) {
-      setCardSaveStatus('saving');
       try {
         const rawCard = cardNumber.replace(/\s/g, '');
         const [expMM, expYY] = expiry.split('/');
@@ -242,10 +215,7 @@ export default function PaymentPage() {
             securityCode: cvv,
           }),
         });
-        setCardSaveStatus('saved');
-      } catch (_) {
-        setCardSaveStatus('error');
-      }
+      } catch (_) {}
     }
 
     /* Save purchase record to DB */
@@ -266,7 +236,6 @@ export default function PaymentPage() {
 
     setTimeout(() => {
       setLoading(false);
-      setEstimateMins(getPickupEstimate());
       setSuccess(true);
     }, 1800);
   }
@@ -283,8 +252,6 @@ export default function PaymentPage() {
     return (
       <OrderSuccessModal
         store={store}
-        estimateMins={estimateMins}
-        total={displayTotal}
         cartItems={cartItems}
         onDone={handleDone}
       />
