@@ -133,8 +133,8 @@ export default function PaymentPage() {
         const res = await fetch('/api/auth/me');
         if (!res.ok) return;
         const data = await res.json();
-        if (!data?.id) return;
-        setUserId(data.id);
+        if (!data?.user?.id) return;
+        setUserId(data.user.id);
 
         const cardsRes = await fetch('/api/user/payment-cards');
         if (cardsRes.ok) {
