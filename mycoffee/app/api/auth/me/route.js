@@ -4,57 +4,42 @@ import { verifyToken } from '@/lib/auth';
 import { getToken } from 'next-auth/jwt';
 import { prisma } from '@/lib/prisma';
 
+function userShape(u) {
+  return {
+    id: u.id,
+    email: u.email,
+    name: u.name,
+    firstName: u.firstName,
+    lastName: u.lastName,
+    phone: u.phone,
+    image: u.image || null,
+  };
+}
+
 export async function GET(request) {
   try {
-    // Check custom email/password auth cookie first
     const cookieStore = cookies();
     const token = cookieStore.get('sb_auth')?.value;
 
     if (token) {
       const payload = verifyToken(token);
       if (payload) {
-        // Refresh full user data from DB
         const dbUser = await prisma.user.findUnique({ where: { id: payload.id } });
-        if (dbUser) {
-          return NextResponse.json({
-            user: {
-              id: dbUser.id,
-              email: dbUser.email,
-              name: dbUser.name,
-              firstName: dbUser.firstName,
-              lastName: dbUser.lastName,
-              phone: dbUser.phone,
-            },
-          });
-        }
+        if (dbUser) return NextResponse.json({ user: userShape(dbUser) });
         return NextResponse.json({ user: payload });
       }
     }
 
-    // Fall back to NextAuth session (Google sign-in)
     const nextAuthToken = await getToken({
       req: request,
       secret: process.env.NEXTAUTH_SECRET || 'starbucks-secret-change-me',
     });
 
     if (nextAuthToken?.email) {
-      // Look up the full DB user so we have a stable id and phone
       const dbUser = await prisma.user.findUnique({ where: { email: nextAuthToken.email } });
-      if (dbUser) {
-        return NextResponse.json({
-          user: {
-            id: dbUser.id,
-            email: dbUser.email,
-            name: dbUser.name,
-            firstName: dbUser.firstName,
-            lastName: dbUser.lastName,
-            phone: dbUser.phone,
-          },
-        });
-      }
-      // Google user not in DB yet (edge case) – return minimal data
+      if (dbUser) return NextResponse.json({ user: userShape(dbUser) });
       return NextResponse.json({
-        user: { id: nextAuthToken.sub, name: nextAuthToken.name, email: nextAuthToken.email },
+        user: { id: nextAuthToken.sub, name: nextAuthToken.name, email: nextAuthToken.email, image: null },
       });
     }
 
