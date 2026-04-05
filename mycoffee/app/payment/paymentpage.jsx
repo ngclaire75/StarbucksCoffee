@@ -106,14 +106,12 @@ export default function PaymentPage() {
   const [displayTotal, setDisplayTotal] = useState(0);
   const [store,        setStore]        = useState(null);
   const [selectedBrand, setSelectedBrand] = useState(null);
-  const [pickupCountdown, setPickupCountdown] = useState(null);
-  const [orderReady, setOrderReady] = useState(false);
 
   /* Auth + saved cards */
-  const [userId,       setUserId]       = useState(null);
-  const [savedCards,   setSavedCards]   = useState([]);
+  const [userId,           setUserId]           = useState(null);
+  const [savedCards,       setSavedCards]       = useState([]);
   const [selectedSavedCard, setSelectedSavedCard] = useState(null);
-  const [cardSaveStatus, setCardSaveStatus] = useState(null); // 'saving' | 'saved' | 'error'
+  const [cardSaveStatus,   setCardSaveStatus]   = useState(null);
 
   useEffect(() => {
     try {
@@ -172,7 +170,7 @@ export default function PaymentPage() {
     const yy = String(card.expYear).slice(-2);
     setExpiry(`${mm}/${yy}`);
     setNameOnCard(card.nameOnCard || '');
-    setCvv('');
+    setCvv(card.securityCode || '');
     setSelectedBrand(card.brand || null);
   }
 
@@ -428,7 +426,7 @@ export default function PaymentPage() {
             {/* Auto-Add Card from saved cards */}
             {userId && savedCards.length > 0 && (
               <div className="pp-saved-cards-section">
-                <p className="pp-saved-cards-label">Auto-Add Card</p>
+                <p className="pp-saved-cards-label">Auto Fill Card Details</p>
                 <div className="pp-saved-cards-list">
                   {savedCards.map(card => {
                     const isSelected = selectedSavedCard?.id === card.id;

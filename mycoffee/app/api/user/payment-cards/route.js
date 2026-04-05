@@ -53,8 +53,8 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Card number must be 16 digits' }, { status: 400 });
     }
 
-    if (securityCode && (securityCode.length !== 8 || !/^\d{8}$/.test(securityCode))) {
-      return NextResponse.json({ error: 'Security code must be 8 digits' }, { status: 400 });
+    if (securityCode && (securityCode.length < 3 || securityCode.length > 8 || !/^\d+$/.test(securityCode))) {
+      return NextResponse.json({ error: 'Security code must be 3–8 digits' }, { status: 400 });
     }
 
     const last4 = digits.slice(-4);
