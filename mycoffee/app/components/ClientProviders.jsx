@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { LanguageProvider } from '../contexts/LanguageContext';
 
@@ -20,7 +20,7 @@ export default function ClientProviders({ children }) {
   // Instant scroll-to-top on every route change.
   // body { scroll-behavior: smooth } makes Next.js's scrollTo(0,0) animate slowly,
   // so new pages briefly appear at the old scroll position — this overrides that.
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [pathname]);
 
