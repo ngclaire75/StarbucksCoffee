@@ -444,23 +444,28 @@ export default function MenuPage() {
 
           <h4>Drinks</h4>
           {[
-            'Protein Beverages','Hot Coffee','Cold Coffee','Matcha',
-            'Hot Tea','Cold Tea','Refreshers',
-            <span key="f">Frappuccino® Blended<br/>Beverage</span>,
-            <span key="h">Hot Chocolate, Lemonade<br/>& More</span>,
-            'Bottled Beverages',
-          ].map((label, i) => (
-            <p key={i} className="sidebar-item" onClick={handleExitTrending} style={{ cursor: 'pointer' }}>{label}</p>
+            { display: 'Protein Beverages',  label: 'Protein Beverages' },
+            { display: 'Hot Coffee',          label: 'Hot Coffee' },
+            { display: 'Cold Coffee',         label: 'Cold Coffee' },
+            { display: 'Matcha',              label: 'Matcha' },
+            { display: 'Hot Tea',             label: 'Hot Tea' },
+            { display: 'Cold Tea',            label: 'Cold Tea' },
+            { display: 'Refreshers',          label: 'Refreshers' },
+            { display: <span key="f">Frappuccino® Blended<br/>Beverage</span>, label: 'Frappuccino® Blended Beverage' },
+            { display: <span key="h">Hot Chocolate, Lemonade<br/>& More</span>, label: 'Hot Chocolate, Lemonade & More' },
+            { display: 'Bottled Beverages',   label: 'Bottled Beverages' },
+          ].map(({ display, label }) => (
+            <p key={label} className="sidebar-item" onClick={() => openMenuUnavail(label)} style={{ cursor: 'pointer' }}>{display}</p>
           ))}
 
           <h4>Food</h4>
           {['Breakfast','Bakery','Treats','Lunch','Lite Bites'].map(label => (
-            <p key={label} className="sidebar-item" onClick={handleExitTrending} style={{ cursor: 'pointer' }}>{label}</p>
+            <p key={label} className="sidebar-item" onClick={() => openMenuUnavail(label)} style={{ cursor: 'pointer' }}>{label}</p>
           ))}
 
           <h4>At Home Coffee</h4>
           {['Whole Bean','Starbucks VIA® Instant','Shopping Bag'].map(label => (
-            <p key={label} className="sidebar-item" onClick={handleExitTrending} style={{ cursor: 'pointer' }}>{label}</p>
+            <p key={label} className="sidebar-item" onClick={() => openMenuUnavail(label)} style={{ cursor: 'pointer' }}>{label}</p>
           ))}
         </div>
 
