@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { LanguageProvider } from '../contexts/LanguageContext';
 
-const SESSION_TIMEOUT = 5 * 60 * 1000; // 5 minutes
+const SESSION_TIMEOUT = 5 * 60 * 1000;
 
 async function logoutIfExpired() {
   const hiddenAt = localStorage.getItem('hiddenAt');
@@ -14,8 +15,16 @@ async function logoutIfExpired() {
 }
 
 export default function ClientProviders({ children }) {
+  const pathname = usePathname();
+
+  // Instant scroll-to-top on every route change.
+  // body { scroll-behavior: smooth } makes Next.js's scrollTo(0,0) animate slowly,
+  // so new pages briefly appear at the old scroll position — this overrides that.
   useEffect(() => {
-    // Check on fresh page load (covers reopening after closing)
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname]);
+
+  useEffect(() => {
     logoutIfExpired();
 
     const handleVisibility = () => {

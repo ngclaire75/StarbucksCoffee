@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import WhiteNav from '../whitenav';
 import './orderinapp.css';
 
 /* Real QR code pointing to the Starbucks app download page */
@@ -56,6 +57,7 @@ const PhoneIllustration = ({ dark }) => (
 export default function OrderInAppPage() {
   return (
     <div className="oia-page">
+      <WhiteNav activePage="" />
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="oia-hero">
