@@ -16,6 +16,22 @@ import '../menupage/menu.css';
 
 let hasVisitedMenuPage = false;
 
+const SIDEBAR_DRINKS = [
+  { display: 'Protein Beverages',  label: 'Protein Beverages' },
+  { display: 'Hot Coffee',          label: 'Hot Coffee' },
+  { display: 'Cold Coffee',         label: 'Cold Coffee' },
+  { display: 'Matcha',              label: 'Matcha' },
+  { display: 'Hot Tea',             label: 'Hot Tea' },
+  { display: 'Cold Tea',            label: 'Cold Tea' },
+  { display: 'Refreshers',          label: 'Refreshers' },
+  { display: <span>Frappuccino® Blended<br/>Beverage</span>, label: 'Frappuccino® Blended Beverage' },
+  { display: <span>Hot Chocolate, Lemonade<br/>& More</span>, label: 'Hot Chocolate, Lemonade & More' },
+  { display: 'Bottled Beverages',   label: 'Bottled Beverages' },
+];
+
+const SIDEBAR_FOOD    = ['Breakfast', 'Bakery', 'Treats', 'Lunch', 'Lite Bites'];
+const SIDEBAR_ATHOME  = ['Whole Bean', 'Starbucks VIA® Instant', 'Shopping Bag'];
+
 /* ─── Customisation option sets ─────────────────────────────────────── */
 const SIZES        = ['Short', 'Tall', 'Grande', 'Venti', 'Trenta'];
 const TEMPS        = ['Hot', 'Iced', 'Blended'];
@@ -443,28 +459,17 @@ export default function MenuPage() {
           }}>Trending</p>
 
           <h4>Drinks</h4>
-          {[
-            { display: 'Protein Beverages',  label: 'Protein Beverages' },
-            { display: 'Hot Coffee',          label: 'Hot Coffee' },
-            { display: 'Cold Coffee',         label: 'Cold Coffee' },
-            { display: 'Matcha',              label: 'Matcha' },
-            { display: 'Hot Tea',             label: 'Hot Tea' },
-            { display: 'Cold Tea',            label: 'Cold Tea' },
-            { display: 'Refreshers',          label: 'Refreshers' },
-            { display: <span key="f">Frappuccino® Blended<br/>Beverage</span>, label: 'Frappuccino® Blended Beverage' },
-            { display: <span key="h">Hot Chocolate, Lemonade<br/>& More</span>, label: 'Hot Chocolate, Lemonade & More' },
-            { display: 'Bottled Beverages',   label: 'Bottled Beverages' },
-          ].map(({ display, label }) => (
+          {SIDEBAR_DRINKS.map(({ display, label }) => (
             <p key={label} className="sidebar-item" onClick={() => openMenuUnavail(label)} style={{ cursor: 'pointer' }}>{display}</p>
           ))}
 
           <h4>Food</h4>
-          {['Breakfast','Bakery','Treats','Lunch','Lite Bites'].map(label => (
+          {SIDEBAR_FOOD.map(label => (
             <p key={label} className="sidebar-item" onClick={() => openMenuUnavail(label)} style={{ cursor: 'pointer' }}>{label}</p>
           ))}
 
           <h4>At Home Coffee</h4>
-          {['Whole Bean','Starbucks VIA® Instant','Shopping Bag'].map(label => (
+          {SIDEBAR_ATHOME.map(label => (
             <p key={label} className="sidebar-item" onClick={() => openMenuUnavail(label)} style={{ cursor: 'pointer' }}>{label}</p>
           ))}
         </div>

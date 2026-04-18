@@ -48,7 +48,7 @@
 
 /* ─── Image Illustration ─────────────────────────────────────────────────── */
 .fav-img-wrapper {
-  margin-bottom: -5px;
+  margin-bottom: 12px;
 }
 
 .fav-img {
@@ -88,16 +88,6 @@
   display: flex;
   gap: 12px;
   margin-bottom: 80px;
-}
-
-/* ─── Shared Button Base ─────────────────────────────────────────────────── */
-.fav-btn {
-  padding: 16px 24px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* ─── Sign In Button (outlined) ──────────────────────────────────────────── */

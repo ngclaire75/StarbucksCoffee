@@ -90,16 +90,6 @@
   margin-bottom: 80px;
 }
 
-/* ─── Shared Button Base ─────────────────────────────────────────────────── */
-.previous-btn {
-  padding: 16px 24px;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
 /* ─── Sign In Button (outlined) ──────────────────────────────────────────── */
 .previous-btn-signin {
   padding: 6px 17px;
@@ -137,7 +127,6 @@
 /* ─── Already Signed In Toast ────────────────────────────────────────────── */
 .previous-already-signed-in {
   margin-top: 12px;
-  margin-left: -570px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
