@@ -179,19 +179,19 @@ export default function PreviousPage() {
         transition: 'opacity 0.35s ease, transform 0.35s ease',
       }}>
         <div className="previous-container">
-          <h1 className="previous-title">Previous</h1>
-
           <div className="previous-empty-state">
-            <div className="previous-gif-wrapper previous-gif-delayed">
-              <img
-                src="/images/previous.gif"
-                alt="No previous orders"
-                className="previous-gif"
-                draggable={false}
-              />
-            </div>
-
             <div className="previous-text-group">
+              <h1 className="previous-title">Previous</h1>
+
+              <div className="previous-gif-wrapper previous-gif-delayed">
+                <img
+                  src="/images/previous.gif"
+                  alt="No previous orders"
+                  className="previous-gif"
+                  draggable={false}
+                />
+              </div>
+
               <h2 className="previous-empty-heading">When history repeats itself</h2>
 
               <p className="previous-empty-subtext">

@@ -179,23 +179,23 @@ export default function FavouritesPage() {
         transition: 'opacity 0.35s ease, transform 0.35s ease',
       }}>
         <div className="fav-container">
-          <h1 className="fav-title">Favourites</h1>
-
           <div className="fav-empty-state">
-            <div className="fav-img-wrapper favourites-gif-delayed">
-              <img
-                src="/images/fav-tapes.png"
-                alt="No favourites yet"
-                className="fav-img"
-                draggable={false}
-              />
-            </div>
-
             <div className="fav-text-group">
+              <h1 className="fav-title">Favourites</h1>
+
+              <div className="fav-img-wrapper favourites-gif-delayed">
+                <img
+                  src="/images/fav-tapes.png"
+                  alt="No favourites yet"
+                  className="fav-img"
+                  draggable={false}
+                />
+              </div>
+
               <h2 className="fav-empty-heading">Save your favorite mixes</h2>
 
               <p className="fav-empty-subtext">
-                Use the heart to save customizations. Your <br/>favorites will appear here to order again.
+                Use the heart to save customizations. Your favorites will appear here to order again.
               </p>
 
               <div className="fav-btn-row">
