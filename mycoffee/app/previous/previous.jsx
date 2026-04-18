@@ -191,17 +191,19 @@ export default function PreviousPage() {
               />
             </div>
 
-            <h2 className="previous-empty-heading">When history repeats itself</h2>
+            <div className="previous-text-group">
+              <h2 className="previous-empty-heading">When history repeats itself</h2>
 
-            <p className="previous-empty-subtext">
-              Previous orders will appear here to quickly order again.
-            </p>
+              <p className="previous-empty-subtext">
+                Previous orders will appear here to quickly order again.
+              </p>
 
-            <div className="previous-btn-row">
-              <button className="previous-btn previous-btn-signin" onClick={handleSignIn}>Sign in</button>
-              <button className="previous-btn previous-btn-join" onClick={handleJoinNow}>Join now</button>
+              <div className="previous-btn-row">
+                <button className="previous-btn previous-btn-signin" onClick={handleSignIn}>Sign in</button>
+                <button className="previous-btn previous-btn-join" onClick={handleJoinNow}>Join now</button>
+              </div>
+              {signedInMsg && <p className="previous-already-signed-in">{signedInMsg}</p>}
             </div>
-            {signedInMsg && <p className="previous-already-signed-in">{signedInMsg}</p>}
           </div>
         </div>
 

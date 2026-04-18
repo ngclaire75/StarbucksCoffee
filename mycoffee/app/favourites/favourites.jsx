@@ -191,17 +191,19 @@ export default function FavouritesPage() {
               />
             </div>
 
-            <h2 className="fav-empty-heading">Save your favorite mixes</h2>
+            <div className="fav-text-group">
+              <h2 className="fav-empty-heading">Save your favorite mixes</h2>
 
-            <p className="fav-empty-subtext">
-              Use the heart to save customizations. Your <br/>favorites will appear here to order again.
-            </p>
+              <p className="fav-empty-subtext">
+                Use the heart to save customizations. Your <br/>favorites will appear here to order again.
+              </p>
 
-            <div className="fav-btn-row">
-              <button className="fav-btn fav-btn-signin" onClick={handleSignIn}>Sign in</button>
-              <button className="fav-btn fav-btn-join" onClick={handleJoinNow}>Join now</button>
+              <div className="fav-btn-row">
+                <button className="fav-btn fav-btn-signin" onClick={handleSignIn}>Sign in</button>
+                <button className="fav-btn fav-btn-join" onClick={handleJoinNow}>Join now</button>
+              </div>
+              {signedInMsg && <p className="fav-already-signed-in">{signedInMsg}</p>}
             </div>
-            {signedInMsg && <p className="fav-already-signed-in">{signedInMsg}</p>}
           </div>
         </div>
 

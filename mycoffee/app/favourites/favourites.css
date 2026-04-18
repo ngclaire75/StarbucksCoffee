@@ -59,13 +59,20 @@
   object-fit: contain;
 }
 
+/* ─── Text Group (heading + subtext + buttons, left-aligned together) ───── */
+.fav-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -570px;
+}
+
 /* ─── Empty State Heading ────────────────────────────────────────────────── */
 .fav-empty-heading {
   font-size: 25px;
   font-weight: 700;
   color: #000000de;
   margin-bottom: 12px;
-  margin-left: -460px;
 }
 
 /* ─── Empty State Subtext ────────────────────────────────────────────────── */
@@ -76,12 +83,10 @@
   max-width: 300px;
   margin-bottom: 20px;
   line-height: 1.3;
-  margin-left: -430px;
 }
 
 /* ─── Button Row ─────────────────────────────────────────────────────────── */
 .fav-btn-row {
-  margin-left: -570px;
   display: flex;
   gap: 12px;
   margin-bottom: 80px;
@@ -106,7 +111,6 @@
   font-weight: 700;
   font-size: 13px;
   cursor: pointer;
-  margin-left: 20px;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
